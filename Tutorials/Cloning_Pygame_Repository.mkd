@@ -1,0 +1,37 @@
+# How to Make your Pygame Project Work
+## Introduction
+This is a quick step by step guide on how to install pygame on your computer so we can start developing our project!
+## Requirements
+* Install [VSCode](https://code.visualstudio.com/download) 
+* Install [Python]( https://www.python.org/downloads/)
+  * Add Python to PATH in the installation
+  * Check in the command prompt if it was installed correctly python --version
+* Install [PIP](https://bootstrap.pypa.io/get-pip.py)
+  * Usually, it comes with the Python installation itself, so check if you don't have it already
+  * Check in the command prompt pip --version
+* Install [Gitbash](https://gitforwindows.org/)
+  * To check if it was indeed installed correctly, type out on your cmd git --version 
+## Step 1
+Go to the initial page of the repository and copy it's HTTPS link
+![image](https://github.com/LeticiaAires/2324_Projet2A_JeuVideo/assets/72623771/8b1514c1-4865-40e5-b21f-e3048dce608d)
+## Step 2
+Now go inside your computer folders and press the right mouse button where you want you repository to be
+Next, choose the option "Open Git Bash here" 
+![image](https://github.com/LeticiaAires/2324_Projet2A_JeuVideo/assets/72623771/051c4ce7-86e8-41d2-918a-55894a9993f5)
+## Step 3
+A small window will open in which you will have to type out the following code: git clone 'link of you repository here'
+![image](https://github.com/LeticiaAires/2324_Projet2A_JeuVideo/assets/72623771/d66c6e9b-9f59-4df3-a46d-6f3ecb3fe96c)
+The git software will make a clone of the repository into you chosen folder
+## Step 4
+Open you VSCode and go to File>Open Folder>Chosen repository folder of yours
+![image](https://github.com/LeticiaAires/2324_Projet2A_JeuVideo/assets/72623771/bda5ee2e-2aba-45f2-ad04-74e159e75844)
+## Step 5
+Great! Now we only have to install the Pygame library into your VSCode project
+Go to your project's terminal and type: pip install pygame
+![image](https://github.com/LeticiaAires/2324_Projet2A_JeuVideo/assets/72623771/2feea5a6-d06f-48ed-a5f9-04b41e7e875b)
+As you can see, mine was already installed
+## Step 6
+Now run your code to test if everything is working
+![image](https://github.com/LeticiaAires/2324_Projet2A_JeuVideo/assets/72623771/8c8ca789-2846-4890-8664-5ad16c0872a9)
+
+
