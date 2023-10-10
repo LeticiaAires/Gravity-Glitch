@@ -1,15 +1,53 @@
 # 2324_Projet2A_JeuVideo
 
-
-
 <img src= "https://github.com/LeticiaAires/2324_Projet2A_JeuVideo/blob/05134fcbd3d17272d257292526df58450ef45b0c/flappy-bird-game.gif" width="2001px;" height="350px"/>
-
 
 ## Introduction
 
-This project is a collaborative effort by 7th-semester engineering students from École Nationale Supérieure de l'Électronique et de ses Applications (ENSEA). Our goal is to provide hands-on experience in practical electronics, software development, project management, and teamwork.
+Welcome to 2324_Projet2A_JeuVideo, an innovative project created by 7th-semester engineering students from École Nationale Supérieure de l'Électronique et de ses Applications (ENSEA). This project serves as a platform for hands-on learning in practical electronics, software development, project management, and teamwork.
 
-The project's objective is to create an exciting Flappy Bird-inspired game with a unique twist—an innovative controller. We're using an infrared sensor to measure the distance between the player's hand and the sensor. This ingenious controller guides "Flappy" through the game, helping it avoid obstacles and rack up points.
+## Project Objective
+
+Our primary goal is to develop an exciting game inspired by the popular Flappy Bird game, with a unique twist – an innovative controller. We've integrated an infrared sensor into the game, which measures the distance between the player's hand and the sensor. This inventive controller allows players to guide "Flappy" through the game, helping it navigate obstacles and accumulate points.
+
+## Getting Started
+
+To get started with the project, follow these steps:
+
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/LeticiaAires/2324_Projet2A_JeuVideo.git
+   ```
+
+2. Ensure you have the required dependencies installed.
+
+   [VSCode](https://code.visualstudio.com/download)
+ 
+   [Python]( https://www.python.org/downloads/)
+ 
+   [PIP](https://bootstrap.pypa.io/get-pip.py)
+
+4. Run the game and start playing!
+
+## Features
+
+- Flappy Bird-inspired gameplay with a unique controller.
+- Innovative use of an infrared sensor for hand tracking.
+- Challenging obstacles and addictive gameplay.
+- Project designed and implemented by talented engineering students.
+
+## Documentation
+
+For more detailed information about the project, you can refer to the code itself. We have included comprehensive comments and documentation within the codebase to help you understand how everything works.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE.md).
+
+## Acknowledgments
+
+We would like to express our gratitude to our instructors, mentors, and everyone who supported us throughout this project. Your guidance and encouragement were invaluable in making this project a reality.
 
 ## Colaborators
 
