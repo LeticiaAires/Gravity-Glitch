@@ -2,7 +2,7 @@ import pygame
 import sys
 import os
 
-# initialising pygame
+# Initialize pygame
 pygame.init()
 
 # Constants for screen dimensions
@@ -13,26 +13,23 @@ SCREEN_HEIGHT = 600
 BUTTON_WIDTH = 180
 BUTTON_HEIGHT = 60
 
-#to display the menu window
+# Define the font file and path
+font_filename = "your_font.ttf"
+font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
 
+# Function to display the menu window
 def display_menu():
-    screen = pygame.display.set_mode((800, 600))
+    # Create the screen
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Menu Example")
 
-        # Design of the menu
+    # Load background image
     background_image = pygame.image.load("background2.jpg").convert()
     background_rect = background_image.get_rect()
-        # Replace "your_font.ttf" with the correct font file name
-    font_filename = "your_font.ttf"
 
-        # Full path to your font file
-    font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
-
-        # Load custom font for the title
+    # Load custom font for the title and buttons
     title_font = pygame.font.Font(font_path, 50)
-    title_text = title_font.render("Welcome to Gravity Glitch", True, (0, 0, 0))
-    title_rect = title_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
-
+    button_font = pygame.font.Font(font_path, 36)
         # Display a "Play" button
     button_font = pygame.font.Font(font_path, 36) #The font for all the buttons + size
     play_button = button_font.render("Play", True, (0, 0, 0))
@@ -60,7 +57,7 @@ def display_menu():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                mouse_pos = pygame.mouse.get_pos() #Get the mouse position, if the mouse clicks on one of the button, a message is sent
+                mouse_pos = pygame.mouse.get_pos()
                 if play_rect.collidepoint(mouse_pos):
                     print("The button 'Play' has been pressed")
                 elif rules_rect.collidepoint(mouse_pos):
@@ -73,7 +70,7 @@ def display_menu():
                 elif quit_rect.collidepoint(mouse_pos):
                     print("The button 'Quit' has been pressed")
                     running=False
-                    print(" Goodbye ! ")      
+                    print(" Goodbye ! ")
             mouse_pos = pygame.mouse.get_pos()
             # Check if the mouse is over a button and increase its size accordingly
             if play_rect.collidepoint(mouse_pos):
@@ -110,31 +107,31 @@ def display_menu():
             else:
                 quit_rect.w = BUTTON_WIDTH
                 quit_rect.h = BUTTON_HEIGHT
-            # Update the display
-            screen.blit(background_image, background_rect)
-            screen.blit(title_text, title_rect)
+        # Update the display
+        screen.blit(background_image, (0, 0))
+        screen.blit(title_font.render("Welcome to Gravity Glitch", True, (0, 0, 0)), (SCREEN_WIDTH // 3 - 200, 30))
+        screen.blit(play_button, (play_rect.centerx - play_button.get_width() // 2, play_rect.centery - play_button.get_height() // 2))
+        screen.blit(rules_button, (rules_rect.centerx - rules_button.get_width() // 2, rules_rect.centery - rules_button.get_height() // 2))
+        screen.blit(credits_button, (credits_rect.centerx - credits_button.get_width() // 2, credits_rect.centery - credits_button.get_height() // 2))            
+        screen.blit(options_button, (options_rect.centerx - options_button.get_width() // 2, options_rect.centery - options_button.get_height() // 2))
+        screen.blit(quit_button, (quit_rect.centerx - quit_button.get_width() // 2, quit_rect.centery - quit_button.get_height() // 2))
 
-            pygame.draw.rect(screen, (0, 0, 0), play_rect, 4)
-            pygame.draw.rect(screen, (0, 0, 0), rules_rect, 4)
-            pygame.draw.rect(screen, (0, 0, 0), credits_rect, 4)
-            pygame.draw.rect(screen, (0, 0, 0), options_rect, 4)
-            pygame.draw.rect(screen, (0, 0, 0), quit_rect, 4)
 
-            screen.blit(play_button, (play_rect.centerx - play_button.get_width() // 2, play_rect.centery - play_button.get_height() // 2))
-            screen.blit(rules_button, (rules_rect.centerx - rules_button.get_width() // 2, rules_rect.centery - rules_button.get_height() // 2))
-            screen.blit(credits_button, (credits_rect.centerx - credits_button.get_width() // 2, credits_rect.centery - credits_button.get_height() // 2))
-            screen.blit(options_button, (options_rect.centerx - options_button.get_width() // 2, options_rect.centery - options_button.get_height() // 2))
-            screen.blit(quit_button, (quit_rect.centerx - quit_button.get_width() // 2, quit_rect.centery - quit_button.get_height() // 2))
-            pygame.display.update()
-def display_options():#here a represents the "running" in display menu
-    screen = pygame.display.set_mode((800, 600))
-    running1= True
-            # Design of the options
+        pygame.display.update()
+
+    pygame.quit()
+
+# Function to display the options
+def display_options():
+    pygame.init()
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    running1 = True
+
+    # Design of the options
     background_option_image = pygame.image.load("background2.jpg").convert()
     background_option_rect = background_option_image.get_rect()
         # Replace "your_font.ttf" with the correct font file name
     font_filename = "your_font.ttf"
-
         # Full path to your font file
     font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
         # Load custom font for the title of the Options
@@ -145,7 +142,7 @@ def display_options():#here a represents the "running" in display menu
         # Display a "Return" button
     return_font = pygame.font.Font(font_path, 30) 
     return_button = return_font.render("Return", True, (0, 0, 0))
-    return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 3, 760, BUTTON_WIDTH, BUTTON_HEIGHT)
+    return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 6, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
     while running1:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -155,13 +152,24 @@ def display_options():#here a represents the "running" in display menu
                 if return_rect.collidepoint(mouse_pos):
                     print("The button 'Return' has been pressed")
                     running1=False
+                    display_menu()
+        mouse_pos = pygame.mouse.get_pos()
+         # Check if the mouse is over a button and increase its size accordingly
+        if return_rect.collidepoint(mouse_pos):
+            return_rect.w = BUTTON_WIDTH + 20
+            return_rect.h = BUTTON_HEIGHT + 10
+        else:
+            return_rect.w = BUTTON_WIDTH
+            return_rect.h = BUTTON_HEIGHT
+            # Update the display
+        screen.blit(background_option_image, (0, 0))
+        screen.blit(title_option_font.render(" Options ", True, (0, 0, 0)), (SCREEN_WIDTH // 3 - 200, 30))
+        screen.blit(return_button, (return_rect.centerx - return_button.get_width() // 2, return_rect.centery - return_button.get_height() // 2))
+        pygame.display.update()
+    pygame.quit()
 
-pygame.quit()
+# Run the menu display
 display_menu()
-
-
-    
-    
 
 
 
