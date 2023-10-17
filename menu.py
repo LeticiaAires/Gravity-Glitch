@@ -25,7 +25,7 @@ def display_menu():
     font_filename = "your_font.ttf"
 
     # Full path to your font file
-    font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
+    font_path = os.path.join("C:\Users\zinef\Downloads\GAME\2324_Projet2A_JeuVideo", font_filename)
 
     # Load custom font for the title
     title_font = pygame.font.Font(font_path, 50)
