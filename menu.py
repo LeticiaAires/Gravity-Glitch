@@ -13,69 +13,67 @@ SCREEN_HEIGHT = 600
 BUTTON_WIDTH = 180
 BUTTON_HEIGHT = 60
 
-# function to display the menu window
-class MyMenu:
-    def display_menu():
-        screen = pygame.display.set_mode((800, 600))
-        pygame.display.set_caption("Menu Example")
+#to display the menu window
+
+def display_menu():
+    screen = pygame.display.set_mode((800, 600))
+    pygame.display.set_caption("Menu Example")
 
         # Design of the menu
-        background_image = pygame.image.load("background2.jpg").convert()
-        background_rect = background_image.get_rect()
+    background_image = pygame.image.load("background2.jpg").convert()
+    background_rect = background_image.get_rect()
         # Replace "your_font.ttf" with the correct font file name
-        font_filename = "your_font.ttf"
+    font_filename = "your_font.ttf"
 
         # Full path to your font file
-        font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
+    font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
 
         # Load custom font for the title
-        title_font = pygame.font.Font(font_path, 50)
-        title_text = title_font.render("Welcome to Gravity Glitch", True, (0, 0, 0))
-        title_rect = title_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
+    title_font = pygame.font.Font(font_path, 50)
+    title_text = title_font.render("Welcome to Gravity Glitch", True, (0, 0, 0))
+    title_rect = title_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
 
         # Display a "Play" button
-        button_font = pygame.font.Font(font_path, 36) #The font for all the buttons + size
-        play_button = button_font.render("Play", True, (0, 0, 0))
-        play_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 100, BUTTON_WIDTH, BUTTON_HEIGHT)
+    button_font = pygame.font.Font(font_path, 36) #The font for all the buttons + size
+    play_button = button_font.render("Play", True, (0, 0, 0))
+    play_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 100, BUTTON_WIDTH, BUTTON_HEIGHT)
 
         # Display a "Rules" button
-        rules_button = button_font.render("Rules", True, (0, 0, 0))
-        rules_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 200, BUTTON_WIDTH, BUTTON_HEIGHT)
+    rules_button = button_font.render("Rules", True, (0, 0, 0))
+    rules_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 200, BUTTON_WIDTH, BUTTON_HEIGHT)
 
         # Display a "Credits" button
-        credits_button = button_font.render("Credits", True, (0, 0, 0))
-        credits_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 300, BUTTON_WIDTH, BUTTON_HEIGHT)
+    credits_button = button_font.render("Credits", True, (0, 0, 0))
+    credits_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 300, BUTTON_WIDTH, BUTTON_HEIGHT)
 
         # Display an "Options" button
-        options_button = button_font.render("Options", True, (0, 0, 0))
-        options_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 400, BUTTON_WIDTH, BUTTON_HEIGHT)
+    options_button = button_font.render("Options", True, (0, 0, 0))
+    options_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 400, BUTTON_WIDTH, BUTTON_HEIGHT)
 
         #Display a "Quit" button
-        quit_button = button_font.render("Quit", True, (0, 0, 0))
-        quit_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
+    quit_button = button_font.render("Quit", True, (0, 0, 0))
+    quit_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
 
-        running = True
-        while running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    mouse_pos = pygame.mouse.get_pos() #Get the mouse position, if the mouse clicks on one of the button, a message is sent
-                    if play_rect.collidepoint(mouse_pos):
-                        print("The button 'Play' has been pressed")
-                        main()
-                    elif rules_rect.collidepoint(mouse_pos):
-                        print("The button 'Rules' has been pressed")
-                    elif credits_rect.collidepoint(mouse_pos):
-                        print("The button 'Credits' has been pressed")
-                    elif options_rect.collidepoint(mouse_pos):
-                        print("The button 'Options' has been pressed")
-                    elif quit_rect.collidepoint(mouse_pos):
-                        print("The button 'Quit' has been pressed")
-                        running=False
-                        print(" Goodbye ! ")      
-
-            
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos() #Get the mouse position, if the mouse clicks on one of the button, a message is sent
+                if play_rect.collidepoint(mouse_pos):
+                    print("The button 'Play' has been pressed")
+                elif rules_rect.collidepoint(mouse_pos):
+                    print("The button 'Rules' has been pressed")
+                elif credits_rect.collidepoint(mouse_pos):
+                    print("The button 'Credits' has been pressed")
+                elif options_rect.collidepoint(mouse_pos):
+                    print("The button 'Options' has been pressed")
+                    display_options()
+                elif quit_rect.collidepoint(mouse_pos):
+                    print("The button 'Quit' has been pressed")
+                    running=False
+                    print(" Goodbye ! ")      
             mouse_pos = pygame.mouse.get_pos()
             # Check if the mouse is over a button and increase its size accordingly
             if play_rect.collidepoint(mouse_pos):
@@ -128,8 +126,46 @@ class MyMenu:
             screen.blit(options_button, (options_rect.centerx - options_button.get_width() // 2, options_rect.centery - options_button.get_height() // 2))
             screen.blit(quit_button, (quit_rect.centerx - quit_button.get_width() // 2, quit_rect.centery - quit_button.get_height() // 2))
             pygame.display.update()
-        pygame.quit()
-    display_menu()
+def display_options():#here a represents the "running" in display menu
+    screen = pygame.display.set_mode((800, 600))
+    running1= True
+            # Design of the options
+    background_option_image = pygame.image.load("background2.jpg").convert()
+    background_option_rect = background_option_image.get_rect()
+        # Replace "your_font.ttf" with the correct font file name
+    font_filename = "your_font.ttf"
+
+        # Full path to your font file
+    font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
+        # Load custom font for the title of the Options
+    title_option_font = pygame.font.Font(font_path, 50)
+    title_option_text = title_option_font.render(" Options ", True, (255,255,255))
+    title_option_rect = title_option_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
+
+        # Display a "Return" button
+    return_font = pygame.font.Font(font_path, 30) 
+    return_button = return_font.render("Return", True, (0, 0, 0))
+    return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 3, 760, BUTTON_WIDTH, BUTTON_HEIGHT)
+    while running1:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running1 = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos() #Get the mouse position, if the mouse clicks on one of the button, a message is sent
+                if return_rect.collidepoint(mouse_pos):
+                    print("The button 'Return' has been pressed")
+                    running1=False
+
+pygame.quit()
+display_menu()
+
+
+    
+    
+
+
+
+
 
 
 
