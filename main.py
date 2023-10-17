@@ -1,4 +1,6 @@
-import pygame
+import pygame 
+import sys
+
 
 #initialising pygame
 pygame.init()
@@ -16,3 +18,4 @@ while 1:
         if event.type==pygame.QUIT: sys.exit()
     windowsSize.blit(helloWorld, (0, 0))
     pygame.display.update()
+
