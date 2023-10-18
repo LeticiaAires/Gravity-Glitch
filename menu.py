@@ -1,9 +1,12 @@
 import pygame
+import pygame.mixer
 import sys
 import os
 
 # Initialize pygame
 pygame.init()
+pygame.mixer.init()
+
 
 # Constants for screen dimensions
 SCREEN_WIDTH = 800
@@ -51,6 +54,11 @@ def display_menu():
         #Display a "Quit" button
     quit_button = button_font.render("Quit", True, (0, 0, 0))
     quit_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
+    #load the music file
+    pygame.mixer.music.load('jazz6.wav') 
+    #play it in a loop
+    pygame.mixer.music.play(-1)
+
 
     running = True
     while running:
@@ -117,7 +125,6 @@ def display_menu():
         screen.blit(options_button, (options_rect.centerx - options_button.get_width() // 2, options_rect.centery - options_button.get_height() // 2))
         screen.blit(quit_button, (quit_rect.centerx - quit_button.get_width() // 2, quit_rect.centery - quit_button.get_height() // 2))
 
-
         pygame.display.update()
 
     pygame.quit()
@@ -127,7 +134,11 @@ def display_options():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     running1 = True
-
+    #Change of music
+    #load the new music file
+    pygame.mixer.music.load('rock1.wav') 
+    #play it in a loop
+    pygame.mixer.music.play(-1)
     # Design of the options
     background_option_image = pygame.image.load("background2.jpg").convert()
     background_option_rect = background_option_image.get_rect()
@@ -169,15 +180,15 @@ def display_options():
         pygame.display.update()
     pygame.quit()
 
-# Function to display the RULES
+# Function to display the RULES - Zineb
 
 
-# Function to display the CREDITS
+# Function to display the CREDITS - Solene
 
 
-# Function to display the Game
+# Function to display the Game - Cassandre
 
-
+# Music 
 
 
 
