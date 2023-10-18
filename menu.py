@@ -19,6 +19,7 @@ font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game
 
 # Function to display the menu window
 def display_menu():
+    pygame.init()
     # Create the screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Menu Example")
@@ -153,9 +154,9 @@ def display_options():
                     print("The button 'Return' has been pressed")
                     running1=False
                     display_menu()
-        mouse_pos = pygame.mouse.get_pos()
+        mouse_pos1 = pygame.mouse.get_pos()
          # Check if the mouse is over a button and increase its size accordingly
-        if return_rect.collidepoint(mouse_pos):
+        if return_rect.collidepoint(mouse_pos1):
             return_rect.w = BUTTON_WIDTH + 20
             return_rect.h = BUTTON_HEIGHT + 10
         else:
@@ -167,6 +168,20 @@ def display_options():
         screen.blit(return_button, (return_rect.centerx - return_button.get_width() // 2, return_rect.centery - return_button.get_height() // 2))
         pygame.display.update()
     pygame.quit()
+
+# Function to display the RULES
+
+
+# Function to display the CREDITS
+
+
+# Function to display the Game
+
+
+
+
+
+
 
 # Run the menu display
 display_menu()
