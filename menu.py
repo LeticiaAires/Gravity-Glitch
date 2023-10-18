@@ -6,7 +6,8 @@ import os
 # Initialize pygame
 pygame.init()
 pygame.mixer.init()
-
+global music_playing
+music_playing=True
 
 # Constants for screen dimensions
 SCREEN_WIDTH = 800
@@ -48,16 +49,18 @@ def display_menu():
     credits_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 300, BUTTON_WIDTH, BUTTON_HEIGHT)
 
         # Display an "Options" button
-    options_button = button_font.render("Options", True, (0, 0, 0))
-    options_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 400, BUTTON_WIDTH, BUTTON_HEIGHT)
+    setting_button = button_font.render("Settings", True, (0, 0, 0))
+    setting_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 400, BUTTON_WIDTH, BUTTON_HEIGHT)
 
         #Display a "Quit" button
     quit_button = button_font.render("Quit", True, (0, 0, 0))
     quit_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
     #load the music file
-    pygame.mixer.music.load('jazz6.wav') 
-    #play it in a loop
-    pygame.mixer.music.play(-1)
+    pygame.mixer.music.load('jazz6.wav')
+    if music_playing ==False :
+        pygame.mixer.music.stop() 
+    else:
+        pygame.mixer.music.play(-1)
 
 
     running = True
@@ -66,6 +69,10 @@ def display_menu():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
+                if music_playing ==False :
+                    pygame.mixer.music.stop() 
+                else:
+                    pygame.mixer.music.play(-1)
                 mouse_pos = pygame.mouse.get_pos()
                 if play_rect.collidepoint(mouse_pos):
                     print("The button 'Play' has been pressed")
@@ -73,9 +80,9 @@ def display_menu():
                     print("The button 'Rules' has been pressed")
                 elif credits_rect.collidepoint(mouse_pos):
                     print("The button 'Credits' has been pressed")
-                elif options_rect.collidepoint(mouse_pos):
-                    print("The button 'Options' has been pressed")
-                    display_options()
+                elif setting_rect.collidepoint(mouse_pos):
+                    print("The button 'Settings' has been pressed")
+                    display_setting()
                 elif quit_rect.collidepoint(mouse_pos):
                     print("The button 'Quit' has been pressed")
                     running=False
@@ -103,12 +110,12 @@ def display_menu():
                 credits_rect.w = BUTTON_WIDTH
                 credits_rect.h = BUTTON_HEIGHT
 
-            if options_rect.collidepoint(mouse_pos):
-                options_rect.w = BUTTON_WIDTH + 20
-                options_rect.h = BUTTON_HEIGHT + 10
+            if setting_rect.collidepoint(mouse_pos):
+                setting_rect.w = BUTTON_WIDTH + 20
+                setting_rect.h = BUTTON_HEIGHT + 10
             else:
-                options_rect.w = BUTTON_WIDTH
-                options_rect.h = BUTTON_HEIGHT
+                setting_rect.w = BUTTON_WIDTH
+                setting_rect.h = BUTTON_HEIGHT
 
             if quit_rect.collidepoint(mouse_pos):
                 quit_rect.w = BUTTON_WIDTH + 20
@@ -122,39 +129,45 @@ def display_menu():
         screen.blit(play_button, (play_rect.centerx - play_button.get_width() // 2, play_rect.centery - play_button.get_height() // 2))
         screen.blit(rules_button, (rules_rect.centerx - rules_button.get_width() // 2, rules_rect.centery - rules_button.get_height() // 2))
         screen.blit(credits_button, (credits_rect.centerx - credits_button.get_width() // 2, credits_rect.centery - credits_button.get_height() // 2))            
-        screen.blit(options_button, (options_rect.centerx - options_button.get_width() // 2, options_rect.centery - options_button.get_height() // 2))
+        screen.blit(setting_button, (setting_rect.centerx - setting_button.get_width() // 2, setting_rect.centery - setting_button.get_height() // 2))
         screen.blit(quit_button, (quit_rect.centerx - quit_button.get_width() // 2, quit_rect.centery - quit_button.get_height() // 2))
 
         pygame.display.update()
-
+    # Stop the music if it's playing before quitting the menu
+    if music_playing==False:
+        pygame.mixer.music.stop()
     pygame.quit()
 
-# Function to display the options
-def display_options():
+# Function to display the setting
+def display_setting():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     running1 = True
-    #Change of music
-    #load the new music file
-    pygame.mixer.music.load('rock1.wav') 
-    #play it in a loop
-    pygame.mixer.music.play(-1)
-    # Design of the options
-    background_option_image = pygame.image.load("background2.jpg").convert()
-    background_option_rect = background_option_image.get_rect()
+
+    # Design of the settings
+    background_setting_image = pygame.image.load("background2.jpg").convert()
+    background_setting_rect = background_setting_image.get_rect()
         # Replace "your_font.ttf" with the correct font file name
     font_filename = "your_font.ttf"
         # Full path to your font file
     font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
         # Load custom font for the title of the Options
-    title_option_font = pygame.font.Font(font_path, 50)
-    title_option_text = title_option_font.render(" Options ", True, (255,255,255))
-    title_option_rect = title_option_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
+    title_setting_font = pygame.font.Font(font_path, 50)
+    title_setting_text = title_setting_font.render(" Options ", True, (255,255,255))
+    title_setting_rect = title_setting_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
 
         # Display a "Return" button
     return_font = pygame.font.Font(font_path, 30) 
     return_button = return_font.render("Return", True, (0, 0, 0))
     return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 6, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
+    # Create text surfaces
+    setting_font = pygame.font.Font(font_path, 40)
+    musicoff_text = setting_font.render(" Music OFF ", True, (0, 0, 0))
+    musicon_text = setting_font.render(" Music ON ", True, (0, 0, 0))
+
+    # Set positions for the text
+    musicoff_rect = musicoff_text.get_rect(center=(SCREEN_WIDTH // 2, 200))
+    musicon_rect = musicon_text.get_rect(center=(SCREEN_WIDTH // 2, 300))
     while running1:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -165,6 +178,16 @@ def display_options():
                     print("The button 'Return' has been pressed")
                     running1=False
                     display_menu()
+                elif musicoff_rect.collidepoint(mouse_pos):
+                    print("The button 'music off' has been pressed")
+                    pygame.mixer.music.stop()
+                    music_playing = False  # Update the variable when music is stopped
+                elif musicon_rect.collidepoint(mouse_pos):
+                    print("The button 'music on' has been pressed")
+                    pygame.mixer.music.load('jazz6.wav')
+                    pygame.mixer.music.play(-1)
+                    music_playing = True  # Update the variable when music is playing
+
         mouse_pos1 = pygame.mouse.get_pos()
          # Check if the mouse is over a button and increase its size accordingly
         if return_rect.collidepoint(mouse_pos1):
@@ -173,11 +196,28 @@ def display_options():
         else:
             return_rect.w = BUTTON_WIDTH
             return_rect.h = BUTTON_HEIGHT
+
+        if musicoff_rect.collidepoint(mouse_pos1):
+            musicoff_rect.w = BUTTON_WIDTH + 20
+            musicoff_rect.h = BUTTON_HEIGHT + 10
+        else:
+            musicoff_rect.w = BUTTON_WIDTH
+            musicoff_rect.h = BUTTON_HEIGHT
+
+        if musicon_rect.collidepoint(mouse_pos1):
+            musicon_rect.w = BUTTON_WIDTH + 20
+            musicon_rect.h = BUTTON_HEIGHT + 10
+        else:
+            musicon_rect.w = BUTTON_WIDTH
+            musicon_rect.h = BUTTON_HEIGHT
             # Update the display
-        screen.blit(background_option_image, (0, 0))
-        screen.blit(title_option_font.render(" Options ", True, (0, 0, 0)), (SCREEN_WIDTH // 3 - 200, 30))
+        screen.blit(background_setting_image, (0, 0))
+        screen.blit(title_setting_font.render(" Settings ", True, (0, 0, 0)), (SCREEN_WIDTH // 3 - 200, 30))
         screen.blit(return_button, (return_rect.centerx - return_button.get_width() // 2, return_rect.centery - return_button.get_height() // 2))
+        screen.blit(musicoff_text, (musicoff_rect.centerx - musicoff_text.get_width() // 2, musicoff_rect.centery - musicoff_text.get_height() // 2))
+        screen.blit(musicon_text, (musicon_rect.centerx - musicon_text.get_width() // 2, musicon_rect.centery - musicon_text.get_height() // 2))
         pygame.display.update()
+    pygame.mixer.quit()
     pygame.quit()
 
 # Function to display the RULES - Zineb
