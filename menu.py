@@ -62,17 +62,12 @@ def display_menu():
     else:
         pygame.mixer.music.play(-1)
 
-
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if music_playing ==False :
-                    pygame.mixer.music.stop() 
-                else:
-                    pygame.mixer.music.play(-1)
                 mouse_pos = pygame.mouse.get_pos()
                 if play_rect.collidepoint(mouse_pos):
                     print("The button 'Play' has been pressed")
@@ -133,9 +128,6 @@ def display_menu():
         screen.blit(quit_button, (quit_rect.centerx - quit_button.get_width() // 2, quit_rect.centery - quit_button.get_height() // 2))
 
         pygame.display.update()
-    # Stop the music if it's playing before quitting the menu
-    if music_playing==False:
-        pygame.mixer.music.stop()
     pygame.quit()
 
 # Function to display the setting
@@ -147,7 +139,6 @@ def display_setting():
     # Design of the settings
     background_setting_image = pygame.image.load("background2.jpg").convert()
     background_setting_rect = background_setting_image.get_rect()
-        # Replace "your_font.ttf" with the correct font file name
     font_filename = "your_font.ttf"
         # Full path to your font file
     font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
@@ -168,7 +159,7 @@ def display_setting():
     # Set positions for the text
     musicoff_rect = musicoff_text.get_rect(center=(SCREEN_WIDTH // 2, 200))
     musicon_rect = musicon_text.get_rect(center=(SCREEN_WIDTH // 2, 300))
-    while running1:
+    while running1:  
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running1 = False
@@ -226,13 +217,7 @@ def display_setting():
 # Function to display the CREDITS - Solene
 
 
-# Function to display the Game - Cassandre
-
 # Music 
-
-
-
-
 
 # Run the menu display
 display_menu()
