@@ -1,0 +1,70 @@
+# Branching Policy
+
+This is a really important tutorial regarding how we manage each person's code, so as not to create code collisions.
+
+## The branches in this repository must follow the pattern below:
+
+### main
+
+- The branch _main_ represents a stable version of our product. It contains a tested versioned, reviewed code, ready to be delivered to the final user.
+This branch must come from the develop branch through pull requests approved at the end of each release.
+
+Rules:
+
+1. The is only ONE branch _main_.
+2. Commits made directly to the _main_ branch are **not** permited.
+
+### develop
+- The branch _develop_ contains the updated version of the code being developedo. This branch is always syncronnized with the branch _main_ and is the basis for all _feature_ branches .
+
+Rules:
+
+1. The is only ONE branch _develop_.
+
+### feature
+- The branches _feature_ represent the functionalities of the system that must be developed. They must always have the branch _develop_ as their origin and end.
+
+Naming Rules:
+
+```
+feature/(#issue-Id)-issue-title
+```
+
+### release
+- The branch _release_ represents the collective functionalities of a specific point of the _develop_ branch. This branch contains concluded functionalities that will be present in the next stable version of the product.
+- Only **bug fixes** are allowed in this branch.
+
+Regras:
+
+1. Created from _develop_.
+2. Mix of _develop_ and _main_..
+
+Naming Rules:
+
+```
+release/version-number
+```
+
+### bugfix
+- The _bugfix_ branches are used to implement bug solutions found through release testing.
+- The branch _bugfix_ must have the branch _release_ as it's origin and end.
+
+Naming Rules:
+
+```
+bugfix/(#Issue-id)-issue-title
+```
+
+### hotfix
+- A branch _hotfix_ is used to implement solutions for urgent problems found in the production environment.
+- The branch _hotfix_ must have the branch _main_ as it's origin and end.
+
+Naming Rules:
+
+```
+hotfix/(#Issue-Id)-issue-title
+```
+
+| Date       | Version | Description                      | Author             |
+| :--------: | :----: | :----------:                   | :---------------: |
+| 20/10/2023 |  0.1   | Branching Tutorial Creation| Letícia Aires|
