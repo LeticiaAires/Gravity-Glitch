@@ -26,4 +26,4 @@ The issue must be indicated correctly relating it to a sprint
 
 | Date       | Version | Description                      | Author             |
 | :--------: | :----: | :----------:                   | :---------------: |
-| 20/10/2023 |  0.1   | Creating commit policy | Letícia Aires|
+| 20/10/2023 |  0.1   | Creating issue template | Letícia Aires|
