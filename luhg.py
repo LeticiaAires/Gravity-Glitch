@@ -1,7 +1,6 @@
-# Function to display the Game 
 import pygame
 import sys
-import random #to have random heights for the pipes
+import random
 
 pygame.init()
 
@@ -14,6 +13,7 @@ PIPE_SPEED = -4
 
 # Colors
 WHITE = (255, 255, 255)
+
 # Initialize the screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Flappy Bird')
@@ -31,29 +31,31 @@ bird_rect = bird.get_rect(topleft=(bird_x, bird_y))
 
 # Pipe properties
 pipe_x = SCREEN_WIDTH
-pipe_heights = [800, 500, 800]
-pipes = [pipe.get_rect(midtop=(pipe_x, height)) for height in pipe_heights]
 pipe_width = pipe.get_width()
+pipes = []
 
 # Game variables
 game_active = True
 score = 0
 font = pygame.font.Font(None, 36)
 
+# Function to draw the score on the screen
 def draw_score():
     score_display = font.render(f'Score: {score}', True, WHITE)
     screen.blit(score_display, (10, 10))
 
+# Function to check for collisions
 def collision_check():
     global game_active
 
-    if  bird_rect.bottom >= SCREEN_HEIGHT:
+    if bird_rect.bottom >= SCREEN_HEIGHT:
         game_active = False
 
     for pipe_rect in pipes:
         if bird_rect.colliderect(pipe_rect):
             game_active = False
 
+# Function to update the position of pipes and handle scoring
 def update_pipes():
     global pipes, score
 
@@ -65,16 +67,14 @@ def update_pipes():
     if pipes and bird_x > pipes[0].centerx > bird_x - PIPE_SPEED:
         score += 1
 
+# Function to make the bird flap
 def flap():
+    global bird_speed
     bird_speed = BIRD_SPEED
-    return bird_speed
-
-#Add a timer of 3 seconds before starting 
-
-
-
 
 # Game loop
+clock = pygame.time.Clock()
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -82,7 +82,7 @@ while True:
             sys.exit()
         if game_active:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                bird_speed = flap()
+                flap()
 
     if game_active:
         bird_speed += GRAVITY
@@ -108,9 +108,8 @@ while True:
         screen.blit(game_over_surface, game_over_rect)
 
     pygame.display.update()
-    pygame.time.Clock().tick(60)
+    clock.tick(60)
+
+# Properly close the game window
 pygame.quit()
-
-
-
-
+sys.exit()

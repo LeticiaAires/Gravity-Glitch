@@ -2,20 +2,19 @@ import pygame
 import pygame.mixer
 import sys
 import os
-
+import random
 # Initialize pygame
-pygame.init()
+
 pygame.mixer.init()
 global music_playing
 music_playing=True
 
-# Constants for screen dimensions
+# Constants 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-
-# Constants for button dimensions
 BUTTON_WIDTH = 180
 BUTTON_HEIGHT = 60
+
 
 # Define the font file and path
 font_filename = "your_font.ttf"
@@ -71,6 +70,7 @@ def display_menu():
                 mouse_pos = pygame.mouse.get_pos()
                 if play_rect.collidepoint(mouse_pos):
                     print("The button 'Play' has been pressed")
+                    
                 elif rules_rect.collidepoint(mouse_pos):
                     print("The button 'Rules' has been pressed")
                 elif credits_rect.collidepoint(mouse_pos):
@@ -178,7 +178,6 @@ def display_setting():
                     pygame.mixer.music.load('jazz6.wav')
                     pygame.mixer.music.play(-1)
                     music_playing = True  # Update the variable when music is playing
-
         mouse_pos1 = pygame.mouse.get_pos()
          # Check if the mouse is over a button and increase its size accordingly
         if return_rect.collidepoint(mouse_pos1):
