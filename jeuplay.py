@@ -17,7 +17,7 @@ pygame.display.set_caption('Gravity Glitch')
 
 # Define the font file and path
 font_filename = "your_font.ttf"
-font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
+font_path = os.path.join("Assets/your_font.ttf", font_filename)
 run=True
 #define game variables
 ground_scroll=0
@@ -26,15 +26,15 @@ scroll_speed=4
 
 
 #load images
-BG=pygame.image.load("background2.jpg")
-ground_img=pygame.image.load('ground.png')
+BG=pygame.image.load("Assets/background2.jpg")
+ground_img=pygame.image.load('Assets/ground.png')
 
 class Bird(pygame.sprite.Sprite):
     def __init__(self,x,y): #self is like "this" in Java with implicit declarations
         pygame.sprite.Sprite.__init__(self)
         self.index=0
         self.counter=0
-        self.image=pygame.image.load('bird1.png')
+        self.image=pygame.image.load('Assets/bird1.png')
         self.rect=self.image.get_rect() #creates a rectangle from the boundary of that image
         self.rect.center=[x,y]
 def update(self):
