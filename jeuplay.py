@@ -32,8 +32,12 @@ ground_img=pygame.image.load('Assets/ground.png')
 class Bird(pygame.sprite.Sprite):
     def __init__(self,x,y): #self is like "this" in Java with implicit declarations
         pygame.sprite.Sprite.__init__(self)
+        self.images=[]
         self.index=0
         self.counter=0
+        for num in range (1,4):  
+            img=pygame.image.load(f'Assets/bird{num}.png')
+            self.images.append(img)
         self.image=pygame.image.load('Assets/bird1.png')
         self.rect=self.image.get_rect() #creates a rectangle from the boundary of that image
         self.rect.center=[x,y]
