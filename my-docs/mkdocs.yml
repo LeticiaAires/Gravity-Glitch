@@ -1,0 +1,7 @@
+site_name: My Docs
+
+repo_name: 2324_Projet2A_JeuVideo
+repo_url: https://github.com/LeticiaAires/2324_Projet2A_JeuVideo/tree/main
+
+nav:
+  - Home: index.md
