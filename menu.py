@@ -21,7 +21,7 @@ BUTTON_HEIGHT = 60
 
 # Define the font file and path
 font_filename = "your_font.ttf"
-font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
+font_path = os.path.join("Assets", font_filename)
 
 # Function to display the menu window
 def display_menu():
@@ -31,7 +31,7 @@ def display_menu():
     pygame.display.set_caption("Menu Example")
 
     # Load background image
-    background_image = pygame.image.load("background2.jpg").convert()
+    background_image = pygame.image.load("Assets/background2.jpg").convert()
     background_rect = background_image.get_rect()
 
     # Load custom font for the title and buttons
@@ -139,14 +139,14 @@ def display_setting():
     running1 = True
 
     # Design of the settings
-    background_setting_image = pygame.image.load("background2.jpg").convert()
+    background_setting_image = pygame.image.load("Assets/background2.jpg").convert()
     background_setting_rect = background_setting_image.get_rect()
     font_filename = "your_font.ttf"
         # Full path to your font file
-    font_path = os.path.join("C:\\Users\\mbeng\\Documents\\ENSEA_Mantou\\Python_Game_2A\\2324_Projet2A_JeuVideo", font_filename)
-        # Load custom font for the title of the Options
+    font_path = os.path.join("Assets", font_filename)
+        # Load custom font for the title of the Settings
     title_setting_font = pygame.font.Font(font_path, 50)
-    title_setting_text = title_setting_font.render(" Options ", True, (255,255,255))
+    title_setting_text = title_setting_font.render(" Settings ", True, (255,255,255))
     title_setting_rect = title_setting_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
 
         # Display a "Return" button
