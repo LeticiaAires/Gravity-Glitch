@@ -1,0 +1,57 @@
+## Commit
+
+Commiting is the act of inserting your code adjustments into the main code, in which everyone is working.
+In order for us to better understand each other's commits, they must be brief, descriptive and have a pattern.
+
+### Principles:
+
+#### Atomic commits
+Commits must always be small and significative, in order for them to represent only one functionality.
+This allows us to better track each code alteration, as well as have more knowledge about the code.
+
+### Format:
+```
+<type>(#issue number): description
+```
+
+#### Avaiable Types:
+
+[***Emoji Markdown List***](https://gist.github.com/rxaviers/7360908)
+
+- :rocket: front-end code ```:rocket:```
+- :floppy_disk: back-end code ```:floppy_disk:```
+- :repeat: code alteration ```:repeat:```
+- :cool: code structure upturn ```:cool:```
+- :racehorse: functioning upturn ```:racehorse:```
+- :x:  memory leaks solving```:x:```
+- :pencil: documentation writting ```:pencil:```
+- :bug: bug solving ```:bug:```
+- :fire: removing code from archives ```:fire:```
+- :green_heart: fixing continuous integration problems ```:green_heart:```
+- :white_check_mark: adding tests ```:white_check_mark:```
+- :lock: dealing with safety ```:lock:```
+- :arrow_up: dependency upgrade ```:arrow_up:```
+- :arrow_down: dependency downgrade ```:arrow_down:```
+
+#### Matter:
+- Must have up to 50 characters
+- Must not have capital letters
+
+*Commit example:*
+```
+git commit -m ":bulb:(#02): initial page button"
+```
+## Version History
+
+
+| Date       | Version | Description                      | Author             |
+| :--------: | :----: | :----------:                   | :---------------: |
+| 20/10/2023 |  0.1   | Creating commit policy | Letícia Aires|
+
+## Referências
+
+DARTORA, João. Tudo o que você precisa saber sobre commits semânticos. *Ilegra*. Disponível em: <https://ilegra.com/blog/tudo-o-que-voce-precisa-saber-sobre-commits-semanticos/>. Acesso em: 09 de ago. de 2021.
+
+Políticas de Commit. Disponível em: <https://fga-eps-mds.github.io/2020.1-Grupo6/policies/commits/>. Acesso em: 09 de ago. de 2021
+
+Políticas de Commit. Disponível em: <https://github.com/fga-eps-mds/2021.1-AlligaBot/blob/main/docs/_posts/2021-08-18-commits.md>. Acesso em: 14 de fev. de 2022
