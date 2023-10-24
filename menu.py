@@ -3,11 +3,14 @@ import pygame.mixer
 import sys
 import os
 import random
+import jeuplay
 # Initialize pygame
 
 pygame.mixer.init()
 global music_playing
-music_playing=True
+music_playing = False
+global changed
+changed = 1 #ie music not turned off
 
 # Constants 
 SCREEN_WIDTH = 800
@@ -34,6 +37,9 @@ def display_menu():
     # Load custom font for the title and buttons
     title_font = pygame.font.Font(font_path, 50)
     button_font = pygame.font.Font(font_path, 36)
+    #load the music file if the settings haven't been changed
+    if music_playing==False and changed==0: 
+        pygame.mixer.music.stop()
         # Display a "Play" button
     button_font = pygame.font.Font(font_path, 36) #The font for all the buttons + size
     play_button = button_font.render("Play", True, (0, 0, 0))
@@ -54,12 +60,8 @@ def display_menu():
         #Display a "Quit" button
     quit_button = button_font.render("Quit", True, (0, 0, 0))
     quit_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
-    #load the music file
-    pygame.mixer.music.load('jazz6.wav')
-    if music_playing ==False :
-        pygame.mixer.music.stop() 
-    else:
-        pygame.mixer.music.play(-1)
+
+    
 
     running = True
     while running:
@@ -173,11 +175,13 @@ def display_setting():
                     print("The button 'music off' has been pressed")
                     pygame.mixer.music.stop()
                     music_playing = False  # Update the variable when music is stopped
+                    changed=0
                 elif musicon_rect.collidepoint(mouse_pos):
                     print("The button 'music on' has been pressed")
                     pygame.mixer.music.load('jazz6.wav')
                     pygame.mixer.music.play(-1)
                     music_playing = True  # Update the variable when music is playing
+                    changed = 1
         mouse_pos1 = pygame.mouse.get_pos()
          # Check if the mouse is over a button and increase its size accordingly
         if return_rect.collidepoint(mouse_pos1):
