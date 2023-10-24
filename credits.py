@@ -11,7 +11,7 @@ fenetre = pygame.display.set_mode((largeur, hauteur))
 pygame.display.set_caption("Crédits")
 
 # Chargement de l'image de fond
-fond = pygame.image.load(r'C:\Users\solen\Documents\Scolarite\ensea_2nd_annee\Projet2annee\Images\Background.jpg')  
+fond = pygame.image.load(r'Assets/background.jpg')  
 
 # Redimensionnez l'image de fond pour correspondre à la taille de l'écran
 fond = pygame.transform.scale(fond, (largeur, hauteur))
