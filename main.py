@@ -1,6 +1,7 @@
 import pygame 
 import sys
-
+from menu import display_menu
+from menu import display_options
 
 #initialising pygame
 pygame.init()
