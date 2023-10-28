@@ -19,4 +19,3 @@ while 1:
         if event.type==pygame.QUIT: sys.exit()
     windowsSize.blit(helloWorld, (0, 0))
     pygame.display.update()
-

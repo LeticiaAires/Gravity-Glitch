@@ -1,7 +1,7 @@
+import os
 import pygame
 import pygame.mixer
 import sys
-import os
 import random
 # Initialize pygame
 pygame.init()
@@ -70,6 +70,7 @@ def display_menu():
                 mouse_pos = pygame.mouse.get_pos()              
                 if play_rect.collidepoint(mouse_pos):
                     print("The button 'Play' has been pressed")
+                    game()
                 elif rules_rect.collidepoint(mouse_pos):
                     print("The button 'Rules' has been pressed")
                 elif credits_rect.collidepoint(mouse_pos):
@@ -211,10 +212,80 @@ def display_setting():
         screen.blit(musicon_text, (musicon_rect.centerx - musicon_text.get_width() // 2, musicon_rect.centery - musicon_text.get_height() // 2))
         screen.blit(musicoff_text, (musicoff_rect.centerx - musicoff_text.get_width() // 2, musicoff_rect.centery - musicoff_text.get_height() // 2))
         pygame.display.update()
-
+    pygame.quit()
    
+def game():
+    global music_playing
+    global changed
+    pygame.init()  # Initialize the video system
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    running = True
 
+    # Design of the Play screen
+    background_play_image = pygame.image.load("Assets/background2.jpg").convert()
+    background_play_rect = background_play_image.get_rect()
+    font_filename = "your_font.ttf"
+        # Full path to your font file
+    font_path = os.path.join("Assets", font_filename)
+        # Load custom font for the title of the Settings
+    title_play_font = pygame.font.Font(font_path, 50)
+    title_play_text = title_play_font.render(" Play Menu ", True, (255,255,255))
+    title_play_rect = title_play_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
 
+        # Display a "Return" button
+    return_font = pygame.font.Font(font_path, 30) 
+    return_button = return_font.render("Return", True, (0, 0, 0))
+    return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 6, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
+    # Create text surfaces
+    play_font = pygame.font.Font(font_path, 40)
+    historymode_text = play_font.render(" History Mode ", True, (0, 0, 0))
+    creationmode_text = play_font.render(" Creation Mode ", True, (0, 0, 0))
+    # Set positions for the text
+    historymode_rect = historymode_text.get_rect(center=(SCREEN_WIDTH // 2, 200))
+    creationmode_rect = creationmode_text.get_rect(center=(SCREEN_WIDTH // 2, 300))
+    while running:  
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos() #Get the mouse position, if the mouse clicks on one of the button, a message is sent
+                if return_rect.collidepoint(mouse_pos):
+                    print("The button 'Return' has been pressed")
+                    running=False
+                    display_menu()
+                elif historymode_rect.collidepoint(mouse_pos):
+                    print("The button 'History Mode' has been pressed")
+                elif creationmode_rect.collidepoint(mouse_pos):
+                    print("The button 'Creation Mode' has been pressed")
+        mouse_pos1 = pygame.mouse.get_pos()
+         # Check if the mouse is over a button and increase its size accordingly
+        if return_rect.collidepoint(mouse_pos1):
+            return_rect.w = BUTTON_WIDTH + 20
+            return_rect.h = BUTTON_HEIGHT + 10
+        else:
+            return_rect.w = BUTTON_WIDTH
+            return_rect.h = BUTTON_HEIGHT
+
+        if historymode_rect.collidepoint(mouse_pos1):
+            historymode_rect.w = BUTTON_WIDTH + 20
+            historymode_rect.h = BUTTON_HEIGHT + 10
+        else:
+            historymode_rect.w = BUTTON_WIDTH
+            historymode_rect.h = BUTTON_HEIGHT
+        if creationmode_rect.collidepoint(mouse_pos1):
+            creationmode_rect.w = BUTTON_WIDTH + 20
+            creationmode_rect.h = BUTTON_HEIGHT + 10
+        else:
+            creationmode_rect.w = BUTTON_WIDTH
+            creationmode_rect.h = BUTTON_HEIGHT
+            # Update the display
+        screen.blit(background_play_image, (0, 0))
+        screen.blit(title_play_font.render(" Play  b  ", True, (0, 0, 0)), (SCREEN_WIDTH // 3 - 200, 30))
+        screen.blit(return_button, (return_rect.centerx - return_button.get_width() // 2, return_rect.centery - return_button.get_height() // 2))
+        screen.blit(historymode_text, (historymode_rect.centerx - historymode_text.get_width() // 2, historymode_rect.centery - historymode_text.get_height() // 2))
+        screen.blit(creationmode_text, (creationmode_rect.centerx - creationmode_text.get_width() // 2, creationmode_rect.centery - creationmode_text.get_height() // 2))
+        pygame.display.update()
+    pygame.quit()
 
 # Run the menu display
 if __name__ == "__main__":
