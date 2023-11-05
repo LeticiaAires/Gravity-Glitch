@@ -1,6 +1,6 @@
 import pygame
 import sys
-from menu import display_menu
+from oldmenu import display_menu
 
 # Initialisation de Pygame
 pygame.init()

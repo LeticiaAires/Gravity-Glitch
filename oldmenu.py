@@ -137,7 +137,7 @@ def display_menu():
 def display_setting():
     global music_playing
     global changed
-    pygame.init()  # Initialize the video system
+    #pygame.init()  # Initialize the video system
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     running1 = True
 
@@ -212,12 +212,12 @@ def display_setting():
         screen.blit(musicon_text, (musicon_rect.centerx - musicon_text.get_width() // 2, musicon_rect.centery - musicon_text.get_height() // 2))
         screen.blit(musicoff_text, (musicoff_rect.centerx - musicoff_text.get_width() // 2, musicoff_rect.centery - musicoff_text.get_height() // 2))
         pygame.display.update()
-    pygame.quit()
+    #pygame.quit()
    
 def game():
     global music_playing
     global changed
-    pygame.init()  # Initialize the video system
+    #pygame.init()  # Initialize the video system
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     running = True
 
@@ -280,12 +280,12 @@ def game():
             creationmode_rect.h = BUTTON_HEIGHT
             # Update the display
         screen.blit(background_play_image, (0, 0))
-        screen.blit(title_play_font.render(" Play  b  ", True, (0, 0, 0)), (SCREEN_WIDTH // 3 - 200, 30))
+        screen.blit(title_play_font.render(" Play   ", True, (0, 0, 0)), (SCREEN_WIDTH // 3 - 200, 30))
         screen.blit(return_button, (return_rect.centerx - return_button.get_width() // 2, return_rect.centery - return_button.get_height() // 2))
         screen.blit(historymode_text, (historymode_rect.centerx - historymode_text.get_width() // 2, historymode_rect.centery - historymode_text.get_height() // 2))
         screen.blit(creationmode_text, (creationmode_rect.centerx - creationmode_text.get_width() // 2, creationmode_rect.centery - creationmode_text.get_height() // 2))
         pygame.display.update()
-    pygame.quit()
+    #pygame.quit()
 
 # Run the menu display
 if __name__ == "__main__":
