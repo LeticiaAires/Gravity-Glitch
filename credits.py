@@ -1,89 +1,105 @@
 import pygame
 import sys
-from oldmenu import display_menu
-
-# Initialisation de Pygame
-pygame.init()
-
-# Paramètres d'affichage
-largeur, hauteur = 1400, 800
-fenetre = pygame.display.set_mode((largeur, hauteur))
-pygame.display.set_caption("Crédits")
-
-# Chargement de l'image de fond
-fond = pygame.image.load(r'Assets/background2.jpg')  
-
-# Redimensionnez l'image de fond pour correspondre à la taille de l'écran
-fond = pygame.transform.scale(fond, (largeur, hauteur))
-
-# Police de texte
-police = pygame.font.Font(None, 36)
-
-# Liste de crédits
-
-credits = [
-    "                       Développeuses : Mantoulaye MBENGUE, Solène CERPAC, Letícia AIRES, ​",
-    "                                       Cassandre CHANDELIER, Zineb LAHMOUDI",
-    "",
-    "",
-    "                           Menu : Mantoulaye MBENGUE",
-    "                           Compositeur musical : Mantoulaye MBENGUE",
-    "                           Oiseau : Cassandre CHANDELIER ",
-    "                           Design background : Letícia AIRES ",
-    "                           Runner : Letícia AIRES",
-    "                           Obstacles aléatoires quantiques : Solène CERPAC",
-    "                           Obstacles aléatoires quantiques : Zineb LAHMOUDI",
-    "                           History game : Solène CERPAC",
-    "                           Testeur de jeu : Nicolas Papazoglou",
-]
-
-# Position de départ des crédits
-y_position = hauteur
-
-# Vitesse de défilement
-vitesse_defilement = 1
-
-# Création du bouton "Retour au menu"
-bouton_retour = pygame.Rect(50, 50, 200, 50)
-couleur_bouton = (0, 128, 255)
-texte_bouton = police.render("Retour au menu", True, (255, 255, 255))
-
-clock = pygame.time.Clock()
-
-def afficher_credits():
-    fenetre.blit(fond, (0, 0))
-
-    y = y_position
-    for credit in credits:
-        texte = police.render(credit, True, (0, 0, 0))
-        fenetre.blit(texte, (50, y))
-        y += 40  # Ajustez l'espacement vertical
-
-def reset_position():
-    global y_position
-    y_position = hauteur
+from menu import display_menu
+import os
+import pygame.mixer
 
 
-display_menu()
+def display_credits():
+    # Initialisation de Pygame
+    pygame.init()
 
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+    # Paramètres d'affichage
+    SCREEN_WIDTH_CREDITS, SCREEN_HEIGHT_CREDITS = 1550, 800
+    BUTTON_WIDTH = 180
+    BUTTON_HEIGHT = 60
+    fenetre = pygame.display.set_mode((SCREEN_WIDTH_CREDITS, SCREEN_HEIGHT_CREDITS))
+    pygame.display.set_caption("Crédits")
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if bouton_retour.collidepoint(event.pos):
-                display_menu()
+    # Chargement de l'image de fond
+    fond = pygame.image.load('Assets/background2.jpg')
 
-    afficher_credits()
-    fenetre.fill(couleur_bouton, bouton_retour)
-    fenetre.blit(texte_bouton, (bouton_retour.x + 10, bouton_retour.y + 10))
+    # Redimensionnez l'image de fond pour correspondre à la taille de l'écran
+    fond = pygame.transform.scale(fond, (SCREEN_WIDTH_CREDITS, SCREEN_HEIGHT_CREDITS))
 
-    y_position -= vitesse_defilement  # Faites déplacer les crédits vers le haut
-    pygame.display.update()
-    clock.tick(60)
+    # Liste de crédits
+    credits = [
+        "Développeuses : Mantoulaye MBENGUE, Solène CERPAC, Letícia AIRES, ​",
+        "                       Cassandre CHANDELIER, Zineb LAHMOUDI",
+        "",
+        "",
+        "Menu : Mantoulaye MBENGUE",
+        "",
+        "Compositeur musical : Mantoulaye MBENGUE",
+        "",
+        "Oiseau : Cassandre CHANDELIER",
+        "",
+        "Design background : Letícia AIRES",
+        "",
+        "Runner : Letícia AIRES",
+        "",
+        "Obstacles aléatoires quantiques : Solène CERPAC",
+        "",
+        "Obstacles aléatoires quantiques : Zineb LAHMOUDI",
+        "",
+        "Crédits : Solène CERPAC",
+        "",
+        "Testeur de jeu : Nicolas Papazoglou",
+        "",
+        "Testeur de jeu : Laurent Fiack",
+        "",
+        "Musique : Clement Panchout 'Life is full of Joy'"
+    ]
 
-    # Réinitialisez la position pour une répétition
-    if y_position < -len(credits) * 40:
-        reset_position()
+    bouton_retour = pygame.Rect(600, 300, 200, 50)
+    font_filename = "your_font.ttf"
+    font_path = os.path.join("Assets", font_filename)
+    button_font = pygame.font.Font(font_path, 36)
+    BUTTON_WIDTH = 180
+    BUTTON_HEIGHT = 60
+
+    y_position = SCREEN_HEIGHT_CREDITS
+    defilement_actif = True
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                print("Mouse pos : "+ str(mouse_pos))
+                print(str(bouton_retour))
+                print(str(bouton_retour.collidepoint(mouse_pos)))
+                if bouton_retour.collidepoint(mouse_pos):
+                    # L'utilisateur a cliqué sur le bouton "Menu"
+                    # Vous pouvez appeler la fonction menu_display() ici
+                    display_menu()
+
+        fenetre.blit(fond, (0, 0))
+
+        if defilement_actif:
+            for i, ligne in enumerate(credits):
+                texte = button_font.render(ligne, True, (0, 0, 0))
+                y = y_position + i * 40
+                fenetre.blit(texte, (50, y))
+
+            y_position -= 0.5
+
+            if y_position < -len(credits) * 45:
+                defilement_actif = False
+
+        if not defilement_actif:
+            credits_button = button_font.render("Menu", True, (0, 0, 0))
+            credits_rect = pygame.Rect((SCREEN_WIDTH_CREDITS - BUTTON_WIDTH) // 2, 300, BUTTON_WIDTH, BUTTON_HEIGHT)
+            pygame.draw.rect(fenetre, (255, 255, 255), credits_rect)
+            text_x = credits_rect.x + (credits_rect.width - credits_button.get_width()) // 2
+            text_y = credits_rect.y + (credits_rect.height - credits_button.get_height()) // 2
+            fenetre.blit(credits_button, (text_x, text_y))
+
+        pygame.display.flip()
+
+    pygame.quit()
+    sys.exit()
+
+
+display_credits()
