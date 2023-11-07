@@ -1,0 +1,48 @@
+# How to Upload and Download your Code to/from Github
+## Introduction
+This is a quick step by step guide on how to upload and also download your code from your personal repository to Github so as to avoid code colisions and provide a smoother merging between everyone's code! 
+## Requirements
+You have correctly executed all steps in our first [tutorial](Tutorials/Cloning_Pygame_Repository.mkd) on Pygame and VScode.
+## First things First
+Before starting your code, you must **ALWAYS** try to do it with the updated github version, so as to avoid future code colisions between you and your colleagues.
+### So How do I Manipulate the Updated Github Code?
+You will have to open your VSCode Terminal and put the following code:
+````
+git checkout 'the branch you want to be updated with'
+````
+This way, the code in which you are working will coincide with the correct branch code of your issue.
+This is further explained in our [Branch Guide tutorial]().
+Next, you will have to pull the updated code from Github into your personal outdated code.
+````
+git pull
+````
+#### That's all!
+## What about Git push?
+Now that you are dealing with an updated code, you can make your adjustments developing new features regarding your assigned issue!
+
+
+When you finish coding, you will have to upload your work back into github, so everyone has access to this new and better code.
+In Software words, uploading your code means "pushing it" into Github.
+
+To push a code back into Github you will have to execute the following steps:
+#### 1- Check if you are in the right branch
+````
+git checkout 'the name of the branch you want to put your code in'
+````
+#### 2- Verify if everything is updated
+````
+git status
+````
+#### 3- Add your changes to the commit
+````
+Git add -A
+````
+#### 4- Commit you changes
+Here it's advisable, but not essential, to follow our [commit guide]()
+````
+git commit -m "brief explanation of your code changes"
+````
+#### 5- Finally, push it
+````
+git push
+````

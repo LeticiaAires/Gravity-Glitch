@@ -24,8 +24,6 @@ The issue must be classifies through tag, for it to be clearer and more organize
 # Milestone
 The issue must be indicated correctly relating it to a sprint
 
-# Estimate
-A issue deve ter uma estimativa de dificuldade gerada pelo time. Olhe a nossa [tabela de orientação.](https://github.com/fga-eps-mds/Projeto01/blob/main/docs/contributing.md#:~:text=Deve%2Dse%20definir%20uma%20estimativa%20de%20dificuldade%20(pontua%C3%A7%C3%A3o)%20%C3%A0%20issue%20em%20quest%C3%A3o%2C%20levando%20em%20considera%C3%A7%C3%A3o%20os%20seguintes%20crit%C3%A9rios%3A)
-
-# Epics
-A issue deve estar relacionada a um épico de modo a facilitar o controle de tempo das tarefas e a decisão de prioridades.
+| Date       | Version | Description                      | Author             |
+| :--------: | :----: | :----------:                   | :---------------: |
+| 20/10/2023 |  0.1   | Creating issue template | Letícia Aires|
