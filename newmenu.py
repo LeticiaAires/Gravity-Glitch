@@ -12,11 +12,11 @@ SCREEN_HEIGHT = 600
 BUTTON_WIDTH = 180
 BUTTON_HEIGHT = 60
 
-# Define the font file and path
+#font file and path
 font_filename = "your_font.ttf"
 font_path = os.path.join("Assets", font_filename)
 
-# Create a class to manage the menu screens
+# the lass to manage the menu screens
 class MenuManager:
     def __init__(self):
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -27,7 +27,7 @@ class MenuManager:
     def run(self):
         pass
 
-# Create a class for the main menu
+# the class for the main menu
 class MainMenu(MenuManager):
     def __init__(self):
         super().__init__()
@@ -65,6 +65,8 @@ class MainMenu(MenuManager):
                         print("The button 'Rules' has been pressed")
                     elif self.credits_rect.collidepoint(mouse_pos):
                         print("The button 'Credits' has been pressed")
+                        credits_menu = CreditsMenu()
+                        credits_menu.run()
                     elif self.setting_rect.collidepoint(mouse_pos):
                         print("The button 'Settings' has been pressed")
                         setting_menu = SettingMenu()
@@ -102,7 +104,7 @@ class MainMenu(MenuManager):
             button_rect.w = BUTTON_WIDTH
             button_rect.h = BUTTON_HEIGHT
 
-# Create a class for the settings menu
+# class for the settings menu
 class SettingMenu(MenuManager):
     def __init__(self):
         super().__init__()
@@ -162,9 +164,9 @@ class SettingMenu(MenuManager):
             button_rect.w = BUTTON_WIDTH
             button_rect.h = BUTTON_HEIGHT
 
-# Create a class for the game menu
+# class for the game menu
 class GameMenu(MenuManager):
-    def __init__(self):
+    def __init__(self): #Here Creation stands for the inverse mode
         super().__init__()
         self.title_play_font = pygame.font.Font(font_path, 50)
         self.title_play_text = self.title_play_font.render("Play Menu", True, (255, 255, 255))
@@ -176,7 +178,7 @@ class GameMenu(MenuManager):
 
         self.play_font = pygame.font.Font(font_path, 40)
         self.historymode_text = self.play_font.render("History Mode", True, (0, 0, 0))
-        self.creationmode_text = self.play_font.render("Creation Mode", True, (0, 0, 0))
+        self.creationmode_text = self.play_font.render("Inverse Modee", True, (0, 0, 0))
 
         self.historymode_rect = self.historymode_text.get_rect(center=(SCREEN_WIDTH // 2, 200))
         self.creationmode_rect = self.creationmode_text.get_rect(center=(SCREEN_WIDTH // 2, 300))
@@ -197,7 +199,7 @@ class GameMenu(MenuManager):
                     elif self.historymode_rect.collidepoint(mouse_pos):
                         print("The button 'History Mode' has been pressed")
                     elif self.creationmode_rect.collidepoint(mouse_pos):
-                        print("The button 'Creation Mode' has been pressed")
+                        print("The button 'Inverse Mode' has been pressed")
 
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
@@ -218,6 +220,136 @@ class GameMenu(MenuManager):
         else:
             button_rect.w = BUTTON_WIDTH
             button_rect.h = BUTTON_HEIGHT
+#class for the credits
+class CreditsMenu:
+    def __init__(self):
+        super().__init__()
+        # Paramètres d'affichage
+        self.fenetre = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        pygame.display.set_caption("Crédits")
+
+        # Chargement de l'image de fond
+        self.fond = pygame.image.load('Assets/background2.jpg')
+
+        # Liste de crédits
+        self.credits = [
+            "Développeuses : Mantoulaye MBENGUE, Solène CERPAC, Letícia AIRES, ​",
+            "                       Cassandre CHANDELIER, Zineb LAHMOUDI",
+            "",
+            "",
+            "Menu : Mantoulaye MBENGUE",
+            "",
+            "Choix musical : Mantoulaye MBENGUE",
+            "",
+            "Oiseau : Cassandre CHANDELIER",
+            "",
+            "Design background : Letícia AIRES",
+            "",
+            "Runner : Letícia AIRES",
+            "",
+            "Obstacles aléatoires quantiques : Solène CERPAC",
+            "",
+            "Obstacles aléatoires quantiques : Zineb LAHMOUDI",
+            "",
+            "Crédits : Solène CERPAC",
+            "",
+            "Testeur de jeu : Nicolas Papazoglou",
+            "",
+            "Testeur de jeu : Laurent Fiack",
+            "",
+            "Musique : Clement Panchout 'Life is full of Joy'"
+        ]
+
+        self.bouton_retour = pygame.Rect(600, 300, 200, 50)
+        self.font_filename = "your_font.ttf"
+        self.font_path = os.path.join("Assets", font_filename)
+        self.button_font = pygame.font.Font(font_path, 20)
+
+        self.y_position = SCREEN_HEIGHT
+        self.return_font = pygame.font.Font(font_path, 30)
+        self.bouton_retour = self.return_font.render("Return", True, (0, 0, 0))
+        self.return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 1, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
+        self.defilement_actif = True
+    def run(self):
+            bouton_retour = self.bouton_retour
+            running = True
+            while running:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        running = False
+                    elif event.type == pygame.MOUSEBUTTONDOWN:
+                        mouse_pos = pygame.mouse.get_pos()
+                        print("Mouse pos : "+ str(mouse_pos))
+                        print(str(bouton_retour))
+                        print(str(self.return_rect.collidepoint(mouse_pos)))
+                        if self.return_rect.collidepoint(mouse_pos):
+                            # L'utilisateur a cliqué sur le bouton "Retour"
+                            running1 = False
+                            main_menu = MainMenu()
+                            main_menu.run()
+                self.fenetre.blit(self.fond, (0, 0))
+                mouse_pos1 = pygame.mouse.get_pos()
+                self.update_button(self.return_rect, self.bouton_retour, mouse_pos1)
+                if self.defilement_actif:
+                    for i, ligne in enumerate(self.credits):
+                        texte = self.button_font.render(ligne, True, (0, 0, 0))
+                        y = self.y_position + i * 40
+                        self.fenetre.blit(texte, (40, y))
+
+                    self.y_position -= 0.2
+
+                    if self.y_position < -len(self.credits) * 45:
+                        defilement_actif = False
+
+                self.fenetre.blit(self.bouton_retour, (self.return_rect.centerx - self.bouton_retour.get_width() // 2, self.return_rect.centery - self.bouton_retour.get_height() // 2))
+                #if not defilement_actif:
+                    #credits_button = button_font.render("Menu", True, (0, 0, 0))
+                    #credits_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 300, BUTTON_WIDTH, BUTTON_HEIGHT)
+                    #pygame.draw.rect(fenetre, (255, 255, 255), credits_rect)
+                    #text_x = credits_rect.x + (credits_rect.width - credits_button.get_width()) // 2
+                    #text_y = credits_rect.y + (credits_rect.height - credits_button.get_height()) // 2
+                    #fenetre.blit(credits_button, (text_x, text_y))
+                pygame.display.update()
+                pygame.display.flip()   
+    def update_button(self, button_rect, button_surface, mouse_pos):
+        if button_rect.collidepoint(mouse_pos):
+            button_rect.w = BUTTON_WIDTH + 20
+            button_rect.h = BUTTON_HEIGHT + 10
+        else:
+            button_rect.w = BUTTON_WIDTH
+            button_rect.h = BUTTON_HEIGHT   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Run the main menu
 if __name__ == "__main__":
