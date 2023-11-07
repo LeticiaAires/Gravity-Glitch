@@ -46,7 +46,7 @@ class MainMenu(MenuManager):
         self.setting_button = self.button_font.render("Settings", True, (0, 0, 0))
         self.setting_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 400, BUTTON_WIDTH, BUTTON_HEIGHT)
         
-        self.quit_button = self.button_font.render("Quit", True, (0, 0, 0))
+        self.quit_button = self.button_font.render("Quit", True, (0,0,0))
         self.quit_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 2, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
 
     def run(self):
@@ -63,6 +63,8 @@ class MainMenu(MenuManager):
                         game_menu.run()
                     elif self.rules_rect.collidepoint(mouse_pos):
                         print("The button 'Rules' has been pressed")
+                        rules_menu=RulesMenu()
+                        rules_menu.run()
                     elif self.credits_rect.collidepoint(mouse_pos):
                         print("The button 'Credits' has been pressed")
                         credits_menu = CreditsMenu()
@@ -75,6 +77,7 @@ class MainMenu(MenuManager):
                         print("The button 'Quit' has been pressed")
                         running = False
                         print("Goodbye!")
+                        
 
                 mouse_pos = pygame.mouse.get_pos()
                 self.update_button(self.play_rect, self.play_button, mouse_pos)
@@ -84,7 +87,7 @@ class MainMenu(MenuManager):
                 self.update_button(self.quit_rect, self.quit_button, mouse_pos)
 
             self.screen.blit(self.background_image, (0, 0))
-            self.screen.blit(self.title_font.render("Welcome to Gravity Glitch", True, (0, 0, 0)), (SCREEN_WIDTH // 3 - 200, 30))
+            self.screen.blit(self.title_font.render("Welcome to Gravity Glitch", True, (255,255,255)), (SCREEN_WIDTH // 3 - 200, 30))
             self.screen.blit(self.play_button, (self.play_rect.centerx - self.play_button.get_width() // 2, self.play_rect.centery - self.play_button.get_height() // 2))
             self.screen.blit(self.rules_button, (self.rules_rect.centerx - self.rules_button.get_width() // 2, self.rules_rect.centery - self.rules_button.get_height() // 2))
             self.screen.blit(self.credits_button, (self.credits_rect.centerx - self.credits_button.get_width() // 2, self.credits_rect.centery - self.credits_button.get_height() // 2))
@@ -94,7 +97,7 @@ class MainMenu(MenuManager):
             pygame.display.update()
 
         pygame.mixer.quit()
-        pygame.quit()
+        
 
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
@@ -164,7 +167,7 @@ class SettingMenu(MenuManager):
             button_rect.w = BUTTON_WIDTH
             button_rect.h = BUTTON_HEIGHT
 
-# class for the game menu
+# class for the play menu
 class GameMenu(MenuManager):
     def __init__(self): #Here Creation stands for the inverse mode
         super().__init__()
@@ -172,16 +175,20 @@ class GameMenu(MenuManager):
         self.title_play_text = self.title_play_font.render("Play Menu", True, (255, 255, 255))
         self.title_play_rect = self.title_play_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
 
+        self.title2_play_font = pygame.font.Font(font_path, 40)
+        self.title2_play_text = self.title2_play_font.render("Enter your name ! ", True, (0,0,0))
+        self.title2_play_rect = self.title2_play_text.get_rect(center=(SCREEN_WIDTH // 3, 40))
+
         self.return_font = pygame.font.Font(font_path, 30)
         self.return_button = self.return_font.render("Return", True, (0, 0, 0))
-        self.return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 6, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
+        self.return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 8, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
 
-        self.play_font = pygame.font.Font(font_path, 40)
-        self.historymode_text = self.play_font.render("History Mode", True, (0, 0, 0))
-        self.creationmode_text = self.play_font.render("Inverse Modee", True, (0, 0, 0))
+        #self.play_font = pygame.font.Font(font_path, 30)
+        #self.historymode_text = self.play_font.render("History Mode", True, (0, 0, 0))
+        #self.creationmode_text = self.play_font.render("Inverse Mode", True, (0, 0, 0))
 
-        self.historymode_rect = self.historymode_text.get_rect(center=(SCREEN_WIDTH // 2, 200))
-        self.creationmode_rect = self.creationmode_text.get_rect(center=(SCREEN_WIDTH // 2, 300))
+        #self.historymode_rect = self.historymode_text.get_rect(center=(SCREEN_WIDTH // 2, 300))
+        #self.creationmode_rect = self.creationmode_text.get_rect(center=(SCREEN_WIDTH // 2, 400))
 
     def run(self):
         running = True
@@ -196,21 +203,22 @@ class GameMenu(MenuManager):
                         running = False
                         main_menu = MainMenu()
                         main_menu.run()
-                    elif self.historymode_rect.collidepoint(mouse_pos):
-                        print("The button 'History Mode' has been pressed")
-                    elif self.creationmode_rect.collidepoint(mouse_pos):
-                        print("The button 'Inverse Mode' has been pressed")
+                    #elif self.historymode_rect.collidepoint(mouse_pos):
+                        #print("The button 'History Mode' has been pressed")
+                    #elif self.creationmode_rect.collidepoint(mouse_pos):
+                        #print("The button 'Inverse Mode' has been pressed")
 
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
-                self.update_button(self.historymode_rect, self.historymode_text, mouse_pos1)
-                self.update_button(self.creationmode_rect, self.creationmode_text, mouse_pos1)
+                #self.update_button(self.historymode_rect, self.historymode_text, mouse_pos1)
+                #self.update_button(self.creationmode_rect, self.creationmode_text, mouse_pos1)
 
             self.screen.blit(self.background_image, (0, 0))
             self.screen.blit(self.title_play_text, (SCREEN_WIDTH // 3 - 200, 30))
+            self.screen.blit(self.title2_play_text, (SCREEN_WIDTH // 2 -250, 150))
             self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
-            self.screen.blit(self.historymode_text, (self.historymode_rect.centerx - self.historymode_text.get_width() // 2, self.historymode_rect.centery - self.historymode_text.get_height() // 2))
-            self.screen.blit(self.creationmode_text, (self.creationmode_rect.centerx - self.creationmode_text.get_width() // 2, self.creationmode_rect.centery - self.creationmode_text.get_height() // 2))
+            #self.screen.blit(self.historymode_text, (self.historymode_rect.centerx - self.historymode_text.get_width() // 2, self.historymode_rect.centery - self.historymode_text.get_height() // 2))
+            #self.screen.blit(self.creationmode_text, (self.creationmode_rect.centerx - self.creationmode_text.get_width() // 2, self.creationmode_rect.centery - self.creationmode_text.get_height() // 2))
             pygame.display.update()
 
     def update_button(self, button_rect, button_surface, mouse_pos):
@@ -267,7 +275,7 @@ class CreditsMenu:
 
         self.y_position = SCREEN_HEIGHT
         self.return_font = pygame.font.Font(font_path, 30)
-        self.bouton_retour = self.return_font.render("Return", True, (0, 0, 0))
+        self.bouton_retour = self.return_font.render("Return", True, (255,255,255))
         self.return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 1, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
         self.defilement_actif = True
     def run(self):
@@ -284,7 +292,7 @@ class CreditsMenu:
                         print(str(self.return_rect.collidepoint(mouse_pos)))
                         if self.return_rect.collidepoint(mouse_pos):
                             # L'utilisateur a cliqué sur le bouton "Retour"
-                            running1 = False
+                            running = False
                             main_menu = MainMenu()
                             main_menu.run()
                 self.fenetre.blit(self.fond, (0, 0))
@@ -310,7 +318,8 @@ class CreditsMenu:
                     #text_y = credits_rect.y + (credits_rect.height - credits_button.get_height()) // 2
                     #fenetre.blit(credits_button, (text_x, text_y))
                 pygame.display.update()
-                pygame.display.flip()   
+                pygame.display.flip() 
+    
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
             button_rect.w = BUTTON_WIDTH + 20
@@ -318,36 +327,58 @@ class CreditsMenu:
         else:
             button_rect.w = BUTTON_WIDTH
             button_rect.h = BUTTON_HEIGHT   
+    
+#class for the rules
+class RulesMenu(MenuManager):
+    def __init__(self):
+        super().__init__()
+        self.title_rules_font = pygame.font.Font(font_path, 50)
+        self.title_rules_text = self.title_rules_font.render("Rules", True, (255, 255, 255))
+        self.title_rules_rect = self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
 
+        self.return_font = pygame.font.Font(font_path, 30)
+        self.return_button = self.return_font.render("Return", True, (20,20,20))
+        self.return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 6, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
 
+        self.rules_font = pygame.font.Font(font_path, 20)
+        self.rules_text=self.rules_font.render("Try to get the bird through as many holes as possible" ,True, (0,0,0))
+        self.rules_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
+        self.rules2_text=self.rules_font.render("If you hit the pipes the game is over" ,True, (255, 255, 255))
+        self.rules2_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
+        self.rules3_text=self.rules_font.render("To play, push the space bar or use the console" ,True, (0,0,0))
+        self.rules3_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
 
+    def run(self):
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_pos = pygame.mouse.get_pos()
+                    if self.return_rect.collidepoint(mouse_pos):
+                        print("The button 'Return' has been pressed")
+                        running = False
+                        main_menu = MainMenu()
+                        main_menu.run()
+                mouse_pos1 = pygame.mouse.get_pos()
+                self.update_button(self.return_rect, self.return_button, mouse_pos1)
+           
+            self.screen.blit(self.background_image, (0, 0))
+            self.screen.blit(self.title_rules_text, (SCREEN_WIDTH // 3 - 200, 30))
+            self.screen.blit(self.rules_text, (SCREEN_WIDTH // 2 - 300, 200))
+            self.screen.blit(self.rules_text, (SCREEN_WIDTH // 2 - 300, 300))
+            self.screen.blit(self.rules_text, (SCREEN_WIDTH // 2 - 300, 400))
+            self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
+            pygame.display.update()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def update_button(self, button_rect, button_surface, mouse_pos):
+        if button_rect.collidepoint(mouse_pos):
+            button_rect.w = BUTTON_WIDTH + 20
+            button_rect.h = BUTTON_HEIGHT + 10
+        else:
+            button_rect.w = BUTTON_WIDTH
+            button_rect.h = BUTTON_HEIGHT
 
 
 
@@ -355,3 +386,4 @@ class CreditsMenu:
 if __name__ == "__main__":
     main_menu = MainMenu()
     main_menu.run()
+pygame.quit()
