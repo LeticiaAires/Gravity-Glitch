@@ -224,18 +224,18 @@ class GameMenu(MenuManager):
 class RulesMenu(MenuManager):
     def __init__(self):
         super().__init__()
-        self.title_setting_font = pygame.font.Font(font_path, 50)
-        self.title_setting_text = self.title_setting_font.render("Rules", True, (255, 255, 255))
-        self.title_setting_rect = self.title_setting_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
+        self.title_rules_font = pygame.font.Font(font_path, 50)
+        self.title_rules_text = self.title_rules_font.render("Rules", True, (255, 255, 255))
+        self.title_rules_rect = self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
 
         self.return_font = pygame.font.Font(font_path, 30)
         self.return_button = self.return_font.render("Return", True, (0, 0, 0))
         self.return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 6, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
 
         self.setting_font = pygame.font.Font(font_path, 40)
-        self.rule1_text = self.setting_font.render("Try to get the bird through as many holes as possible", True, (0, 0, 0))
-        self.rule2_text = self.setting_font.render("If you hit the pipes the game is over", True, (0, 0, 0))
-        self.rule3_text = self.setting_font.render("To play, push the space bar or use the console", True, (0, 0, 0))
+        self.rule1_text = self.rules_font.render("Try to get the bird through as many holes as possible", True, (0, 0, 0))
+        self.rule2_text = self.rules_font.render("If you hit the pipes the game is over", True, (0, 0, 0))
+        self.rule3_text = self.rules_font.render("To play, push the space bar or use the console", True, (0, 0, 0))
 
         self.rule1_rect = self.rule1_text.get_rect(center=(SCREEN_WIDTH // 2, 200))
         self.rule2_rect = self.rule2_text.get_rect(center=(SCREEN_WIDTH // 2, 300))
