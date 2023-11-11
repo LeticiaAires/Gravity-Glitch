@@ -1,7 +1,10 @@
 import os
 import pygame
 import sys
+import random
+rnd = random.Random()
 
+BLACK = (0, 0, 0)
 # Initialize pygame
 pygame.init()
 pygame.mixer.init()
@@ -95,8 +98,7 @@ class MainMenu(MenuManager):
             self.screen.blit(self.quit_button, (self.quit_rect.centerx - self.quit_button.get_width() // 2, self.quit_rect.centery - self.quit_button.get_height() // 2))
 
             pygame.display.update()
-
-        pygame.mixer.quit()
+        
         
 
     def update_button(self, button_rect, button_surface, mouse_pos):
@@ -137,8 +139,7 @@ class SettingMenu(MenuManager):
                     if self.return_rect.collidepoint(mouse_pos):
                         print("The button 'Return' has been pressed")
                         running1 = False
-                        main_menu = MainMenu()
-                        main_menu.run()
+                        return "main"
                     elif self.musicoff_rect.collidepoint(mouse_pos):
                         print("The button 'Music OFF' has been pressed")
                         pygame.mixer.music.stop()
@@ -151,7 +152,6 @@ class SettingMenu(MenuManager):
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
                 self.update_button(self.musicon_rect, self.musicon_text, mouse_pos1)
                 self.update_button(self.musicoff_rect, self.musicoff_text, mouse_pos1)
-
             self.screen.blit(self.background_image, (0, 0))
             self.screen.blit(self.title_setting_text, (SCREEN_WIDTH // 3 - 200, 30))
             self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
@@ -167,7 +167,7 @@ class SettingMenu(MenuManager):
             button_rect.w = BUTTON_WIDTH
             button_rect.h = BUTTON_HEIGHT
 
-# class for the play menu
+# class for the first page of the play menu
 class GameMenu(MenuManager):
     def __init__(self): #Here Creation stands for the inverse mode
         super().__init__()
@@ -177,11 +177,23 @@ class GameMenu(MenuManager):
 
         self.title2_play_font = pygame.font.Font(font_path, 40)
         self.title2_play_text = self.title2_play_font.render("Enter your name ! ", True, (0,0,0))
-        self.title2_play_rect = self.title2_play_text.get_rect(center=(SCREEN_WIDTH // 3, 40))
+        self.title2_play_rect = self.title2_play_text.get_rect(center=(140, 40))
 
+        #return button
         self.return_font = pygame.font.Font(font_path, 30)
         self.return_button = self.return_font.render("Return", True, (0, 0, 0))
         self.return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 8, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
+
+        #continue button
+        self.continue_font = pygame.font.Font(font_path, 30)
+        self.continue_button = self.continue_font.render("Continue", True, (0, 0, 0))
+        self.continue_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) - 100, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
+        
+
+        #Init where the player will right his/her name 
+        self.input_box = pygame.Rect(140, 240, 650, 100)
+        self.player_name = ""
+        self.active = False
 
         #self.play_font = pygame.font.Font(font_path, 30)
         #self.historymode_text = self.play_font.render("History Mode", True, (0, 0, 0))
@@ -201,24 +213,47 @@ class GameMenu(MenuManager):
                     if self.return_rect.collidepoint(mouse_pos):
                         print("The button 'Return' has been pressed")
                         running = False
-                        main_menu = MainMenu()
-                        main_menu.run()
+                        return "main"
+
                     #elif self.historymode_rect.collidepoint(mouse_pos):
                         #print("The button 'History Mode' has been pressed")
                     #elif self.creationmode_rect.collidepoint(mouse_pos):
                         #print("The button 'Inverse Mode' has been pressed")
-
+                    elif self.continue_rect.collidepoint(mouse_pos):
+                        print("The button 'Continue' has been pressed")
+                        game_menu2 = GameMenu2()
+                        game_menu2.run()
+                    elif self.input_box.collidepoint(mouse_pos):
+                        self.active = not self.active #toggles the active state of the input box
+                elif event.type == pygame.KEYDOWN:
+                    if self.active:
+                        if event.key==pygame.K_RETURN:
+                            print(self.player_name)
+                            
+                            self.player_name=""
+                        elif event.key==pygame.K_BACKSPACE:
+                            self.player_name=self.player_name[:-1]
+                        else:
+                            self.player_name+=event.unicode
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
+                self.update_button(self.continue_rect, self.continue_button, mouse_pos1)
                 #self.update_button(self.historymode_rect, self.historymode_text, mouse_pos1)
                 #self.update_button(self.creationmode_rect, self.creationmode_text, mouse_pos1)
 
+
             self.screen.blit(self.background_image, (0, 0))
             self.screen.blit(self.title_play_text, (SCREEN_WIDTH // 3 - 200, 30))
-            self.screen.blit(self.title2_play_text, (SCREEN_WIDTH // 2 -250, 150))
             self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
+            self.screen.blit(self.continue_button, (self.continue_rect.centerx - self.continue_button.get_width() // 2, self.continue_rect.centery - self.continue_button.get_height() // 2))
             #self.screen.blit(self.historymode_text, (self.historymode_rect.centerx - self.historymode_text.get_width() // 2, self.historymode_rect.centery - self.historymode_text.get_height() // 2))
             #self.screen.blit(self.creationmode_text, (self.creationmode_rect.centerx - self.creationmode_text.get_width() // 2, self.creationmode_rect.centery - self.creationmode_text.get_height() // 2))
+            pygame.draw.rect(self.screen, (0,0,0), self.input_box, 8)
+            self.title2_play_text = self.title2_play_font.render("Your name: " + self.player_name, True, (0, 0, 0))
+            self.screen.blit(self.title2_play_text, (self.input_box.x + 5, self.input_box.y + 5))          
+            
+
+            
             pygame.display.update()
 
     def update_button(self, button_rect, button_surface, mouse_pos):
@@ -238,7 +273,6 @@ class CreditsMenu:
 
         # Chargement de l'image de fond
         self.fond = pygame.image.load('Assets/background2.jpg')
-
         # Liste de crédits
         self.credits = [
             "Développeuses : Mantoulaye MBENGUE, Solène CERPAC, Letícia AIRES, ​",
@@ -293,8 +327,7 @@ class CreditsMenu:
                         if self.return_rect.collidepoint(mouse_pos):
                             # L'utilisateur a cliqué sur le bouton "Retour"
                             running = False
-                            main_menu = MainMenu()
-                            main_menu.run()
+                            return "main"
                 self.fenetre.blit(self.fond, (0, 0))
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.bouton_retour, mouse_pos1)
@@ -341,12 +374,28 @@ class RulesMenu(MenuManager):
         self.return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 6, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
 
         self.rules_font = pygame.font.Font(font_path, 20)
+        #rules for the history mode
         self.rules_text=self.rules_font.render("Try to get the bird through as many holes as possible" ,True, (0,0,0))
         self.rules_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
-        self.rules2_text=self.rules_font.render("If you hit the pipes the game is over" ,True, (255, 255, 255))
+        self.rules0_text=self.rules_font.render("For the history mode : " ,True, (0,0,0))
+        self.rules0_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
+        self.rules2_text=self.rules_font.render("If you hit the pipes the game is over !" ,True, (0,0,0))
         self.rules2_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
         self.rules3_text=self.rules_font.render("To play, push the space bar or use the console" ,True, (0,0,0))
         self.rules3_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
+        #rules for the reverse mode 
+        self.rules6_text=self.rules_font.render("For the reverse mode : " ,True, (0,0,0))
+        self.rules6_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
+        self.rules7_text=self.rules_font.render("Get through as many pipes as possible" ,True, (0,0,0))
+        self.rules7_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
+        self.rules8_text=self.rules_font.render("If you go through a blank space the game is over !" ,True, (0,0,0))
+        self.rules8_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
+        #choose name, character
+        self.rules4_text=self.rules_font.render("First choose your name and character" ,True, (0,0,0))
+        self.rules4_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
+        self.rules5_text=self.rules_font.render("Then Pick your game mode !" ,True, (0,0,0))
+        self.rules5_rect=self.title_rules_text.get_rect(center=(SCREEN_WIDTH // 2, 20))
+
 
     def run(self):
         running = True
@@ -359,17 +408,84 @@ class RulesMenu(MenuManager):
                     if self.return_rect.collidepoint(mouse_pos):
                         print("The button 'Return' has been pressed")
                         running = False
-                        main_menu = MainMenu()
-                        main_menu.run()
+                        return "main"
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
+
            
             self.screen.blit(self.background_image, (0, 0))
             self.screen.blit(self.title_rules_text, (SCREEN_WIDTH // 3 - 200, 30))
-            self.screen.blit(self.rules_text, (SCREEN_WIDTH // 2 - 300, 200))
-            self.screen.blit(self.rules_text, (SCREEN_WIDTH // 2 - 300, 300))
-            self.screen.blit(self.rules_text, (SCREEN_WIDTH // 2 - 300, 400))
+            self.screen.blit(self.rules0_text, (SCREEN_WIDTH // 2 - 260, 200))
+            self.screen.blit(self.rules4_text, (SCREEN_WIDTH // 2 - 300, 100))
+            self.screen.blit(self.rules5_text, (SCREEN_WIDTH // 2 - 300, 140))
+            self.screen.blit(self.rules_text, (SCREEN_WIDTH // 2 - 300, 240))
+            self.screen.blit(self.rules2_text, (SCREEN_WIDTH // 2 - 300, 280))
+            self.screen.blit(self.rules3_text, (SCREEN_WIDTH // 2 - 300, 320))
+            self.screen.blit(self.rules6_text, (SCREEN_WIDTH // 2 - 260, 380))
+            self.screen.blit(self.rules7_text, (SCREEN_WIDTH // 2 - 300, 420))
+            self.screen.blit(self.rules8_text, (SCREEN_WIDTH // 2 - 300, 460))
             self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
+            pygame.display.update()
+
+    def update_button(self, button_rect, button_surface, mouse_pos):
+        if button_rect.collidepoint(mouse_pos):
+            button_rect.w = BUTTON_WIDTH + 20
+            button_rect.h = BUTTON_HEIGHT + 10
+        else:
+            button_rect.w = BUTTON_WIDTH
+            button_rect.h = BUTTON_HEIGHT
+
+# class for the second page of the play menu
+class GameMenu2(MenuManager):
+    def __init__(self): #Here Creation stands for the inverse mode
+        super().__init__()
+        self.title_play_font = pygame.font.Font(font_path, 50)
+        self.title_play_text = self.title_play_font.render("Mode Menu", True, (255, 255, 255))
+        self.title_play_rect = self.title_play_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
+
+        self.title2_play_font = pygame.font.Font(font_path, 40)
+        self.title2_play_text = self.title2_play_font.render("Choose your mode ", True, (0,0,0))
+        self.title2_play_rect = self.title2_play_text.get_rect(center=(SCREEN_WIDTH // 3, 40))
+
+        self.return_font = pygame.font.Font(font_path, 30)
+        self.return_button = self.return_font.render("Return", True, (0, 0, 0))
+        self.return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 8, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
+
+        self.play_font = pygame.font.Font(font_path, 30)
+        self.historymode_text = self.play_font.render("History Mode", True, (0, 0, 0))
+        self.creationmode_text = self.play_font.render("Inverse Mode", True, (0, 0, 0))
+
+        self.historymode_rect = self.historymode_text.get_rect(center=(SCREEN_WIDTH // 2, 300))
+        self.creationmode_rect = self.creationmode_text.get_rect(center=(SCREEN_WIDTH // 2, 400))
+
+    def run(self):
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_pos = pygame.mouse.get_pos()
+                    if self.return_rect.collidepoint(mouse_pos):
+                        print("The button 'Return' has been pressed")
+                        running = False
+                        return "main"#indicate the transition back to the menu
+                    #elif self.historymode_rect.collidepoint(mouse_pos):
+                        #print("The button 'History Mode' has been pressed")
+                    #elif self.creationmode_rect.collidepoint(mouse_pos):
+                        #print("The button 'Inverse Mode' has been pressed")
+                mouse_pos1 = pygame.mouse.get_pos()
+                self.update_button(self.return_rect, self.return_button, mouse_pos1)
+                #self.update_button(self.historymode_rect, self.historymode_text, mouse_pos1)
+                #self.update_button(self.creationmode_rect, self.creationmode_text, mouse_pos1)
+
+            self.screen.blit(self.background_image, (0, 0))
+            self.screen.blit(self.title_play_text, (SCREEN_WIDTH // 3 - 200, 30))
+            self.screen.blit(self.title2_play_text, (SCREEN_WIDTH // 2 -250, 150))
+            self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
+            #self.screen.blit(self.historymode_text, (self.historymode_rect.centerx - self.historymode_text.get_width() // 2, self.historymode_rect.centery - self.historymode_text.get_height() // 2))
+            #self.screen.blit(self.creationmode_text, (self.creationmode_rect.centerx - self.creationmode_text.get_width() // 2, self.creationmode_rect.centery - self.creationmode_text.get_height() // 2))
+
             pygame.display.update()
 
     def update_button(self, button_rect, button_surface, mouse_pos):
@@ -382,8 +498,48 @@ class RulesMenu(MenuManager):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Run the main menu
 if __name__ == "__main__":
-    main_menu = MainMenu()
-    main_menu.run()
-pygame.quit()
+    menu = MainMenu()
+    running = True
+    while running:
+        # Check the current menu screen state
+        current_menu = menu.run()
+        # Act based on the menu the user returns from
+        if current_menu == "main":
+            menu = MainMenu()
+        elif current_menu == "settings":
+            menu = SettingMenu()
+        # Add other menu states as needed
+        else:
+            running = False  # If the user decides to quit the game
+
+    # Quit Pygame
+    pygame.mixer.quit()
+    pygame.quit()
