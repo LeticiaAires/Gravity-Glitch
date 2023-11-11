@@ -175,9 +175,11 @@ class GameMenu(MenuManager):
         self.title_play_text = self.title_play_font.render("Play Menu", True, (255, 255, 255))
         self.title_play_rect = self.title_play_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
 
-        self.title2_play_font = pygame.font.Font(font_path, 40)
-        self.title2_play_text = self.title2_play_font.render("Enter your name ! ", True, (0,0,0))
-        self.title2_play_rect = self.title2_play_text.get_rect(center=(140, 40))
+        self.title2_play_font = pygame.font.Font(font_path, 25)
+        self.title2_play_text = self.title2_play_font.render("Put your name in the box, enter and continue ! ", True, (0,0,0))
+        self.title2_play_rect = self.title2_play_text.get_rect(center=(180, 150))
+
+        self.title3_play_text=self.title2_play_font.render("Your name : ", True, (0,0,0))
 
         #return button
         self.return_font = pygame.font.Font(font_path, 30)
@@ -189,7 +191,6 @@ class GameMenu(MenuManager):
         self.continue_button = self.continue_font.render("Continue", True, (0, 0, 0))
         self.continue_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) - 100, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
         
-
         #Init where the player will right his/her name 
         self.input_box = pygame.Rect(140, 240, 650, 100)
         self.player_name = ""
@@ -244,16 +245,15 @@ class GameMenu(MenuManager):
 
             self.screen.blit(self.background_image, (0, 0))
             self.screen.blit(self.title_play_text, (SCREEN_WIDTH // 3 - 200, 30))
+            self.screen.blit(self.title2_play_text, (SCREEN_WIDTH // 3 - 250, 110))
             self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
             self.screen.blit(self.continue_button, (self.continue_rect.centerx - self.continue_button.get_width() // 2, self.continue_rect.centery - self.continue_button.get_height() // 2))
             #self.screen.blit(self.historymode_text, (self.historymode_rect.centerx - self.historymode_text.get_width() // 2, self.historymode_rect.centery - self.historymode_text.get_height() // 2))
             #self.screen.blit(self.creationmode_text, (self.creationmode_rect.centerx - self.creationmode_text.get_width() // 2, self.creationmode_rect.centery - self.creationmode_text.get_height() // 2))
             pygame.draw.rect(self.screen, (0,0,0), self.input_box, 8)
-            self.title2_play_text = self.title2_play_font.render("Your name: " + self.player_name, True, (0, 0, 0))
-            self.screen.blit(self.title2_play_text, (self.input_box.x + 5, self.input_box.y + 5))          
-            
+            self.title3_play_text = self.title2_play_font.render("Your name: " + self.player_name, True, (0, 0, 0))
+            self.screen.blit(self.title3_play_text, (self.input_box.x + 5, self.input_box.y + 5))          
 
-            
             pygame.display.update()
 
     def update_button(self, button_rect, button_surface, mouse_pos):
@@ -281,7 +281,7 @@ class CreditsMenu:
             "",
             "Menu : Mantoulaye MBENGUE",
             "",
-            "Choix musical : Mantoulaye MBENGUE",
+            "Coordination transverse : Mantoulaye MBENGUE",
             "",
             "Oiseau : Cassandre CHANDELIER",
             "",
@@ -289,9 +289,7 @@ class CreditsMenu:
             "",
             "Runner : Letícia AIRES",
             "",
-            "Obstacles aléatoires quantiques : Solène CERPAC",
-            "",
-            "Obstacles aléatoires quantiques : Zineb LAHMOUDI",
+            "Obstacles aléatoires quantiques : Solène CERPAC et Zineb LAHMOUDI",
             "",
             "Crédits : Solène CERPAC",
             "",
@@ -470,21 +468,22 @@ class GameMenu2(MenuManager):
                         print("The button 'Return' has been pressed")
                         running = False
                         return "main"#indicate the transition back to the menu
-                    #elif self.historymode_rect.collidepoint(mouse_pos):
-                        #print("The button 'History Mode' has been pressed")
-                    #elif self.creationmode_rect.collidepoint(mouse_pos):
-                        #print("The button 'Inverse Mode' has been pressed")
+                    elif self.historymode_rect.collidepoint(mouse_pos):
+                        print("The button 'History Mode' has been pressed")
+                        game = Game()
+                        game.run()
+                    elif self.creationmode_rect.collidepoint(mouse_pos):
+                        print("The button 'Inverse Mode' has been pressed")
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
-                #self.update_button(self.historymode_rect, self.historymode_text, mouse_pos1)
-                #self.update_button(self.creationmode_rect, self.creationmode_text, mouse_pos1)
-
+                self.update_button(self.historymode_rect, self.historymode_text, mouse_pos1)
+                self.update_button(self.creationmode_rect, self.creationmode_text, mouse_pos1)
             self.screen.blit(self.background_image, (0, 0))
             self.screen.blit(self.title_play_text, (SCREEN_WIDTH // 3 - 200, 30))
             self.screen.blit(self.title2_play_text, (SCREEN_WIDTH // 2 -250, 150))
             self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
-            #self.screen.blit(self.historymode_text, (self.historymode_rect.centerx - self.historymode_text.get_width() // 2, self.historymode_rect.centery - self.historymode_text.get_height() // 2))
-            #self.screen.blit(self.creationmode_text, (self.creationmode_rect.centerx - self.creationmode_text.get_width() // 2, self.creationmode_rect.centery - self.creationmode_text.get_height() // 2))
+            self.screen.blit(self.historymode_text, (self.historymode_rect.centerx - self.historymode_text.get_width() // 2, self.historymode_rect.centery - self.historymode_text.get_height() // 2))
+            self.screen.blit(self.creationmode_text, (self.creationmode_rect.centerx - self.creationmode_text.get_width() // 2, self.creationmode_rect.centery - self.creationmode_text.get_height() // 2))
 
             pygame.display.update()
 
@@ -497,22 +496,144 @@ class GameMenu2(MenuManager):
             button_rect.h = BUTTON_HEIGHT
 
 
+#class for the game : History Mode
+class Game:
+
+    """
+    Game Loop
+        - run
+        - events
+        - update
+        - quit_game
+    """
+
+    def __init__(self):
+
+        pygame.mixer.pre_init(44100, -16, 2, 2048)
+        pygame.font.init()
+        self.FPS = 80
+        self.clock = pygame.time.Clock()
+
+        # Indique si l'asset doit descendre
+        self.move = False
+
+        self.gapx = 100
+        self.gapy = 500
+
+        self.new()
+        self.load()
+
+        self.playing = True
 
 
+    def new(self):
+        self.project_tile = "Flappy"
+        pygame.display.set_caption(self.project_tile)
+
+        self.gameDisplay = pygame.display.set_mode((450,504))
+        self.image = pygame.image.load('assets/fond.png')
+
+        self.rect = self.image.get_rect()
+        self.rect.x = 0
+        self.rect.y = 0
+
+        # Definition sprite oiseau
+        self.image_bird = pygame.image.load('assets/birdy.png')
+        self.bird_real = pygame.transform.scale(self.image_bird, (
+        self.image_bird.get_width() // 10, self.image_bird.get_height() // 10))
+
+        # Definition des bords du sprite oiseau
+        self.rect_bird = self.image.get_rect()
+        self.rect_bird.x = 150
+        self.rect_bird.y = 250
+
+        # Récupération asset tuyau
+        self.image_pipe = pygame.image.load('assets/tuyau_final.png')
+        self.pipe_inv = pygame.transform.scale(self.image_pipe, (
+            self.image_pipe.get_width(), self.image_pipe.get_height()))
+
+        # Position premier tuyau
+        self.pos = [300]
+        self.rect_pipe = self.image_pipe.get_rect()
+        self.rect_pipe.x = 300
+        self.rect_pipe.y = 302
 
 
+        # Ce qu'on veut inverser
+        self.inverser_horizontalement = False
+        self.inverser_verticalement = True
 
+        # Inversion
+        self.image_inversee = pygame.transform.flip(self.pipe_inv, self.inverser_horizontalement,
+                                                    self.inverser_verticalement)
 
+    def load(self):
+        self.timer = 0
+        self.delay = 100
+        self.map = 0
+        self.map2 = 900
 
+    def run(self):
+        while self.playing:
+            self.events()
+            self.update()
+            self.clock.tick(self.FPS)
 
+            pygame.display.flip()
 
+        self.quit_game_jeu()
 
+    def events(self):
+        self.event = pygame.event.get()
+        for event in self.event:
+            # Check for keyboard shortcuts
+            if event.type == pygame.KEYDOWN:
+                self.move = True
+                if event.key == pygame.K_ESCAPE:
+                    self.quit_game_jeu()
+                elif event.key == pygame.K_SPACE:
+                    if self.rect_bird.y > 15:
+                        self.rect_bird.y -= 30
+            # Handle quit event
+            if event.type == pygame.QUIT:
+                self.quit_game_jeu()
 
+    def update(self):
 
+        if self.timer <= 0:
+            self.timer = self.delay
+            self.map -= 1  # Déplacement vers la gauche
+            self.map2 -= 1
+            # Si la première image sort complètement de l'écran, replacez-la à droite de la seconde image
+            if self.map < -900:
+                self.map = self.map2 + 900
+            # Si la seconde image sort complètement de l'écran, replacez-la à droite de la première image
+            if self.map2 < - 900:
+                self.map2 = self.map + 900
 
+            if self.move:
+                if self.rect_bird.y <= 450:
+                    self.rect_bird.y += 2  # Descendre de 2 pixels
 
+                if self.rect_pipe.x <=350:
+                    self.rect_pipe.x -= 2  # Descendre de 2 pixels à gauche
+        else:
+            self.timer -= 50
 
+        # map
+        self.gameDisplay.blit(self.image, (self.map, self.rect.y))
+        self.gameDisplay.blit(self.image, (self.map2, self.rect.y))
+        # oiseau
+        self.gameDisplay.blit(self.bird_real, (self.rect_bird.x, self.rect_bird.y))
+        # tuyau
+        self.gameDisplay.blit(self.image_pipe, (self.rect_pipe.x, self.rect_pipe.y))
+        self.gameDisplay.blit(self.image_inversee, (self.rect_pipe.x, self.rect_pipe.y - self.gapy))
 
+    def draw(self):
+        pass
+
+    def quit_game_jeu(self):
+        quit()
 
 
 
