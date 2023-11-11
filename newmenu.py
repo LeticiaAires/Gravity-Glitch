@@ -176,7 +176,7 @@ class GameMenu(MenuManager):
         self.title_play_rect = self.title_play_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
 
         self.title2_play_font = pygame.font.Font(font_path, 25)
-        self.title2_play_text = self.title2_play_font.render("Put your name in the box, enter and continue ! ", True, (0,0,0))
+        self.title2_play_text = self.title2_play_font.render("Click on the box and enter your name  ! ", True, (0,0,0))
         self.title2_play_rect = self.title2_play_text.get_rect(center=(180, 150))
 
         self.title3_play_text=self.title2_play_font.render("Your name : ", True, (0,0,0))
@@ -196,13 +196,6 @@ class GameMenu(MenuManager):
         self.player_name = ""
         self.active = False
 
-        #self.play_font = pygame.font.Font(font_path, 30)
-        #self.historymode_text = self.play_font.render("History Mode", True, (0, 0, 0))
-        #self.creationmode_text = self.play_font.render("Inverse Mode", True, (0, 0, 0))
-
-        #self.historymode_rect = self.historymode_text.get_rect(center=(SCREEN_WIDTH // 2, 300))
-        #self.creationmode_rect = self.creationmode_text.get_rect(center=(SCREEN_WIDTH // 2, 400))
-
     def run(self):
         running = True
         while running:
@@ -215,11 +208,6 @@ class GameMenu(MenuManager):
                         print("The button 'Return' has been pressed")
                         running = False
                         return "main"
-
-                    #elif self.historymode_rect.collidepoint(mouse_pos):
-                        #print("The button 'History Mode' has been pressed")
-                    #elif self.creationmode_rect.collidepoint(mouse_pos):
-                        #print("The button 'Inverse Mode' has been pressed")
                     elif self.continue_rect.collidepoint(mouse_pos):
                         print("The button 'Continue' has been pressed")
                         game_menu2 = GameMenu2()
@@ -239,17 +227,11 @@ class GameMenu(MenuManager):
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
                 self.update_button(self.continue_rect, self.continue_button, mouse_pos1)
-                #self.update_button(self.historymode_rect, self.historymode_text, mouse_pos1)
-                #self.update_button(self.creationmode_rect, self.creationmode_text, mouse_pos1)
-
-
             self.screen.blit(self.background_image, (0, 0))
             self.screen.blit(self.title_play_text, (SCREEN_WIDTH // 3 - 200, 30))
             self.screen.blit(self.title2_play_text, (SCREEN_WIDTH // 3 - 250, 110))
             self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
             self.screen.blit(self.continue_button, (self.continue_rect.centerx - self.continue_button.get_width() // 2, self.continue_rect.centery - self.continue_button.get_height() // 2))
-            #self.screen.blit(self.historymode_text, (self.historymode_rect.centerx - self.historymode_text.get_width() // 2, self.historymode_rect.centery - self.historymode_text.get_height() // 2))
-            #self.screen.blit(self.creationmode_text, (self.creationmode_rect.centerx - self.creationmode_text.get_width() // 2, self.creationmode_rect.centery - self.creationmode_text.get_height() // 2))
             pygame.draw.rect(self.screen, (0,0,0), self.input_box, 8)
             self.title3_play_text = self.title2_play_font.render("Your name: " + self.player_name, True, (0, 0, 0))
             self.screen.blit(self.title3_play_text, (self.input_box.x + 5, self.input_box.y + 5))          
@@ -264,7 +246,7 @@ class GameMenu(MenuManager):
             button_rect.w = BUTTON_WIDTH
             button_rect.h = BUTTON_HEIGHT
 #class for the credits
-class CreditsMenu:
+class CreditsMenu(MenuManager):
     def __init__(self):
         super().__init__()
         # Paramètres d'affichage
