@@ -1,4 +1,4 @@
-# 2324_Projet2A_JeuVideo
+# Gravity Glitch
 
 <img src= "https://github.com/LeticiaAires/2324_Projet2A_JeuVideo/blob/05134fcbd3d17272d257292526df58450ef45b0c/flappy-bird-game.gif" width="2001px;" height="350px"/>
 

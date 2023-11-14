@@ -1,7 +1,7 @@
+
 import pygame 
 import sys
-from menu import display_menu
-from menu import display_options
+
 
 #initialising pygame
 pygame.init()
@@ -19,4 +19,3 @@ while 1:
         if event.type==pygame.QUIT: sys.exit()
     windowsSize.blit(helloWorld, (0, 0))
     pygame.display.update()
-

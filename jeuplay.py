@@ -7,7 +7,7 @@ import os
 pygame.init()
 
 clock = pygame.time.Clock() #to control the speed of the framerate
-fps=60
+fps=40
 
 
 SCREEN_WIDTH,SCREEN_HEIGHT =800,600
@@ -20,20 +20,23 @@ font_filename = "your_font.ttf"
 font_path = os.path.join("Assets/your_font.ttf", font_filename)
 run=True
 #define game variables
-ground_scroll=0
 scroll_speed=4
-
+ground_scroll=0
 
 
 #load images
 BG=pygame.image.load("Assets/background2.jpg")
-ground_img=pygame.image.load('Assets/ground.png')
+#ground_img=pygame.image.load('Assets/ground.png')
 
 class Bird(pygame.sprite.Sprite):
     def __init__(self,x,y): #self is like "this" in Java with implicit declarations
         pygame.sprite.Sprite.__init__(self)
+        self.images=[]
         self.index=0
         self.counter=0
+        for num in range (1,4):  
+            img=pygame.image.load(f'Assets/bird{num}.png')
+            self.images.append(img)
         self.image=pygame.image.load('Assets/bird1.png')
         self.rect=self.image.get_rect() #creates a rectangle from the boundary of that image
         self.rect.center=[x,y]
@@ -63,8 +66,8 @@ while run:
 
     bird_group.draw(screen)
     bird_group.update(screen)
-    #draw and scroll the ground
-    screen.blit(ground_img,(ground_scroll,468))
+    #scroll the BG
+    screen.blit(BG,(ground_scroll,0))
     ground_scroll-=scroll_speed
     if abs(ground_scroll)>35 : #if that ground_scroll exceeds the value of the pixels of our BG
         ground_scroll=0
