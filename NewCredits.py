@@ -4,28 +4,19 @@ import sys
 import random
 rnd = random.Random()
 
-BLACK = (0, 0, 0)
+from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
 # Initialize pygame
 pygame.init()
 pygame.mixer.init()
 
-# Constants
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-BUTTON_WIDTH = 180
-BUTTON_HEIGHT = 60
-
-#font file and path
-font_filename = "your_font.ttf"
-font_path = os.path.join("Assets", font_filename)
 
 
 #class for the credits
-class CreditsMenu(): 
+class CreditsMenu(MenuManager): 
     def __init__(self):
         super().__init__()
         # Paramètres d'affichage
-        self.fenetre = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.fenetre = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
         pygame.display.set_caption("Crédits")
 
         # Chargement de l'image de fond
@@ -61,13 +52,13 @@ class CreditsMenu():
 
         self.bouton_retour = pygame.Rect(600, 300, 200, 50)
         self.font_filename = "your_font.ttf"
-        self.font_path = os.path.join("Assets", font_filename)
-        self.button_font = pygame.font.Font(font_path, 20)
+        self.font_path = os.path.join("Assets", self.font_filename)
+        self.button_font = pygame.font.Font(self.font_path, 20)
 
-        self.y_position = SCREEN_HEIGHT
-        self.return_font = pygame.font.Font(font_path, 30)
+        self.y_position = self.SCREEN_HEIGHT
+        self.return_font = pygame.font.Font(self.font_path, 30)
         self.bouton_retour = self.return_font.render("Return", True, (255,255,255))
-        self.return_rect = pygame.Rect((SCREEN_WIDTH - BUTTON_WIDTH) // 1, 500, BUTTON_WIDTH, BUTTON_HEIGHT)
+        self.return_rect = pygame.Rect((self.SCREEN_WIDTH - self.BUTTON_WIDTH) // 1, 500, self.BUTTON_WIDTH, self.BUTTON_HEIGHT)
         self.defilement_actif = True
     def run(self):
             bouton_retour = self.bouton_retour
@@ -105,8 +96,12 @@ class CreditsMenu():
     
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
-            button_rect.w = BUTTON_WIDTH + 20
-            button_rect.h = BUTTON_HEIGHT + 10
+            button_rect.w = self.BUTTON_WIDTH + 20
+            button_rect.h = self.BUTTON_HEIGHT + 10
         else:
-            button_rect.w = BUTTON_WIDTH
-            button_rect.h = BUTTON_HEIGHT  
+            button_rect.w = self.BUTTON_WIDTH
+            button_rect.h = self.BUTTON_HEIGHT  
+
+# Quit Pygame
+pygame.mixer.quit()
+pygame.quit()

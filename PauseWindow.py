@@ -4,26 +4,18 @@ import sys
 import random
 rnd = random.Random()
 
-BLACK = (0, 0, 0)
+from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
+from MainMenu import MainMenu  # Importation de la classe MainMenu depuis le fichier MainMenu.py
 # Initialize pygame
 pygame.init()
 pygame.mixer.init()
 
-# Constants
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-BUTTON_WIDTH = 180
-BUTTON_HEIGHT = 60
-
-#font file and path
-font_filename = "your_font.ttf"
-font_path = os.path.join("Assets", font_filename)
 
 
 
 
 #class for the pause window during the game 
-class PauseWindow():
+class PauseWindow(MenuManager):
     def __init__(self):
         PLAY_SCREEN_HEIGHT = 600
         PLAY_SCREEN_WIDTH=800
@@ -31,13 +23,13 @@ class PauseWindow():
         pygame.display.set_caption("Pause Window")
         self.background_image = pygame.image.load("Assets/pauseWindow_screen2.png").convert() #taille image : 700 et 394
         self.background_rect = self.background_image.get_rect()
-        self.title_setting_font = pygame.font.Font(font_path, 50)
+        self.title_setting_font = pygame.font.Font(self.font_path, 50)
         self.title_setting_text = self.title_setting_font.render("Pause", True, (255, 255, 255))
-        self.title_setting_rect = self.title_setting_text.get_rect(center=(SCREEN_WIDTH // 2, 50))
+        self.title_setting_rect = self.title_setting_text.get_rect(center=(self.SCREEN_WIDTH // 2, 50))
 
-        self.return_font = pygame.font.Font(font_path, 30)
+        self.return_font = pygame.font.Font(self.font_path, 30)
         self.return_button = self.return_font.render("Return to Game", True, (0, 0, 0))
-        self.return_rect = pygame.Rect((PLAY_SCREEN_WIDTH//2),100, BUTTON_WIDTH, BUTTON_HEIGHT)
+        self.return_rect = pygame.Rect((PLAY_SCREEN_WIDTH//2),100, self.BUTTON_WIDTH, self.BUTTON_HEIGHT)
         self.quit_text = self.return_font.render("Quit Game", True, (0, 0, 0))
         self.quit_rect = self.quit_text.get_rect(center=(PLAY_SCREEN_WIDTH // 2, 500))
         self.settings_text = self.return_font.render("Settings ", True, (0, 0, 0))
@@ -94,11 +86,11 @@ class PauseWindow():
 
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
-            button_rect.w = BUTTON_WIDTH + 20
-            button_rect.h = BUTTON_HEIGHT + 10
+            button_rect.w = self.BUTTON_WIDTH + 20
+            button_rect.h = self.BUTTON_HEIGHT + 10
         else:
-            button_rect.w = BUTTON_WIDTH
-            button_rect.h = BUTTON_HEIGHT
+            button_rect.w = self.BUTTON_WIDTH
+            button_rect.h = self.BUTTON_HEIGHT
 
 
 # Quit Pygame

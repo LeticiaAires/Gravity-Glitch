@@ -1,7 +1,10 @@
-
 import pygame 
 import sys
-
+from NameMenu import NameMenu
+from RulesMenu import RulesMenu
+from NewCredits import CreditsMenu
+from settings import SettingMenu
+from MainMenu import MainMenu
 
 #initialising pygame
 pygame.init()
@@ -36,7 +39,7 @@ if __name__ == "__main__":
         elif current_menu == "credits":
             menu = CreditsMenu()
         elif current_menu == "play":
-            menu = GameMenu()   
+            menu = NameMenu()   
         elif current_menu == "rules":
             menu = RulesMenu()   
         else:
