@@ -4,26 +4,17 @@ import sys
 import random
 rnd = random.Random()
 
-BLACK = (0, 0, 0)
 # Initialize pygame
 pygame.init()
 pygame.mixer.init()
 
-# Constants
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-BUTTON_WIDTH = 180
-BUTTON_HEIGHT = 60
-
-#font file and path
-font_filename = "your_font.ttf"
-font_path = os.path.join("Assets", font_filename)
-
+from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
+from PauseWindow import PauseWindow
 
 
 #class for the game : History Mode
 #Things to change : augmenter la taille du jeu (image), ajouter le score, ajouter des tuyaux, ajouter musique, ajouter un bouton d'options (musique, retour, recommencer)
-class Game():
+class Game(MenuManager):
 
     """
     Game Loop
@@ -64,9 +55,9 @@ class Game():
         self.rect.y = 0
         
         #Pause button
-        self.pause_font = pygame.font.Font(font_path, 15)
+        self.pause_font = pygame.font.Font(MenuManager.font_path, 15)
         self.pause_button = self.pause_font.render("Pause", True, (0, 0, 0))
-        self.pause_rect = pygame.Rect(5, 450, BUTTON_WIDTH, BUTTON_HEIGHT)
+        self.pause_rect = pygame.Rect(5, 450, MenuManager.BUTTON_WIDTH, MenuManager.BUTTON_HEIGHT)
 
         # Definition sprite oiseau
         self.image_bird = pygame.image.load('assets/birdy.png')
@@ -184,11 +175,11 @@ class Game():
     
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
-            button_rect.w = BUTTON_WIDTH + 20
-            button_rect.h = BUTTON_HEIGHT + 10
+            button_rect.w = MenuManager.BUTTON_WIDTH + 20
+            button_rect.h = MenuManager.BUTTON_HEIGHT + 10
         else:
-            button_rect.w = BUTTON_WIDTH
-            button_rect.h = BUTTON_HEIGHT
+            button_rect.w = MenuManager.BUTTON_WIDTH
+            button_rect.h = MenuManager.BUTTON_HEIGHT
 
 # Quit Pygame
 pygame.mixer.quit()

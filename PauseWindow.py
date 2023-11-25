@@ -23,13 +23,13 @@ class PauseWindow(MenuManager):
         pygame.display.set_caption("Pause Window")
         self.background_image = pygame.image.load("Assets/pauseWindow_screen2.png").convert() #taille image : 700 et 394
         self.background_rect = self.background_image.get_rect()
-        self.title_setting_font = pygame.font.Font(self.font_path, 50)
+        self.title_setting_font = pygame.font.Font(MenuManager.font_path, 50)
         self.title_setting_text = self.title_setting_font.render("Pause", True, (255, 255, 255))
-        self.title_setting_rect = self.title_setting_text.get_rect(center=(self.SCREEN_WIDTH // 2, 50))
+        self.title_setting_rect = self.title_setting_text.get_rect(center=(MenuManager.SCREEN_WIDTH // 2, 50))
 
-        self.return_font = pygame.font.Font(self.font_path, 30)
+        self.return_font = pygame.font.Font(MenuManager.font_path, 30)
         self.return_button = self.return_font.render("Return to Game", True, (0, 0, 0))
-        self.return_rect = pygame.Rect((PLAY_SCREEN_WIDTH//2),100, self.BUTTON_WIDTH, self.BUTTON_HEIGHT)
+        self.return_rect = pygame.Rect((PLAY_SCREEN_WIDTH//2),100, MenuManager.BUTTON_WIDTH, MenuManager.BUTTON_HEIGHT)
         self.quit_text = self.return_font.render("Quit Game", True, (0, 0, 0))
         self.quit_rect = self.quit_text.get_rect(center=(PLAY_SCREEN_WIDTH // 2, 500))
         self.settings_text = self.return_font.render("Settings ", True, (0, 0, 0))
@@ -86,11 +86,11 @@ class PauseWindow(MenuManager):
 
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
-            button_rect.w = self.BUTTON_WIDTH + 20
-            button_rect.h = self.BUTTON_HEIGHT + 10
+            button_rect.w = MenuManager.BUTTON_WIDTH + 20
+            button_rect.h = MenuManager.BUTTON_HEIGHT + 10
         else:
-            button_rect.w = self.BUTTON_WIDTH
-            button_rect.h = self.BUTTON_HEIGHT
+            button_rect.w = MenuManager.BUTTON_WIDTH
+            button_rect.h = MenuManager.BUTTON_HEIGHT
 
 
 # Quit Pygame

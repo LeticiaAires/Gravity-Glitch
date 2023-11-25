@@ -16,7 +16,7 @@ class CreditsMenu(MenuManager):
     def __init__(self):
         super().__init__()
         # Paramètres d'affichage
-        self.fenetre = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
+        self.fenetre = pygame.display.set_mode((MenuManager.SCREEN_WIDTH, MenuManager.SCREEN_HEIGHT))
         pygame.display.set_caption("Crédits")
 
         # Chargement de l'image de fond
@@ -52,13 +52,13 @@ class CreditsMenu(MenuManager):
 
         self.bouton_retour = pygame.Rect(600, 300, 200, 50)
         self.font_filename = "your_font.ttf"
-        self.font_path = os.path.join("Assets", self.font_filename)
-        self.button_font = pygame.font.Font(self.font_path, 20)
+        self.font_path = os.path.join("Assets", MenuManager.font_filename)
+        self.button_font = pygame.font.Font(MenuManager.font_path, 20)
 
-        self.y_position = self.SCREEN_HEIGHT
-        self.return_font = pygame.font.Font(self.font_path, 30)
+        self.y_position = MenuManager.SCREEN_HEIGHT
+        self.return_font = pygame.font.Font(MenuManager.font_path, 30)
         self.bouton_retour = self.return_font.render("Return", True, (255,255,255))
-        self.return_rect = pygame.Rect((self.SCREEN_WIDTH - self.BUTTON_WIDTH) // 1, 500, self.BUTTON_WIDTH, self.BUTTON_HEIGHT)
+        self.return_rect = pygame.Rect((MenuManager.SCREEN_WIDTH - MenuManager.BUTTON_WIDTH) // 1, 500, MenuManager.BUTTON_WIDTH, MenuManager.BUTTON_HEIGHT)
         self.defilement_actif = True
     def run(self):
             bouton_retour = self.bouton_retour
@@ -96,11 +96,11 @@ class CreditsMenu(MenuManager):
     
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
-            button_rect.w = self.BUTTON_WIDTH + 20
-            button_rect.h = self.BUTTON_HEIGHT + 10
+            button_rect.w = MenuManager.BUTTON_WIDTH + 20
+            button_rect.h = MenuManager.BUTTON_HEIGHT + 10
         else:
-            button_rect.w = self.BUTTON_WIDTH
-            button_rect.h = self.BUTTON_HEIGHT  
+            button_rect.w = MenuManager.BUTTON_WIDTH
+            button_rect.h = MenuManager.BUTTON_HEIGHT  
 
 # Quit Pygame
 pygame.mixer.quit()

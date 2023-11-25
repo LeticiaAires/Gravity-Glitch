@@ -1,3 +1,4 @@
+
 import pygame 
 import sys
 from NameMenu import NameMenu
@@ -5,6 +6,7 @@ from RulesMenu import RulesMenu
 from NewCredits import CreditsMenu
 from settings import SettingMenu
 from MainMenu import MainMenu
+from ModeMenu import ModeMenu
 
 #initialising pygame
 pygame.init()
