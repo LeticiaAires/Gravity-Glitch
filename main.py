@@ -1,6 +1,7 @@
 
 import pygame 
 import sys
+from MenuManager import MenuManager
 from NameMenu import NameMenu
 from RulesMenu import RulesMenu
 from NewCredits import CreditsMenu
@@ -44,9 +45,8 @@ if __name__ == "__main__":
             menu = NameMenu()   
         elif current_menu == "rules":
             menu = RulesMenu()   
-        else:
+        if "quit":
             running = False  # If the user decides to quit the game
-
 # Quit Pygame
 pygame.mixer.quit()
 pygame.quit()

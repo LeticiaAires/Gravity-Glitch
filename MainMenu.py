@@ -9,10 +9,7 @@ pygame.init()
 pygame.mixer.init()
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
-from NameMenu import NameMenu
-from RulesMenu import RulesMenu
-from NewCredits import CreditsMenu
-from settings import SettingMenu
+
 
 
 # the class for the main menu
@@ -39,6 +36,10 @@ class MainMenu(MenuManager):
 
     def run(self):
         running = True
+        from NameMenu import NameMenu
+        from RulesMenu import RulesMenu
+        from NewCredits import CreditsMenu
+        from settings import SettingMenu
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -47,6 +48,7 @@ class MainMenu(MenuManager):
                     mouse_pos = pygame.mouse.get_pos()
                     if self.play_rect.collidepoint(mouse_pos):
                         print("The button 'Play' has been pressed")
+                        MenuManager.current_menu_string="NameMenu"
                         name_menu = NameMenu()
                         name_menu.run()
                     elif self.rules_rect.collidepoint(mouse_pos):

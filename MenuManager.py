@@ -12,6 +12,8 @@ pygame.mixer.init()
 
 # the class to manage the menu screens
 class MenuManager:
+    global current_menu_string 
+    current_menu_string = "main"
     class_BLACK = (0, 0, 0)
     class_WHITE = (255,255,255)
     # Constants

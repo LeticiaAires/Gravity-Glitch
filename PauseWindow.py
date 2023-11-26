@@ -5,7 +5,7 @@ import random
 rnd = random.Random()
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
-from MainMenu import MainMenu  # Importation de la classe MainMenu depuis le fichier MainMenu.py
+
 # Initialize pygame
 pygame.init()
 pygame.mixer.init()
@@ -43,6 +43,7 @@ class PauseWindow(MenuManager):
         PLAY_SCREEN_HEIGHT = 600
         PLAY_SCREEN_WIDTH=800
         running1 = True
+        from MainMenu import MainMenu  # Importation de la classe MainMenu depuis le fichier MainMenu.py
         while running1:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
