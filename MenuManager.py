@@ -4,9 +4,7 @@ import sys
 import random
 rnd = random.Random()
 
-# Initialize pygame
-pygame.init()
-pygame.mixer.init()
+
 
 
 
@@ -34,6 +32,3 @@ class MenuManager:
     def run(self):
         pass
 
-# Quit Pygame
-pygame.mixer.quit()
-pygame.quit()

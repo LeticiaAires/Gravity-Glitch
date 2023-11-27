@@ -6,9 +6,7 @@ rnd = random.Random()
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
 from ModeMenu import ModeMenu
-# Initialize pygame
-pygame.init()
-pygame.mixer.init()
+
 
 # class for the first page of the play menu
 class NameMenu(MenuManager):
@@ -90,6 +88,3 @@ class NameMenu(MenuManager):
             button_rect.w = MenuManager.BUTTON_WIDTH
             button_rect.h = MenuManager.BUTTON_HEIGHT
 
-# Quit Pygame
-pygame.mixer.quit()
-pygame.quit()

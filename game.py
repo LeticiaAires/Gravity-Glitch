@@ -4,9 +4,7 @@ import sys
 import random
 rnd = random.Random()
 
-# Initialize pygame
-pygame.init()
-pygame.mixer.init()
+
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
 from PauseWindow import PauseWindow
@@ -15,7 +13,6 @@ from PauseWindow import PauseWindow
 #class for the game : History Mode
 #Things to change : augmenter la taille du jeu (image), ajouter le score, ajouter des tuyaux, ajouter musique, ajouter un bouton d'options (musique, retour, recommencer)
 class Game(MenuManager):
-
     """
     Game Loop
         - run
@@ -129,9 +126,7 @@ class Game(MenuManager):
                 #self.quit_game_jeu()
             mouse_pos1 = pygame.mouse.get_pos()
             self.update_button(self.pause_rect, self.pause_button, mouse_pos1)
-        # Quit Pygame
-        pygame.mixer.quit()
-        pygame.quit()
+
     def update(self):
 
         if self.timer <= 0:
@@ -179,4 +174,3 @@ class Game(MenuManager):
         else:
             button_rect.w = MenuManager.BUTTON_WIDTH
             button_rect.h = MenuManager.BUTTON_HEIGHT
-

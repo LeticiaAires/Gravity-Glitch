@@ -7,13 +7,6 @@ rnd = random.Random()
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
 from MainMenu import MainMenu  # Importation de la classe MainMenu depuis le fichier MainMenu.py
 from settings import SettingMenu
-# Initialize pygame
-pygame.init()
-pygame.mixer.init()
-
-
-
-
 
 #class for the pause window during the game 
 class PauseWindow(MenuManager):
@@ -53,13 +46,10 @@ class PauseWindow(MenuManager):
                     if self.return_rect.collidepoint(mouse_pos):
                         print("The button 'Return' has been pressed")
                         running1 = False
-                        self.screen.fill((0, 0, 0))  # Fill the screen with a background color (you can change the color)
-                        pygame.display.update()  # Update the display to reflect the changes
                         return "play"
                     elif self.settings_rect.collidepoint(mouse_pos):
                         print("The button 'settings' has been pressed")
-                        setting_menu=SettingMenu()
-                        setting_menu.run()
+                        return "settings"
                     elif self.restart_rect.collidepoint(mouse_pos):
                         print("The button 'restart' has been pressed")
                     elif self.bestScores_rect.collidepoint(mouse_pos):
@@ -67,11 +57,8 @@ class PauseWindow(MenuManager):
                     elif self.quit_rect.collidepoint(mouse_pos):
                         print("The 'quit' button has been pressed")
                         running1=False
-                        self.screen.fill((0, 0, 0))  # Fill the screen with a background color (you can change the color)
-                        pygame.display.update()  # Update the display to reflect the changes
-                        mainmenu=MainMenu()
-                        mainmenu.run()
-
+                        return "pause"
+            
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
                 self.update_button(self.settings_rect, self.settings_text, mouse_pos1)
@@ -85,10 +72,7 @@ class PauseWindow(MenuManager):
             self.screen.blit(self.restart_text, (self.restart_rect.centerx - self.restart_text.get_width() // 2, self.restart_rect.centery - self.restart_text.get_height() // 2))
             self.screen.blit(self.bestScores_text, (self.bestScores_rect.centerx - self.bestScores_text.get_width() // 2+20, self.bestScores_rect.centery - self.bestScores_text.get_height() // 2))
             self.screen.blit(self.quit_text, (self.quit_rect.centerx - self.quit_text.get_width() // 2, self.quit_rect.centery - self.quit_text.get_height() // 2))
-            pygame.display.update()
-        # Quit Pygame
-        pygame.mixer.quit()
-        pygame.quit()
+            pygame.display.update()  
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
             button_rect.w = MenuManager.BUTTON_WIDTH + 20

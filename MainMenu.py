@@ -4,9 +4,7 @@ import sys
 import random
 rnd = random.Random()
 
-# Initialize pygame
-pygame.init()
-pygame.mixer.init()
+
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
 
@@ -97,7 +95,3 @@ class MainMenu(MenuManager):
             button_rect.h = MenuManager.BUTTON_HEIGHT
 
 
-
-# Quit Pygame
-pygame.mixer.quit()
-pygame.quit()
