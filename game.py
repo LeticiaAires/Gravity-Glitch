@@ -124,15 +124,14 @@ class Game(MenuManager):
                     print("The button 'Pause' has been pressed")
                     pausemenu=PauseWindow()
                     pausemenu.run()
-        
             # Handle quit event
             #if event.type == pygame.QUIT:
                 #self.quit_game_jeu()
-                
-            
             mouse_pos1 = pygame.mouse.get_pos()
             self.update_button(self.pause_rect, self.pause_button, mouse_pos1)
-
+        # Quit Pygame
+        pygame.mixer.quit()
+        pygame.quit()
     def update(self):
 
         if self.timer <= 0:
@@ -181,6 +180,3 @@ class Game(MenuManager):
             button_rect.w = MenuManager.BUTTON_WIDTH
             button_rect.h = MenuManager.BUTTON_HEIGHT
 
-# Quit Pygame
-pygame.mixer.quit()
-pygame.quit()

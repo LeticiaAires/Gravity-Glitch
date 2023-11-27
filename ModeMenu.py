@@ -4,7 +4,7 @@ import sys
 import random
 rnd = random.Random()
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
-
+from Game import Game  # Importation de la classe Game depuis le fichier Game.py
 # Initialize pygame
 pygame.init()
 pygame.mixer.init()
@@ -35,7 +35,6 @@ class ModeMenu(MenuManager):
 
     def run(self):
         running = True
-        from Game import Game  # Importation de la classe Game depuis le fichier Game.py
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

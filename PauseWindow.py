@@ -5,7 +5,8 @@ import random
 rnd = random.Random()
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
-
+from MainMenu import MainMenu  # Importation de la classe MainMenu depuis le fichier MainMenu.py
+from settings import SettingMenu
 # Initialize pygame
 pygame.init()
 pygame.mixer.init()
@@ -43,7 +44,6 @@ class PauseWindow(MenuManager):
         PLAY_SCREEN_HEIGHT = 600
         PLAY_SCREEN_WIDTH=800
         running1 = True
-        from MainMenu import MainMenu  # Importation de la classe MainMenu depuis le fichier MainMenu.py
         while running1:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -58,6 +58,8 @@ class PauseWindow(MenuManager):
                         return "play"
                     elif self.settings_rect.collidepoint(mouse_pos):
                         print("The button 'settings' has been pressed")
+                        setting_menu=SettingMenu()
+                        setting_menu.run()
                     elif self.restart_rect.collidepoint(mouse_pos):
                         print("The button 'restart' has been pressed")
                     elif self.bestScores_rect.collidepoint(mouse_pos):
@@ -84,7 +86,9 @@ class PauseWindow(MenuManager):
             self.screen.blit(self.bestScores_text, (self.bestScores_rect.centerx - self.bestScores_text.get_width() // 2+20, self.bestScores_rect.centery - self.bestScores_text.get_height() // 2))
             self.screen.blit(self.quit_text, (self.quit_rect.centerx - self.quit_text.get_width() // 2, self.quit_rect.centery - self.quit_text.get_height() // 2))
             pygame.display.update()
-
+        # Quit Pygame
+        pygame.mixer.quit()
+        pygame.quit()
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
             button_rect.w = MenuManager.BUTTON_WIDTH + 20
@@ -94,6 +98,3 @@ class PauseWindow(MenuManager):
             button_rect.h = MenuManager.BUTTON_HEIGHT
 
 
-# Quit Pygame
-pygame.mixer.quit()
-pygame.quit()
