@@ -46,7 +46,6 @@ class MainMenu(MenuManager):
                     mouse_pos = pygame.mouse.get_pos()
                     if self.play_rect.collidepoint(mouse_pos):
                         print("The button 'Play' has been pressed")
-                        MenuManager.current_menu_string="NameMenu"
                         name_menu = NameMenu()
                         name_menu.run()
                     elif self.rules_rect.collidepoint(mouse_pos):

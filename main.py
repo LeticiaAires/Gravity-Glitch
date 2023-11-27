@@ -41,7 +41,7 @@ active_menu = main_menu
 # Set up the game loop
 running = True
 while running:
-    current_menu = active_menu.run()
+    current_menu = "main"
     if current_menu == "main":
         active_menu = main_menu
     elif current_menu == "settings":
@@ -57,7 +57,8 @@ while running:
         active_menu = pause_menu
         print("Yay it works x 2")
     else:
-        running = False  # Exit the game loop if neede
+        running = False  # Exit the game loop if needed
+    active_menu.run()
 # Quit Pygame
 pygame.mixer.quit()
 pygame.quit()

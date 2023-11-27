@@ -5,8 +5,6 @@ import random
 rnd = random.Random()
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
-from MainMenu import MainMenu  # Importation de la classe MainMenu depuis le fichier MainMenu.py
-from settings import SettingMenu
 
 #class for the pause window during the game 
 class PauseWindow(MenuManager):
@@ -34,6 +32,9 @@ class PauseWindow(MenuManager):
         self.bestScores_rect = self.bestScores_text.get_rect(center=(PLAY_SCREEN_WIDTH // 2, 400))
 
     def run(self):
+        from MainMenu import MainMenu  # Importation de la classe MainMenu depuis le fichier MainMenu.py
+        from settings import SettingMenu
+        from Game import Game
         PLAY_SCREEN_HEIGHT = 600
         PLAY_SCREEN_WIDTH=800
         running1 = True
@@ -49,16 +50,16 @@ class PauseWindow(MenuManager):
                         return "play"
                     elif self.settings_rect.collidepoint(mouse_pos):
                         print("The button 'settings' has been pressed")
-                        return "settings"
+                        SettingMenu().run()
                     elif self.restart_rect.collidepoint(mouse_pos):
                         print("The button 'restart' has been pressed")
+                        Game().run()
                     elif self.bestScores_rect.collidepoint(mouse_pos):
-                        print("The button 'restart' has been pressed")
+                        print("The button 'bestScores' has been pressed")
                     elif self.quit_rect.collidepoint(mouse_pos):
                         print("The 'quit' button has been pressed")
                         running1=False
-                        return "pause"
-            
+                        MainMenu().run()
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
                 self.update_button(self.settings_rect, self.settings_text, mouse_pos1)
