@@ -51,7 +51,7 @@ This project is licensed under the [MIT License](LICENSE.md).
 
 We would like to express our gratitude to our instructors, mentors, and everyone who supported us throughout this project. Your guidance and encouragement were invaluable in making this project a reality.
 
-## Colaborators
+## Collaborators
 
 <table>
   <tr>
