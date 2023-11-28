@@ -40,6 +40,8 @@ class RulesMenu(MenuManager):
         self.rules4_rect=self.title_rules_text.get_rect(center=(MenuManager.SCREEN_WIDTH // 2, 20))
         self.rules5_text=self.rules_font.render("Then Pick your game mode !" ,True, MenuManager.class_BLACK)
         self.rules5_rect=self.title_rules_text.get_rect(center=(MenuManager.SCREEN_WIDTH // 2, 20))
+        # display the rules from file 
+        # file = open ("Rules.txt", "r", )
 
 
     def run(self):
