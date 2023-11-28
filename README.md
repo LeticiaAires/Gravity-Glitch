@@ -29,8 +29,10 @@ To get started with the project, follow these steps:
    [PIP](https://bootstrap.pypa.io/get-pip.py)
 
 4. How to play ?
-   Run the "main" file and start playing !
-   Click on the "play" button to choose your pseudo and choose your game mode ! 
+   
+   - Run the "main.py" file 
+   
+   - Click on the "Play" button to choose your pseudo and choose your game mode ! 
 
 ## Features
 
@@ -40,7 +42,17 @@ To get started with the project, follow these steps:
 - Project designed and implemented by talented engineering students.
 
 ## Documentation
+Here is an explanation of the game's structure : 
 
+The "main.py" file is the file to run to start the Game. Then, we come across a window called "MainMenu" displaying the menu of the game (with the settings, play, quit, credits and rules buttons). From there, we can : 
+- go to the settings/rules/credits windows who are self explanatory
+- quit the game
+- go to the play window
+  
+If you choose to do the later, then you will come across a first window asking for your name (to associate your score with your pseudo). From there you can either go back to the menu or continue and go choose your game mode (History mode or alternative = a more complex version of the flappy bird).
+After that, by clicking on continue and pressing the space bar, you can start playing !
+You have a "pause" button in the bottom left corner where you can go to the settings, see the best scores, restart, resume or quit the game. 
+  
 For more detailed information about the project, you can refer to the code itself. We have included comprehensive comments and documentation within the codebase to help you understand how everything works.
 
 ## License
