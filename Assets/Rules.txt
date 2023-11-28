@@ -1,0 +1,9 @@
+Try to get the bird through as many holes as possible
+For the history mode :
+If you hit the pipes the game is over !
+To play, push the space bar or use the console
+For the reverse mode :
+Get through as many pipes as possible
+If you go through a blank space the game is over !
+First choose your name and character
+Then Pick your game mode !
