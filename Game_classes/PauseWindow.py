@@ -24,16 +24,9 @@ class PauseWindow(MenuManager):
         self.resume_rect = pygame.Rect((PLAY_SCREEN_WIDTH//2),100, MenuManager.BUTTON_WIDTH, MenuManager.BUTTON_HEIGHT)
         self.quit_text = self.resume_font.render("Quit Game", True, (0, 0, 0))
         self.quit_rect = self.quit_text.get_rect(center=(PLAY_SCREEN_WIDTH // 2, 500))
-<<<<<<< HEAD:Game_classes/PauseWindow.py
         self.settings_text = self.resume_font.render("Settings ", True, (0, 0, 0))
         self.restart_text = self.resume_font.render("Restart ", True, (0, 0, 0))
         self.bestScores_text = self.resume_font.render("Best Scores ", True, (0, 0, 0))
-=======
-        self.settings_text = self.return_font.render("Settings ", True, (0, 0, 0))
-        self.restart_text = self.return_font.render("Restart ", True, (0, 0, 0))
-        self.bestScores_text = self.return_font.render("Best Scores ", True, (0, 0, 0))
-        #self.bestScores_rect = self.bestScores.get_rect() ?? lire les best scores à partir d'un fichier texte
->>>>>>> 06f7a9ff9ce486a4bde7e12c97a87fda386d23d0:Game classes/PauseWindow.py
         self.settings_rect = self.settings_text.get_rect(center=(PLAY_SCREEN_WIDTH // 2, 200))
         self.restart_rect = self.restart_text.get_rect(center=(PLAY_SCREEN_WIDTH // 2, 300))
         self.bestScores_rect = self.bestScores_text.get_rect(center=(PLAY_SCREEN_WIDTH // 2, 400))
