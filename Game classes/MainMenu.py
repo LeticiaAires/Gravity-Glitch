@@ -64,6 +64,8 @@ class MainMenu(MenuManager):
                         print("The button 'Quit' has been pressed")
                         running = False
                         print("Goodbye!")
+                        return "quit"
+                        
                         
 
                 mouse_pos = pygame.mouse.get_pos()

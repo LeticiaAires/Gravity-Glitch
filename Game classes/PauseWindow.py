@@ -59,7 +59,8 @@ class PauseWindow(MenuManager):
                     elif self.quit_rect.collidepoint(mouse_pos):
                         print("The 'quit' button has been pressed")
                         running1=False
-                        MainMenu().run()
+                        MenuManager.quitting()
+                        #MainMenu().run()
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
                 self.update_button(self.settings_rect, self.settings_text, mouse_pos1)

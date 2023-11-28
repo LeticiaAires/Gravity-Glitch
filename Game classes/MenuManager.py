@@ -27,3 +27,6 @@ class MenuManager:
     def run(self):
         pass
 
+    def quitting():
+        return "quit"
+

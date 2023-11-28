@@ -5,7 +5,7 @@ import random
 rnd = random.Random()
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
-from ModeMenu import ModeMenu
+from ModeChoice import ModeMenu
 
 
 # class for the first page of the play menu
