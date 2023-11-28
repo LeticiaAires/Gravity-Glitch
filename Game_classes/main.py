@@ -8,6 +8,7 @@ from Settings import SettingMenu
 from MainMenu import MainMenu
 from Game import Game
 from PauseWindow import PauseWindow
+from MenuManager import MenuManager
 
 #initialising pygame
 pygame.init()
@@ -19,6 +20,8 @@ pygame.display.set_caption("Hello World Printer")
 #defining font attributes
 myFont = pygame.font.SysFont("Segoe UI", 90)
 helloWorld = myFont.render("You did it!!!", 1, (255, 0, 255), (255, 255, 255))
+
+
 
 #while 1:
     #for event in pygame.event.get():
@@ -36,33 +39,36 @@ game_instance = Game()
 pause_menu = PauseWindow()
 
 
-
+def run(game_state):
 # Set up the game loop
-running = True
-while running:
-    current_menu = "main"
-    # Set the initial active menu
-    active_menu = main_menu
-    active_menu.run()
-    if current_menu == "main":
+    running = True
+    while running:
+        game_state = "main"
+        # Set the initial active menu
         active_menu = main_menu
-    elif current_menu == "settings":
-        active_menu = settings_menu
-    elif current_menu == "credits":
-        active_menu = credits_menu
-    elif current_menu == "play":
-        active_menu = name_menu
-        print("Yay it works")
-    elif current_menu == "rules":
-        active_menu = rules_menu
-    elif current_menu == "pause":
-        active_menu = pause_menu
-        print("Yay it works x 2")
-    if current_menu=="quit":
-        active_menu=None
-        running=False
-    else:
-        running = False  # Exit the game loop if needed
-# Quit Pygame
-pygame.mixer.quit()
-pygame.quit()
+        active_menu.run()
+        if game_state=="quit":
+            running=False
+            print("Yay it worls")
+    # Quit Pygame
+    pygame.mixer.quit()
+    pygame.quit()
+
+run()
+    #if current_menu == "main":
+        #active_menu = main_menu
+    #elif current_menu == "settings":
+        #active_menu = settings_menu
+    #elif current_menu == "credits":
+        #active_menu = credits_menu
+    #elif current_menu == "play":
+        #active_menu = name_menu
+    #elif current_menu == "rules":
+        #active_menu = rules_menu
+    #elif current_menu == "pause":
+        #active_menu = pause_menu
+    #if current_menu=="quit":
+        #active_menu=None
+        #running=False
+    #else:
+        #running = False  # Exit the game loop if needed

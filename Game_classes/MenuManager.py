@@ -7,6 +7,7 @@ rnd = random.Random()
 
 # the class to manage the menu screens
 class MenuManager:
+    game_state="null"
     class_BLACK = (0, 0, 0)
     class_WHITE = (255,255,255)
     # Constants
