@@ -34,10 +34,10 @@ class MainMenu(MenuManager):
 
     def run(self):
         running = True
-        from NameMenu import NameMenu
-        from RulesMenu import RulesMenu
-        from NewCredits import CreditsMenu
-        from settings import SettingMenu
+        from PseudoChoice import NameMenu
+        from Rules import RulesMenu
+        from Credits import CreditsMenu
+        from Settings import SettingMenu
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
