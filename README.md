@@ -17,7 +17,7 @@ To get started with the project, follow these steps:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/LeticiaAires/2324_Projet2A_JeuVideo.git
+   git clone https://github.com/LeticiaAires/Gravity-Glitch.git
    ```
 
 2. Ensure you have the required dependencies installed.
@@ -28,7 +28,9 @@ To get started with the project, follow these steps:
  
    [PIP](https://bootstrap.pypa.io/get-pip.py)
 
-4. Run the game and start playing!
+4. How to play ?
+   Run the "main" file and start playing !
+   Click on the "play" button to choose your pseudo and choose your game mode ! 
 
 ## Features
 
@@ -49,7 +51,7 @@ This project is licensed under the [MIT License](LICENSE.md).
 
 We would like to express our gratitude to our instructors, mentors, and everyone who supported us throughout this project. Your guidance and encouragement were invaluable in making this project a reality.
 
-## Colaborators
+## Collaborators
 
 <table>
   <tr>
