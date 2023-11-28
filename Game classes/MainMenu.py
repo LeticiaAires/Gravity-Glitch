@@ -66,7 +66,6 @@ class MainMenu(MenuManager):
                         print("Goodbye!")
                         return "quit"
                         
-                        
 
                 mouse_pos = pygame.mouse.get_pos()
                 self.update_button(self.play_rect, self.play_button, mouse_pos)
@@ -84,9 +83,7 @@ class MainMenu(MenuManager):
             self.screen.blit(self.quit_button, (self.quit_rect.centerx - self.quit_button.get_width() // 2, self.quit_rect.centery - self.quit_button.get_height() // 2))
 
             pygame.display.update()
-        
-        
-
+#Function to increase the size of a button when the mouse is on it 
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
             button_rect.w = MenuManager.BUTTON_WIDTH + 20

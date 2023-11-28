@@ -231,7 +231,7 @@ def display_custom():
         fenetre.blit(fond, (0, 0))
 
         # Afficher le bouton bleu
-            pygame.draw.rect(fenetre, (255, 255, 255), bouton_Bleu_Rect)
+        pygame.draw.rect(fenetre, (255, 255, 255), bouton_Bleu_Rect)
         text_x = bouton_Bleu_Rect.x + (bouton_Bleu_Rect.width - bouton_Bleu_Text.get_width()) // 2
         text_y = bouton_Bleu_Rect.y + (bouton_Bleu_Rect.height - bouton_Bleu_Text.get_height()) // 2
         fenetre.blit(bouton_Bleu_Text, (text_x, text_y))

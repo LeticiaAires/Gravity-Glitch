@@ -79,7 +79,7 @@ class NameMenu(MenuManager):
             self.screen.blit(self.title3_play_text, (self.input_box.x + 5, self.input_box.y + 5))          
 
             pygame.display.update()
-
+#Function to increase the size of a button when the mouse is on it 
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
             button_rect.w = MenuManager.BUTTON_WIDTH + 20

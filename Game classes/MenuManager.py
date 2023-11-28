@@ -24,8 +24,6 @@ class MenuManager:
         self.background_rect = self.background_image.get_rect()
 
 
-    def run(self):
-        pass
 
     def quitting():
         return "quit"

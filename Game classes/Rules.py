@@ -71,7 +71,7 @@ class RulesMenu(MenuManager):
             self.screen.blit(self.rules8_text, (MenuManager.SCREEN_WIDTH // 2 - 300, 460))
             self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
             pygame.display.update()
-
+#Function to increase the size of a button when the mouse is on it 
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
             button_rect.w = MenuManager.BUTTON_WIDTH + 20

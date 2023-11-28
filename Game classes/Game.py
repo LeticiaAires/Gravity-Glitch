@@ -166,7 +166,7 @@ class Game(MenuManager):
     def quit_game_jeu(self):
         quit()
 
-    
+#Function to increase the size of a button when the mouse is on it 
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
             button_rect.w = MenuManager.BUTTON_WIDTH + 20

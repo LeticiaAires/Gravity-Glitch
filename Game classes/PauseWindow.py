@@ -33,7 +33,7 @@ class PauseWindow(MenuManager):
 
     def run(self):
         from MainMenu import MainMenu  # Importation de la classe MainMenu depuis le fichier MainMenu.py
-        from settings import SettingMenu
+        from Settings import SettingMenu
         from Game import Game
         PLAY_SCREEN_HEIGHT = 600
         PLAY_SCREEN_WIDTH=800
@@ -75,6 +75,7 @@ class PauseWindow(MenuManager):
             self.screen.blit(self.bestScores_text, (self.bestScores_rect.centerx - self.bestScores_text.get_width() // 2+20, self.bestScores_rect.centery - self.bestScores_text.get_height() // 2))
             self.screen.blit(self.quit_text, (self.quit_rect.centerx - self.quit_text.get_width() // 2, self.quit_rect.centery - self.quit_text.get_height() // 2))
             pygame.display.update()  
+#Function to increase the size of a button when the mouse is on it 
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
             button_rect.w = MenuManager.BUTTON_WIDTH + 20
