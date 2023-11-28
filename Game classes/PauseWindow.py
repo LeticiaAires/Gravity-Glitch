@@ -27,6 +27,7 @@ class PauseWindow(MenuManager):
         self.settings_text = self.return_font.render("Settings ", True, (0, 0, 0))
         self.restart_text = self.return_font.render("Restart ", True, (0, 0, 0))
         self.bestScores_text = self.return_font.render("Best Scores ", True, (0, 0, 0))
+        #self.bestScores_rect = self.bestScores.get_rect() ?? lire les best scores à partir d'un fichier texte
         self.settings_rect = self.settings_text.get_rect(center=(PLAY_SCREEN_WIDTH // 2, 200))
         self.restart_rect = self.restart_text.get_rect(center=(PLAY_SCREEN_WIDTH // 2, 300))
         self.bestScores_rect = self.bestScores_text.get_rect(center=(PLAY_SCREEN_WIDTH // 2, 400))
