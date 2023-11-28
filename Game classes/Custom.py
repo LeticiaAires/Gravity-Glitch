@@ -4,7 +4,9 @@ from pygame.locals import *
 from PIL import Image
 import os
 
+from MenuManager import MenuManager
 
+class Custom:
 def display_custom():
     pygame.init()
 
