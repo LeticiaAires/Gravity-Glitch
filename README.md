@@ -80,8 +80,8 @@ We would like to express our gratitude to our instructors, mentors, and everyone
       <a href="#">
         <img src="https://media-cdg4-1.cdn.whatsapp.net/v/t61.24694-24/319927329_5607935222638596_1485755097495570538_n.jpg?ccb=11-4&oh=01_AdRmTRulYoBm9-qDTd_RLVVB3TG0A8qT5PDsclY1tCgE4w&oe=6528CF33&_nc_sid=000000&_nc_cat=102" width="80px;" alt="Foto Cassandre"/><br>
         <sub>
-          <b>Canssandre   </b>
-          </p>CanssandreChandelier   
+          <b>Cassandre   </b>
+          </p>CassandreChandelier   
         </sub>
       </a>
       <td align="center">
