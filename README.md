@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Welcome to 2324_Projet2A_JeuVideo, an innovative project created by 7th-semester engineering students from École Nationale Supérieure de l'Électronique et de ses Applications (ENSEA). This project serves as a platform for hands-on learning in practical electronics, software development, project management, and teamwork.
+Welcome to Gravity Glitch, an innovative project created by 7th-semester engineering students from École Nationale Supérieure de l'Électronique et de ses Applications (ENSEA). This project serves as a platform for hands-on learning in practical electronics, software development, project management, and teamwork.
 
 ## Project Objective
 
