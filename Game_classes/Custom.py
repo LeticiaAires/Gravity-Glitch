@@ -6,7 +6,7 @@ import os
 
 from MenuManager import MenuManager
 
-class Custom(MenuManageur) :
+class CustomMenu(MenuManageur) :
     def display_custom():
         pygame.init()
 
