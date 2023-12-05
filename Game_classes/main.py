@@ -39,36 +39,29 @@ game_instance = Game()
 pause_menu = PauseWindow()
 
 
-def run(game_state):
-# Set up the game loop
-    running = True
-    while running:
-        game_state = "main"
-        # Set the initial active menu
+
+running =True
+current_menu = "main"
+active_menu=main_menu
+while running:
+    active_menu.run()
+    if current_menu == "main":
         active_menu = main_menu
-        active_menu.run()
-        if game_state=="quit":
-            running=False
-            print("Yay it worls")
-    # Quit Pygame
+    elif current_menu == "settings":
+        active_menu = settings_menu
+    elif current_menu == "credits":
+        active_menu = credits_menu
+    elif current_menu == "play":
+        active_menu = name_menu
+    elif current_menu == "rules":
+        active_menu = rules_menu
+    elif current_menu == "pause":
+        active_menu = pause_menu
+    if current_menu=="quit":
+        active_menu=None
+        running=False
+    else:
+        running = False  # Exit the game loop if needed
+    #Quit Pygame
     pygame.mixer.quit()
     pygame.quit()
-
-run()
-    #if current_menu == "main":
-        #active_menu = main_menu
-    #elif current_menu == "settings":
-        #active_menu = settings_menu
-    #elif current_menu == "credits":
-        #active_menu = credits_menu
-    #elif current_menu == "play":
-        #active_menu = name_menu
-    #elif current_menu == "rules":
-        #active_menu = rules_menu
-    #elif current_menu == "pause":
-        #active_menu = pause_menu
-    #if current_menu=="quit":
-        #active_menu=None
-        #running=False
-    #else:
-        #running = False  # Exit the game loop if needed
