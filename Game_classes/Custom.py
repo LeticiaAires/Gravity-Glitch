@@ -164,7 +164,6 @@ class Custom() :
                         print("The button 'Continue' has been pressed")
                         mode_menu=ModeMenu()
                         mode_menu.run()
-                elif event.type == MOUSEBUTTONDOWN:
                     if event.button == 1:
                         if self.bouton_Bleu_Rect.collidepoint(event.pos):
                                 self.perso = self.persoBleu
