@@ -60,7 +60,6 @@ class NameMenu(MenuManager):
                     if self.active:
                         if event.key==pygame.K_RETURN:
                             print(self.player_name)
-                            
                             self.player_name=""
                         elif event.key==pygame.K_BACKSPACE:
                             self.player_name=self.player_name[:-1]
