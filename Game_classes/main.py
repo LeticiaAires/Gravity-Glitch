@@ -9,6 +9,7 @@ from MainMenu import MainMenu
 from Game import Game
 from PauseWindow import PauseWindow
 from MenuManager import MenuManager
+from Custom import CustomMenu
 
 #initialising pygame
 pygame.init()
@@ -37,6 +38,7 @@ name_menu = NameMenu()
 rules_menu = RulesMenu()
 game_instance = Game()
 pause_menu = PauseWindow()
+custom_menu= CustomMenu()
 
 
 
@@ -57,6 +59,8 @@ while running:
         active_menu = rules_menu
     elif current_menu == "pause":
         active_menu = pause_menu
+    elif current_menu== "custom":
+        active_menu= custom_menu
     if current_menu=="quit":
         active_menu=None
         running=False
