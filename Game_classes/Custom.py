@@ -164,7 +164,7 @@ class Custom() :
                         print("The button 'Continue' has been pressed")
                         mode_menu=ModeMenu()
                         mode_menu.run()
-                    if event.button == 1:
+                    if event.button == 1: #problem here not working, what is "button" ? 
                         if self.bouton_Bleu_Rect.collidepoint(event.pos):
                                 self.perso = self.persoBleu
                                 self.position_perso = self.position_persoRouge
