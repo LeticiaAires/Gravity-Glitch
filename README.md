@@ -56,8 +56,6 @@ You have a "pause" button in the bottom left corner where you can go to the sett
 For more detailed information about the project, you can refer to the code itself. We have included comprehensive comments and documentation within the codebase to help you understand how everything works.
 
 
-![Screenshot](Assets/DiagrammeClasse.PNG)
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE.md).
