@@ -216,13 +216,13 @@ class Custom() :
 
                 elif event.type == MOUSEMOTION:
                     if self.en_deplacement_chapeauCowboy:
-                            self.position_chapeauCowboy.topleft = (event.pos[0] + self.offset_x, event.pos[1] + offset_y)
+                            self.position_chapeauCowboy.topleft = (event.pos[0] + self.offset_x, event.pos[1] + self.offset_y)
                     elif self.en_deplacement_LunettesDeSoleil:
-                            self.position_LunettesDeSoleil.topleft = (event.pos[0] + self.offset_x, event.pos[1] + offset_y)
+                            self.position_LunettesDeSoleil.topleft = (event.pos[0] + self.offset_x, event.pos[1] + self.offset_y)
                     elif self.en_deplacement_tuba:
-                            self.position_tuba.topleft = (event.pos[0] + self.offset_x, event.pos[1] + offset_y)
+                            self.position_tuba.topleft = (event.pos[0] + self.offset_x, event.pos[1] + self.offset_y)
                     elif self.en_deplacement_perso:
-                            self.position_perso.topleft = (event.pos[0] + self.offset_x, event.pos[1] + offset_y)
+                            self.position_perso.topleft = (event.pos[0] + self.offset_x, event.pos[1] + self.offset_y)
         
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)
