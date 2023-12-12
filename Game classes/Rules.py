@@ -20,6 +20,7 @@ class RulesMenu(MenuManager):
 
         self.rules_font = pygame.font.Font(MenuManager.font_path, 20)
         #rules for the history mode
+        
         self.rules_text=self.rules_font.render("Try to get the bird through as many holes as possible" ,True, MenuManager.class_BLACK)
         self.rules_rect=self.title_rules_text.get_rect(center=(MenuManager.SCREEN_WIDTH // 2, 20))
         self.rules0_text=self.rules_font.render("For the history mode : " ,True, MenuManager.class_BLACK)
@@ -28,6 +29,7 @@ class RulesMenu(MenuManager):
         self.rules2_rect=self.title_rules_text.get_rect(center=(MenuManager.SCREEN_WIDTH // 2, 20))
         self.rules3_text=self.rules_font.render("To play, push the space bar or use the console" ,True, MenuManager.class_BLACK)
         self.rules3_rect=self.title_rules_text.get_rect(center=(MenuManager.SCREEN_WIDTH // 2, 20))
+        
         #rules for the reverse mode 
         self.rules6_text=self.rules_font.render("For the reverse mode : " ,True, MenuManager.class_BLACK)
         self.rules6_rect=self.title_rules_text.get_rect(center=(MenuManager.SCREEN_WIDTH // 2, 20))
