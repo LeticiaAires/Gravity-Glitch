@@ -1,3 +1,5 @@
+First choose your name and character
+Then pick your game mode !
 Try to get the bird through as many holes as possible
 For the history mode :
 If you hit the pipes the game is over !
@@ -7,3 +9,4 @@ Get through as many pipes as possible
 If you go through a blank space the game is over !
 First choose your name and character
 Then Pick your game mode !
+If you quit interrupt your game then your score won't be saved
