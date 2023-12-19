@@ -179,10 +179,10 @@ class Custom() :
                                 self.offset_x, self.offset_y = self.position_chapeauCowboy.topleft[0] - event.pos[0], self.position_chapeauCowboy.topleft[1] - event.pos[1]
                         elif self.position_LunettesDeSoleil.collidepoint(event.pos):
                                 self.en_deplacement_LunettesDeSoleil = True
-                                self.offset_x, offset_y = self.position_LunettesDeSoleil.topleft[0] - event.pos[0], self.position_LunettesDeSoleil.topleft[1] - event.pos[1]
+                                self.offset_x, self.offset_y = self.position_LunettesDeSoleil.topleft[0] - event.pos[0], self.position_LunettesDeSoleil.topleft[1] - event.pos[1]
                         elif self.position_tuba.collidepoint(event.pos):
                                 self.en_deplacement_tuba = True
-                                self.offset_x, offset_y = self.position_tuba.topleft[0] - event.pos[0], self.position_tuba.topleft[1] - event.pos[1]
+                                self.offset_x, self.offset_y = self.position_tuba.topleft[0] - event.pos[0], self.position_tuba.topleft[1] - event.pos[1]
                         elif self.position_perso.collidepoint(event.pos):
                                 self.en_deplacement_perso = True
                                 self.offset_x, self.offset_y = self.position_perso.topleft[0] - event.pos[0], self.position_perso.topleft[1] - event.pos[1]
@@ -213,7 +213,6 @@ class Custom() :
                                     self.perso = self.BleuTuba
                             elif self.perso == self.persoRouge:
                                     self.perso = self.RougeTuba
-
                 elif event.type == MOUSEMOTION:
                     if self.en_deplacement_chapeauCowboy:
                             self.position_chapeauCowboy.topleft = (event.pos[0] + self.offset_x, event.pos[1] + self.offset_y)
