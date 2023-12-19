@@ -54,32 +54,17 @@ class PauseWindow(MenuManager):
                     mouse_pos = pygame.mouse.get_pos()
                     if self.resume_rect.collidepoint(mouse_pos):
                         print("The button 'Resume' has been pressed")
-<<<<<<< HEAD
-                        resume_flag = False
-                        running1 = False
-=======
                         return "play"
->>>>>>> ecb38d2e106e514e339f411c808907211c643b84
                     elif self.settings_rect.collidepoint(mouse_pos): #works
                         SettingMenu().run()
                     elif self.restart_rect.collidepoint(mouse_pos): #works
                         Game().run()
-<<<<<<< HEAD
-                    elif self.quit_rect.collidepoint(mouse_pos):
-                        print("The 'quit' button has been pressed")
-                        running1=False
-                        sys.exit()
-                    elif self.main_menu_rect.collidepoint(mouse_pos):
-                        print("The 'Main Menu' button has been pressed")
-                        running1 = False
-=======
                     elif self.bestScores_rect.collidepoint(mouse_pos):
                         print("The button 'bestScores' has been pressed")
                         Scores().run()
                     elif self.quit_rect.collidepoint(mouse_pos):
                         print("The 'quit' button has been pressed")
                         running1=False
->>>>>>> ecb38d2e106e514e339f411c808907211c643b84
                         return MainMenu().run()
                     
                 mouse_pos1 = pygame.mouse.get_pos()
