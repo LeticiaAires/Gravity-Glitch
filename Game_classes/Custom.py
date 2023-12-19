@@ -35,16 +35,16 @@ class Custom() :
 
 
         # Chargement des personnages
-        self.persoRouge = pygame.image.load("Assets/FlappyBird0.png").convert_alpha()
+        self.persoRouge = pygame.image.load("Assets/bird3.png").convert_alpha()
         self.nouvelle_taille = (90, 90)
         self.persoRouge = pygame.transform.scale(self.persoRouge, self.nouvelle_taille)
         self.position_persoRouge = self.persoRouge.get_rect()
         self.position_persoRouge.topleft = (100, 300)    
-        self.persoJaune = pygame.image.load("Assets/bird1.png").convert_alpha()
+        self.persoJaune = pygame.image.load("Assets/bird2.png").convert_alpha()
         self.persoJaune = pygame.transform.scale(self.persoJaune, self.nouvelle_taille)
         self.persoJaune.set_colorkey((255, 255, 255))
 
-        self.persoBleu = pygame.image.load("Assets/OiseauBleu.png").convert_alpha()
+        self.persoBleu = pygame.image.load("Assets/bird1.png").convert_alpha()
         self.persoBleu = pygame.transform.scale(self.persoBleu, self.nouvelle_taille)
         self.persoBleu.set_colorkey((255, 255, 255))
         

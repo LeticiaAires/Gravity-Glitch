@@ -56,10 +56,10 @@ while running:
     if current_menu=="quit":
         active_menu=None
         running=False
-        sys.quit()
+        sys.exit()
     else:
         running = False  # Exit the game loop if needed
     #Quit Pygame
     pygame.mixer.quit()
     pygame.quit()
-    sys.quit()
+    sys.exit()

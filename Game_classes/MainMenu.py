@@ -62,6 +62,8 @@ class MainMenu(MenuManager):
                         print("The button 'Settings' has been pressed")
                         setting_menu = SettingMenu()
                         setting_menu.run()
+                    elif self.music_icon_rect.collidepoint(mouse_pos):
+                        self.toggle_music()
                     elif self.quit_rect.collidepoint(mouse_pos):
                         print("The button 'Quit' has been pressed")
                         running = False
@@ -72,6 +74,8 @@ class MainMenu(MenuManager):
                         
 
                 mouse_pos = pygame.mouse.get_pos()
+                self.update_button(self.music_icon_rect, self.music_icon_on, mouse_pos)
+                self.draw_music_icon() 
                 self.update_button(self.play_rect, self.play_button, mouse_pos)
                 self.update_button(self.rules_rect, self.rules_button, mouse_pos)
                 self.update_button(self.credits_rect, self.credits_button, mouse_pos)

@@ -67,7 +67,7 @@ class Game(MenuManager):
         self.rect_bird.y = 250
 
         # Récupération asset tuyau
-        self.image_pipe = pygame.image.load('assets/tuyau_final.png')
+        self.image_pipe = pygame.image.load('assets/pipe-green.png')
         self.pipe_inv = pygame.transform.scale(self.image_pipe, (
             self.image_pipe.get_width(), self.image_pipe.get_height()))
 
