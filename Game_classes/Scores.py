@@ -2,9 +2,8 @@ import pygame
 from MenuManager import MenuManager
 #a class accessed by 
 class Scores(MenuManager):
-    def __init__(self,run_function) :
+    def __init__(self) :
         super().__init__
-        self.run_function=run_function
         self.screen = pygame.display.set_mode((MenuManager.SCREEN_WIDTH,MenuManager.SCREEN_HEIGHT))
         pygame.display.set_caption("Best Scores Window")
         self.background_image = pygame.image.load("Assets/pauseWindow_screen2.png").convert() #taille image : 700 et 394
@@ -26,7 +25,6 @@ class Scores(MenuManager):
                     mouse_pos = pygame.mouse.get_pos()
                     if self.return_rect.collidepoint(mouse_pos):
                         print("The 'return' button has been pressed")
-                        self.run_function("pause")
                         running1=False
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.return_rect, self.return_button, mouse_pos1)

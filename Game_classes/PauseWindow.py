@@ -35,6 +35,7 @@ class PauseWindow(MenuManager):
         from MainMenu import MainMenu  # Importation de la classe MainMenu depuis le fichier MainMenu.py
         from Settings import SettingMenu
         from Game import Game
+        from Scores import Scores
         PLAY_SCREEN_HEIGHT = 600
         PLAY_SCREEN_WIDTH=800
         running1 = True
@@ -46,17 +47,17 @@ class PauseWindow(MenuManager):
                     mouse_pos = pygame.mouse.get_pos()
                     if self.resume_rect.collidepoint(mouse_pos):
                         print("The button 'Resume' has been pressed")
-                        running1 = False
+                        return "play"
                     elif self.settings_rect.collidepoint(mouse_pos): #works
                         SettingMenu().run()
                     elif self.restart_rect.collidepoint(mouse_pos): #works
                         Game().run()
                     elif self.bestScores_rect.collidepoint(mouse_pos):
                         print("The button 'bestScores' has been pressed")
+                        Scores().run()
                     elif self.quit_rect.collidepoint(mouse_pos):
                         print("The 'quit' button has been pressed")
                         running1=False
-                        
                         return MainMenu().run()
                         #return "main"
                 mouse_pos1 = pygame.mouse.get_pos()
