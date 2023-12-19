@@ -22,14 +22,6 @@ pygame.display.set_caption("Hello World Printer")
 myFont = pygame.font.SysFont("Segoe UI", 90)
 helloWorld = myFont.render("You did it!!!", 1, (255, 0, 255), (255, 255, 255))
 
-
-
-#while 1:
-    #for event in pygame.event.get():
-        #if event.type==pygame.QUIT: sys.exit()
-    #windowsSize.blit(helloWorld, (0, 0))
-    #pygame.display.update()
-
 # Creating instances of each menu
 main_menu = MainMenu()
 settings_menu = SettingMenu()
@@ -64,8 +56,10 @@ while running:
     if current_menu=="quit":
         active_menu=None
         running=False
+        sys.quit()
     else:
         running = False  # Exit the game loop if needed
     #Quit Pygame
     pygame.mixer.quit()
     pygame.quit()
+    sys.quit()

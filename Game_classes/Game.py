@@ -32,7 +32,7 @@ class Game(MenuManager):
         self.move = False
 
         self.gapx = 100
-        self.gapy = 500
+        self.gapy = 600
 
         self.new()
         self.load()
@@ -101,6 +101,7 @@ class Game(MenuManager):
             pygame.display.flip()
 
         self.quit_game_jeu()
+
 
     def events(self):
         self.event = pygame.event.get()
