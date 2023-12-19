@@ -38,6 +38,8 @@ class MainMenu(MenuManager):
         from Rules import RulesMenu
         from Credits import CreditsMenu
         from Settings import SettingMenu
+        quit_flag = False
+
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -63,8 +65,10 @@ class MainMenu(MenuManager):
                     elif self.quit_rect.collidepoint(mouse_pos):
                         print("The button 'Quit' has been pressed")
                         running = False
+                        quit_flag = True
                         print("Goodbye!")
-                        return "quit"
+                        sys.exit()
+                        #return "quit"
                         
 
                 mouse_pos = pygame.mouse.get_pos()
@@ -83,6 +87,8 @@ class MainMenu(MenuManager):
             self.screen.blit(self.quit_button, (self.quit_rect.centerx - self.quit_button.get_width() // 2, self.quit_rect.centery - self.quit_button.get_height() // 2))
 
             pygame.display.update()
+
+        return quit_flag
 #Function to increase the size of a button when the mouse is on it 
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):

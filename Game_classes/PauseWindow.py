@@ -46,6 +46,7 @@ class PauseWindow(MenuManager):
                     mouse_pos = pygame.mouse.get_pos()
                     if self.resume_rect.collidepoint(mouse_pos):
                         print("The button 'Resume' has been pressed")
+                        running1 = False
                     elif self.settings_rect.collidepoint(mouse_pos): #works
                         SettingMenu().run()
                     elif self.restart_rect.collidepoint(mouse_pos): #works
@@ -55,7 +56,8 @@ class PauseWindow(MenuManager):
                     elif self.quit_rect.collidepoint(mouse_pos):
                         print("The 'quit' button has been pressed")
                         running1=False
-                        MainMenu().run()
+                        
+                        return MainMenu().run()
                         #return "main"
                 mouse_pos1 = pygame.mouse.get_pos()
                 self.update_button(self.resume_rect, self.resume_button, mouse_pos1)
@@ -63,14 +65,17 @@ class PauseWindow(MenuManager):
                 self.update_button(self.restart_rect, self.restart_text, mouse_pos1)
                 self.update_button(self.bestScores_rect, self.bestScores_text, mouse_pos1)
                 self.update_button(self.quit_rect, self.quit_text, mouse_pos1)
-            self.screen.blit(self.background_image, (0, 0))
-            self.screen.blit(self.title_setting_text, (PLAY_SCREEN_WIDTH // 3 - 200, 30))
-            self.screen.blit(self.resume_button, (self.resume_rect.centerx - self.resume_button.get_width() // 2-70, self.resume_rect.centery - self.resume_button.get_height() // 2))
-            self.screen.blit(self.settings_text, (self.settings_rect.centerx - self.settings_text.get_width() // 2, self.settings_rect.centery - self.settings_text.get_height() // 2))
-            self.screen.blit(self.restart_text, (self.restart_rect.centerx - self.restart_text.get_width() // 2, self.restart_rect.centery - self.restart_text.get_height() // 2))
-            self.screen.blit(self.bestScores_text, (self.bestScores_rect.centerx - self.bestScores_text.get_width() // 2+20, self.bestScores_rect.centery - self.bestScores_text.get_height() // 2))
-            self.screen.blit(self.quit_text, (self.quit_rect.centerx - self.quit_text.get_width() // 2, self.quit_rect.centery - self.quit_text.get_height() // 2))
-            pygame.display.update()  
+            if not running1:
+                MainMenu().run()
+            else:
+                self.screen.blit(self.background_image, (0, 0))
+                self.screen.blit(self.title_setting_text, (PLAY_SCREEN_WIDTH // 3 - 200, 30))
+                self.screen.blit(self.resume_button, (self.resume_rect.centerx - self.resume_button.get_width() // 2-70, self.resume_rect.centery - self.resume_button.get_height() // 2))
+                self.screen.blit(self.settings_text, (self.settings_rect.centerx - self.settings_text.get_width() // 2, self.settings_rect.centery - self.settings_text.get_height() // 2))
+                self.screen.blit(self.restart_text, (self.restart_rect.centerx - self.restart_text.get_width() // 2, self.restart_rect.centery - self.restart_text.get_height() // 2))
+                self.screen.blit(self.bestScores_text, (self.bestScores_rect.centerx - self.bestScores_text.get_width() // 2+20, self.bestScores_rect.centery - self.bestScores_text.get_height() // 2))
+                self.screen.blit(self.quit_text, (self.quit_rect.centerx - self.quit_text.get_width() // 2, self.quit_rect.centery - self.quit_text.get_height() // 2))
+                pygame.display.update()  
 #Function to increase the size of a button when the mouse is on it 
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
