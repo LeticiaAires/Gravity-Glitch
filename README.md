@@ -28,35 +28,39 @@ To get started with the project, follow these steps:
  
    [PIP](https://bootstrap.pypa.io/get-pip.py)
 
-4. How to play ?
+3. How to play ?
    
    - Run the "main.py" file 
    
    - Click on the "Play" button to choose your pseudo and choose your game mode !
 
-5. Create a virtual environment to launch the game without installing all modules and packages on your machine :
+4. To launch the game without installing all modules and packages on your machine, create a virtual environment.
 
-   - Create the environment 'my_env' inside the project directory 
-   ```bash
-   python -m venv my_environment
-   ```
+   - Create the environment 'my_env' inside the project directory :
+     
+      ```bash
+      python -m venv my_environment
+      ```
 
-   - Activate the environment
-     ```bash
-   my_environment/bin/activate
-   ```
+   - Activate the environment :
+     
+      ```bash
+      my_environment/bin/activate
+      ```
 
-   - Install the required dependencies
-   ```bash
-   pip install -r requirements.txt
-   ```
+   - Install the required dependencies :
+   
+      ```bash
+      pip install -r requirements.txt
+      ```
 
-  - Run the Game.py file and play !
+   - Run the Game.py file and play !
 
-   - Deactivate the environment
-   ```bash
-   deactivate
-   ```
+   - Deactivate the environment :
+     
+      ```bash
+      deactivate
+      ```
 
 ## Features
 
