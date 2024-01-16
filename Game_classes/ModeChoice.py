@@ -4,9 +4,7 @@ import sys
 import random
 rnd = random.Random()
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
-from Game import Game  # Importation de la classe Game depuis le fichier Game.py
-
-
+from Game import run_game
 
 # class for the second page of the play menu : the mode menu
 class ModeMenu(MenuManager):
@@ -33,35 +31,43 @@ class ModeMenu(MenuManager):
 
     def run(self):
         running = True
-        while running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    mouse_pos = pygame.mouse.get_pos()
-                    if self.return_rect.collidepoint(mouse_pos):
-                        print("The button 'Return' has been pressed")
-                        running = False
-                        return "main"#indicate the transition back to the menu
-                    elif self.historymode_rect.collidepoint(mouse_pos):
-                        print("The button 'History Mode' has been pressed")#Go play the history mode
-                        game = Game()
-                        game.run()
-                    elif self.creationmode_rect.collidepoint(mouse_pos):
-                        print("The button 'Inverse Mode' has been pressed")
-                mouse_pos1 = pygame.mouse.get_pos()
-                self.update_button(self.return_rect, self.return_button, mouse_pos1)
-                self.update_button(self.historymode_rect, self.historymode_text, mouse_pos1)
-                self.update_button(self.creationmode_rect, self.creationmode_text, mouse_pos1)
-            self.screen.blit(self.background_image, (0, 0))
-            self.screen.blit(self.title_play_text, (MenuManager.SCREEN_WIDTH // 3 - 200, 30))
-            self.screen.blit(self.title2_play_text, (MenuManager.SCREEN_WIDTH // 2 -250, 150))
-            self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
-            self.screen.blit(self.historymode_text, (self.historymode_rect.centerx - self.historymode_text.get_width() // 2, self.historymode_rect.centery - self.historymode_text.get_height() // 2))
-            self.screen.blit(self.creationmode_text, (self.creationmode_rect.centerx - self.creationmode_text.get_width() // 2, self.creationmode_rect.centery - self.creationmode_text.get_height() // 2))
+        pygame.init()
 
-            pygame.display.update()
+        try:
+            while running:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        running = False
+                    elif event.type == pygame.MOUSEBUTTONDOWN:
+                        mouse_pos = pygame.mouse.get_pos()
+                        if self.return_rect.collidepoint(mouse_pos):
+                            print("The button 'Return' has been pressed")
+                            running = False
+                            return "main"#indicate the transition back to the menu
+                        elif self.historymode_rect.collidepoint(mouse_pos):
+                            print("The button 'History Mode' has been pressed")#Go play the history mode
+                            run_game()
+                        elif self.creationmode_rect.collidepoint(mouse_pos):
+                            print("The button 'Inverse Mode' has been pressed")
+                            run_game()
+
+                    mouse_pos1 = pygame.mouse.get_pos()
+                    self.update_button(self.return_rect, self.return_button, mouse_pos1)
+                    self.update_button(self.historymode_rect, self.historymode_text, mouse_pos1)
+                    self.update_button(self.creationmode_rect, self.creationmode_text, mouse_pos1)
+                
+                self.screen.blit(self.background_image, (0, 0))
+                self.screen.blit(self.title_play_text, (MenuManager.SCREEN_WIDTH // 3 - 200, 30))
+                self.screen.blit(self.title2_play_text, (MenuManager.SCREEN_WIDTH // 2 -250, 150))
+                self.screen.blit(self.return_button, (self.return_rect.centerx - self.return_button.get_width() // 2, self.return_rect.centery - self.return_button.get_height() // 2))
+                self.screen.blit(self.historymode_text, (self.historymode_rect.centerx - self.historymode_text.get_width() // 2, self.historymode_rect.centery - self.historymode_text.get_height() // 2))
+                self.screen.blit(self.creationmode_text, (self.creationmode_rect.centerx - self.creationmode_text.get_width() // 2, self.creationmode_rect.centery - self.creationmode_text.get_height() // 2))
+
+                pygame.display.update()
+        finally:
+            pygame.quit()
 #Function to increase the size of a button when the mouse is on it 
+    
     def update_button(self, button_rect, button_surface, mouse_pos):
         if button_rect.collidepoint(mouse_pos):
             button_rect.w = MenuManager.BUTTON_WIDTH + 20

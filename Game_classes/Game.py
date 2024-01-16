@@ -1,177 +1,180 @@
+#! /usr/bin/env python3
 import os
 import pygame
-import sys
 import random
+import math, os
+from random import randint
+from collections import deque
+from pygame.locals import *
 rnd = random.Random()
-
-
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
 from PauseWindow import PauseWindow
 
-
 #class for the game : History Mode
-#Things to change : augmenter la taille du jeu (image), ajouter le score, ajouter des tuyaux, ajouter musique, ajouter un bouton d'options (musique, retour, recommencer)
-class Game(MenuManager):
-    """
-    Game Loop
-        - run
-        - events
-        - update
-        - quit_game
-    """
 
-    def __init__(self):
+FPS = 60
+ANIMATION_SPEED = 0.18
+WIN_WIDTH = 284 * 2
+WIN_HEIGHT = 512
 
-        pygame.mixer.pre_init(44100, -16, 2, 2048)
-        pygame.font.init()
-        self.FPS = 80
-        self.clock = pygame.time.Clock()
+class Bird(pygame.sprite.Sprite):
+    WIDTH = HEIGHT = 32
+    SINK_SPEED = 0.18
+    CLIMB_SPEED = 0.3
+    CLIMB_DURATION = 333.3
 
-        # Indique si l'asset doit descendre
-        self.move = False
+    def __init__(self, x, y, msec_to_climb, images):
+        super(Bird, self).__init__()
+        self.x, self.y = x, y
+        self.msec_to_climb = msec_to_climb
+        self._img_wingup, self._img_wingdown = images
+        self._mask_wingup = pygame.mask.from_surface(self._img_wingup)
+        self._mask_wingdown = pygame.mask.from_surface(self._img_wingdown)
 
-        self.gapx = 100
-        self.gapy = 600
-
-        self.new()
-        self.load()
-
-        self.playing = True
-
-
-    def new(self):
-        self.project_tile = "Flappy"
-        pygame.display.set_caption(self.project_tile)
-
-        self.gameDisplay = pygame.display.set_mode((450,504))
-        self.image = pygame.image.load('assets/fond.png')
-
-        self.rect = self.image.get_rect()
-        self.rect.x = 0
-        self.rect.y = 0
-        
-        #Pause button
-        self.pause_font = pygame.font.Font(MenuManager.font_path, 15)
-        self.pause_button = self.pause_font.render("Pause", True, (0, 0, 0))
-        self.pause_rect = pygame.Rect(5, 450, MenuManager.BUTTON_WIDTH, MenuManager.BUTTON_HEIGHT)
-
-        # Definition sprite oiseau
-        self.image_bird = pygame.image.load('assets/birdy.png')
-        self.bird_real = pygame.transform.scale(self.image_bird, (
-        self.image_bird.get_width() // 10, self.image_bird.get_height() // 10))
-
-        # Definition des bords du sprite oiseau
-        self.rect_bird = self.image.get_rect()
-        self.rect_bird.x = 150
-        self.rect_bird.y = 250
-
-        # Récupération asset tuyau
-        self.image_pipe = pygame.image.load('assets/pipe-green.png')
-        self.pipe_inv = pygame.transform.scale(self.image_pipe, (
-            self.image_pipe.get_width(), self.image_pipe.get_height()))
-
-        # Position premier tuyau
-        self.pos = [300]
-        self.rect_pipe = self.image_pipe.get_rect()
-        self.rect_pipe.x = 300
-        self.rect_pipe.y = 302
-
-
-        # Ce qu'on veut inverser
-        self.inverser_horizontalement = False
-        self.inverser_verticalement = True
-
-        # Inversion
-        self.image_inversee = pygame.transform.flip(self.pipe_inv, self.inverser_horizontalement,
-                                                    self.inverser_verticalement)
-
-    def load(self):
-        self.timer = 0
-        self.delay = 100
-        self.map = 0
-        self.map2 = 900
-
-    def run(self):
-        while self.playing:
-            self.events()
-            self.update()
-            self.clock.tick(self.FPS)
-
-            pygame.display.flip()
-
-        self.quit_game_jeu()
-
-
-    def events(self):
-        self.event = pygame.event.get()
-        for event in self.event:
-            # Check for keyboard shortcuts
-            if event.type == pygame.KEYDOWN:
-                self.move = True
-                if event.key == pygame.K_ESCAPE:
-                    self.quit_game_jeu()
-                elif event.key == pygame.K_SPACE:
-                    if self.rect_bird.y > 15:
-                        self.rect_bird.y -= 30
-            if event.type == pygame.QUIT:
-                self.quit_game_jeu()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                mouse_pos = pygame.mouse.get_pos()
-                if self.pause_rect.collidepoint(mouse_pos):
-                    print("The button 'Pause' has been pressed")
-                    pausemenu=PauseWindow()
-                    pausemenu.run()
-            # Handle quit event
-            #if event.type == pygame.QUIT:
-                #self.quit_game_jeu()
-            mouse_pos1 = pygame.mouse.get_pos()
-            self.update_button(self.pause_rect, self.pause_button, mouse_pos1)
-
-    def update(self):
-
-        if self.timer <= 0:
-            self.timer = self.delay
-            self.map -= 1  # Déplacement vers la gauche
-            self.map2 -= 1
-            # Si la première image sort complètement de l'écran, replacez-la à droite de la seconde image
-            if self.map < -900:
-                self.map = self.map2 + 900
-            # Si la seconde image sort complètement de l'écran, replacez-la à droite de la première image
-            if self.map2 < - 900:
-                self.map2 = self.map + 900
-
-            if self.move:
-                if self.rect_bird.y <= 450:
-                    self.rect_bird.y += 2  # Descendre de 2 pixels
-
-                if self.rect_pipe.x <=350:
-                    self.rect_pipe.x -= 2  # Descendre de 2 pixels à gauche
+    def update(self, delta_frames=1):
+        if self.msec_to_climb > 0:
+            frac_climb_done = 1 - self.msec_to_climb/Bird.CLIMB_DURATION
+            self.y -= (Bird.CLIMB_SPEED * frames_to_msec(delta_frames) *
+                       (1 - math.cos(frac_climb_done * math.pi)))
+            self.msec_to_climb -= frames_to_msec(delta_frames)
         else:
-            self.timer -= 50
+            self.y += Bird.SINK_SPEED * frames_to_msec(delta_frames)
 
-        # map
-        self.gameDisplay.blit(self.image, (self.map, self.rect.y))
-        self.gameDisplay.blit(self.image, (self.map2, self.rect.y))
-        # oiseau
-        self.gameDisplay.blit(self.bird_real, (self.rect_bird.x, self.rect_bird.y))
-        # tuyau
-        self.gameDisplay.blit(self.image_pipe, (self.rect_pipe.x, self.rect_pipe.y))
-        self.gameDisplay.blit(self.image_inversee, (self.rect_pipe.x, self.rect_pipe.y - self.gapy))
-        #return bouton
-        self.gameDisplay.blit(self.pause_button, (self.pause_rect.centerx - self.pause_button.get_width() // 2, self.pause_rect.centery - self.pause_button.get_height() // 2))
+    @property
+    def image(self):
+        return self._img_wingup if pygame.time.get_ticks() % 500 >= 250 else self._img_wingdown
 
-    def draw(self):
-        pass
+    @property
+    def mask(self):
+        return self._mask_wingup if pygame.time.get_ticks() % 500 >= 250 else self._mask_wingdown
 
-    def quit_game_jeu(self):
-        quit()
+    @property
+    def rect(self):
+        return Rect(self.x, self.y, Bird.WIDTH, Bird.HEIGHT)
 
-#Function to increase the size of a button when the mouse is on it 
-    def update_button(self, button_rect, button_surface, mouse_pos):
-        if button_rect.collidepoint(mouse_pos):
-            button_rect.w = MenuManager.BUTTON_WIDTH + 20
-            button_rect.h = MenuManager.BUTTON_HEIGHT + 10
-        else:
-            button_rect.w = MenuManager.BUTTON_WIDTH
-            button_rect.h = MenuManager.BUTTON_HEIGHT
+class PipePair(pygame.sprite.Sprite):
+    WIDTH = 80
+    PIECE_HEIGHT = 32
+    ADD_INTERVAL = 3000
+
+    def __init__(self, pipe_end_img, pipe_body_img):
+        self.x = float(WIN_WIDTH - 1)
+        self.score_counted = False
+        self.image = pygame.Surface((PipePair.WIDTH, WIN_HEIGHT), SRCALPHA)
+        self.image.convert()
+        self.image.fill((0, 0, 0, 0))
+        total_pipe_body_pieces = int((WIN_HEIGHT - 3 * Bird.HEIGHT - 3 * PipePair.PIECE_HEIGHT) /
+                                     PipePair.PIECE_HEIGHT)
+        self.bottom_pieces = randint(1, total_pipe_body_pieces)
+        self.top_pieces = total_pipe_body_pieces - self.bottom_pieces
+        for i in range(1, self.bottom_pieces + 1):
+            piece_pos = (0, WIN_HEIGHT - i*PipePair.PIECE_HEIGHT)
+            self.image.blit(pipe_body_img, piece_pos)
+        bottom_pipe_end_y = WIN_HEIGHT - self.bottom_height_px
+        bottom_end_piece_pos = (0, bottom_pipe_end_y - PipePair.PIECE_HEIGHT)
+        self.image.blit(pipe_end_img, bottom_end_piece_pos)
+        for i in range(self.top_pieces):
+            self.image.blit(pipe_body_img, (0, i * PipePair.PIECE_HEIGHT))
+        top_pipe_end_y = self.top_height_px
+        self.image.blit(pipe_end_img, (0, top_pipe_end_y))
+        self.top_pieces += 1
+        self.bottom_pieces += 1
+        self.mask = pygame.mask.from_surface(self.image)
+
+    @property
+    def top_height_px(self):
+        return self.top_pieces * PipePair.PIECE_HEIGHT
+
+    @property
+    def bottom_height_px(self):
+        return self.bottom_pieces * PipePair.PIECE_HEIGHT
+
+    @property
+    def visible(self):
+        return -PipePair.WIDTH < self.x < WIN_WIDTH
+
+    @property
+    def rect(self):
+        return Rect(self.x, 0, PipePair.WIDTH, PipePair.PIECE_HEIGHT)
+
+    def update(self, delta_frames=1):
+        self.x -= ANIMATION_SPEED * frames_to_msec(delta_frames)
+
+    def collides_with(self, bird):
+        return pygame.sprite.collide_mask(self, bird)
+
+def load_images():
+    def load_image(img_file_name):
+        file_name = os.path.join(os.path.dirname(__file__), 'images', img_file_name)
+        img = pygame.image.load(file_name)
+        img.convert()
+        return img
+
+    return {'background': load_image('background.png'),
+            'pipe-end': load_image('pipe_end.png'),
+            'pipe-body': load_image('pipe_body.png'),
+            'bird-wingup': load_image('bird_wing_up.png'),
+            'bird-wingdown': load_image('bird_wing_down.png')}
+
+def frames_to_msec(frames, fps=FPS):
+    return 1000.0 * frames / fps
+
+def msec_to_frames(milliseconds, fps=FPS):
+    return fps * milliseconds / 1000.0
+
+def run_game():
+    pygame.init()
+    display_surface = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+    pygame.display.set_caption('Pygame Flappy Bird')
+    clock = pygame.time.Clock()
+    score_font = pygame.font.SysFont(None, 32, bold=True)
+    images = load_images()
+    bird = Bird(50, int(WIN_HEIGHT/2 - Bird.HEIGHT/2), 2,
+                (images['bird-wingup'], images['bird-wingdown']))
+    pipes = deque()
+    frame_clock = 0
+    score = 0
+    done = paused = False
+    while not done:
+        clock.tick(FPS)
+        if not (paused or frame_clock % msec_to_frames(PipePair.ADD_INTERVAL)):
+            pp = PipePair(images['pipe-end'], images['pipe-body'])
+            pipes.append(pp)
+        for e in pygame.event.get():
+            if e.type == QUIT or (e.type == KEYUP and e.key == K_ESCAPE):
+                done = True
+                break
+            elif e.type == KEYUP and e.key in (K_PAUSE, K_p):
+                paused = not paused
+            elif e.type == MOUSEBUTTONUP or (e.type == KEYUP and
+                    e.key in (K_UP, K_RETURN, K_SPACE)):
+                bird.msec_to_climb = Bird.CLIMB_DURATION
+        if paused:
+            continue
+        pipe_collision = any(p.collides_with(bird) for p in pipes)
+        if pipe_collision or 0 >= bird.y or bird.y >= WIN_HEIGHT - Bird.HEIGHT:
+            done = True
+        for x in (0, WIN_WIDTH / 2):
+            display_surface.blit(images['background'], (x, 0))
+        while pipes and not pipes[0].visible:
+            pipes.popleft()
+        for p in pipes:
+            p.update()
+            display_surface.blit(p.image, p.rect)
+        bird.update()
+        display_surface.blit(bird.image, bird.rect)
+        for p in pipes:
+            if p.x + PipePair.WIDTH < bird.x and not p.score_counted:
+                score += 1
+                p.score_counted = True
+        score_surface = score_font.render(str(score), True, (255, 255, 255))
+        score_x = WIN_WIDTH/2 - score_surface.get_width()/2
+        display_surface.blit(score_surface, (score_x, PipePair.PIECE_HEIGHT))
+        pygame.display.flip()
+        frame_clock += 1
+    print('Game over! Score: %i' % score)
+    pygame.quit()
+
+if __name__ == '__main__':
+    run_game()
