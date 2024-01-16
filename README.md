@@ -32,7 +32,31 @@ To get started with the project, follow these steps:
    
    - Run the "main.py" file 
    
-   - Click on the "Play" button to choose your pseudo and choose your game mode ! 
+   - Click on the "Play" button to choose your pseudo and choose your game mode !
+
+5. Create a virtual environment to launch the game without installing all modules and packages on your machine :
+
+   - Create the environment 'my_env' inside the project directory 
+   ```bash
+   python -m venv my_environment
+   ```
+
+   - Activate the environment
+     ```bash
+   my_environment/bin/activate
+   ```
+
+   - Install the required dependencies
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+  - Run the Game.py file and play !
+
+   - Deactivate the environment
+   ```bash
+   deactivate
+   ```
 
 ## Features
 
