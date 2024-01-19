@@ -16,8 +16,7 @@ class RulesMenu(MenuManager):
 
         self.return_font = pygame.font.Font(MenuManager.font_path, 30)
         self.return_button = self.return_font.render("Return", True, (20,20,20))
-        self.return_rect = pygame.Rect((MenuManager.SCREEN_WIDTH - MenuManager.BUTTON_WIDTH) // 6, 500, MenuManager.BUTTON_WIDTH, MenuManager.BUTTON_HEIGHT)
-
+        self.return_rect = pygame.Rect((MenuManager.SCREEN_WIDTH - MenuManager.BUTTON_WIDTH) // 1, 500, MenuManager.BUTTON_WIDTH, MenuManager.BUTTON_HEIGHT)
         self.rules_font = pygame.font.Font(MenuManager.font_path, 20)
         #rules for the history mode
         

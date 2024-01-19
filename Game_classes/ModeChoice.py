@@ -4,7 +4,6 @@ import sys
 import random
 rnd = random.Random()
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
-from Game import run_game
 
 # class for the second page of the play menu : the mode menu
 class ModeMenu(MenuManager):
@@ -31,7 +30,6 @@ class ModeMenu(MenuManager):
 
     def run(self):
         running = True
-        pygame.init()
 
         try:
             while running:

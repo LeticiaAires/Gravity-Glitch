@@ -29,7 +29,7 @@ class CreditsMenu(MenuManager):
             "",
             "Coordination transverse : Mantoulaye MBENGUE",
             "",
-            "History Mode : Cassandre CHANDELIER",
+            "History Mode : Letícia AIRES and Cassandre CHANDELIER",
             "",
             "Design background : Letícia AIRES",
             "",
@@ -55,7 +55,7 @@ class CreditsMenu(MenuManager):
 
         self.y_position = MenuManager.SCREEN_HEIGHT
         self.return_font = pygame.font.Font(MenuManager.font_path, 30)
-        self.bouton_retour = self.return_font.render("Return", True, (255,255,255))
+        self.bouton_retour = self.return_font.render("Return", True, (0,0,0))
         self.return_rect = pygame.Rect((MenuManager.SCREEN_WIDTH - MenuManager.BUTTON_WIDTH) // 1, 500, MenuManager.BUTTON_WIDTH, MenuManager.BUTTON_HEIGHT)
         self.defilement_actif = True
     def run(self):
