@@ -161,7 +161,8 @@ def load_images():
             'pipe-end': load_image('pipe_end.png'),
             'pipe-body': load_image('pipe_body.png'),
             'bird-wingup': load_image('bird_wing_up.png'),
-            'bird-wingdown': load_image('bird_wing_down.png')}
+            'bird-wingdown': load_image('bird_wing_down.png'),
+            'gameover': load_image('gameover.png')}
 
 def frames_to_msec(frames, fps=FPS):
     return 1000.0 * frames / fps
@@ -173,7 +174,13 @@ def game_over_screen(display_surface, score):
     font = pygame.font.SysFont(None, 48, bold=True)
     game_over_text = font.render("Game Over!", True, (255, 0, 0))
     score_text = font.render(f"Score: {score}", True, (255, 255, 255))
+
+    images = load_images()
+    display_surface.blit(images['background'], (WIN_WIDTH // 2, WIN_HEIGHT // 2))
     
+   # gameover_image = pygame.image.load(os.path.join(os.path.dirname('Game_classes/images/gameover.png')))
+   # gameover_rect = gameover_image.get_rect(center=(WIN_WIDTH // 2, WIN_HEIGHT // 2))
+
     quit_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2, 150, 50)
     reset_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2 + 60, 150, 50)
     menu_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2 + 120, 150, 50)
