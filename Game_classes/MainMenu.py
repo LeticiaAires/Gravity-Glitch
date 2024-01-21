@@ -1,4 +1,5 @@
 import os
+import time
 import pygame
 import sys
 import random
@@ -44,6 +45,8 @@ class MainMenu(MenuManager):
         from Custom import CustomMenu
         from Game import Start
 
+        
+
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -51,7 +54,6 @@ class MainMenu(MenuManager):
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
                     if self.play_rect.collidepoint(mouse_pos):
-                        print("The button 'Play' has been pressed")
                         game_start = Start()
                         game_start.run()
                     elif self.rules_rect.collidepoint(mouse_pos):

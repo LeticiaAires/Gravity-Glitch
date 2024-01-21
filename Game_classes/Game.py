@@ -1,4 +1,5 @@
 import os
+import time
 import pygame
 import random
 import math, os
@@ -214,20 +215,51 @@ def game_over_screen(display_surface, score, font_path):
                         return "menu"
 
 class Start:
+    from MenuManager import MenuManager
     def __init__(self):
         self.run_game()
+
+    def show_intro_screen(self):
+        pygame.init()
+
+        display_surface = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        pygame.display.set_caption('Pygame Flappy Bird')
+        images = load_images()
+
+        intro_font = pygame.font.Font(MenuManager.font_path, 30)
+        intro_text = intro_font.render("Press SPACE to Start", True, (255, 255, 255))
+        intro_text_rect = intro_text.get_rect(center=(WIN_WIDTH / 2, WIN_HEIGHT / 2))
+
+        bird = Bird(50, int(WIN_HEIGHT / 2 - Bird.HEIGHT / 2), 0, (images['bird-wingup'], images['bird-wingdown']))
+
+        while True:
+            for x in (0, WIN_WIDTH / 2):
+                display_surface.blit(images['background'], (x, 0))
+            display_surface.blit(bird.image, bird.rect)
+            display_surface.blit(intro_text, intro_text_rect)
+
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == KEYUP and event.key == K_SPACE:
+                    return
+
+            pygame.display.flip()
 
     def run_game(self):
         from MainMenu import MainMenu
         pygame.init()
 
-        display_surface = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        display_surface = pygame.display.set_mode((WIN_WIDTH*2, WIN_HEIGHT))
         pygame.display.set_caption('Pygame Flappy Bird')
         clock = pygame.time.Clock()
         score_font = pygame.font.SysFont(None, 32, bold=True)
         images = load_images()
 
-        bird = Bird(50, int(WIN_HEIGHT/2 - Bird.HEIGHT/2), 2, (images['bird-wingup'], images['bird-wingdown']))
+        self.show_intro_screen()
+
+        bird = Bird(50, int(WIN_HEIGHT / 2 - Bird.HEIGHT / 2), 2, (images['bird-wingup'], images['bird-wingdown']))
         pipes = deque()
         frame_clock = 0
         score = 0
@@ -255,19 +287,19 @@ class Start:
             pipe_collision = any(p.collides_with(bird) for p in pipes)
 
             if pipe_collision or 0 >= bird.y or bird.y >= WIN_HEIGHT - Bird.HEIGHT:
-                result = game_over_screen(display_surface, score,"Assets/your_font.ttf")
+                result = game_over_screen(display_surface, score, "Assets/your_font.ttf")
                 if result == "reset":
                     # Reset the game
-                    bird = Bird(50, int(WIN_HEIGHT/2 - Bird.HEIGHT/2), 2, (images['bird-wingup'], images['bird-wingdown']))
+                    bird = Bird(50, int(WIN_HEIGHT / 2 - Bird.HEIGHT / 2),
+                                2, (images['bird-wingup'], images['bird-wingdown']))
                     pipes.clear()
                     frame_clock = 0
                     score = 0
                     paused = False
+                    self.show_intro_screen()
                 elif result == "menu":
                     MainMenu().run()
                     return MainMenu().run()
-                #self.fenetre.blit(self.fond, (0, 0))
-                    
                 else:
                     done = True
 
@@ -290,7 +322,7 @@ class Start:
                     p.score_counted = True
 
             score_surface = score_font.render(str(score), True, (255, 255, 255))
-            score_x = WIN_WIDTH/2 - score_surface.get_width()/2
+            score_x = WIN_WIDTH / 2 - score_surface.get_width() / 2
             display_surface.blit(score_surface, (score_x, PipePair.PIECE_HEIGHT))
 
             pygame.display.flip()
@@ -299,6 +331,8 @@ class Start:
 
         print('Game over! Score: %i' % score)
         pygame.quit()
+
+
 
 if __name__ == '__main__':
     Start()
