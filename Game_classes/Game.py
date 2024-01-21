@@ -170,51 +170,48 @@ def frames_to_msec(frames, fps=FPS):
 def msec_to_frames(milliseconds, fps=FPS):
     return fps * milliseconds / 1000.0
 
-def game_over_screen(display_surface, score):
-    font = pygame.font.SysFont(None, 48, bold=True)
-    game_over_text = font.render("Game Over!", True, (255, 0, 0))
-    score_text = font.render(f"Score: {score}", True, (255, 255, 255))
+def game_over_screen(display_surface, score, font_path):
+        font = pygame.font.Font(font_path, 48)
+        button_font = pygame.font.Font(font_path, 36)
 
-    images = load_images()
-    display_surface.blit(images['background'], (WIN_WIDTH // 2, WIN_HEIGHT // 2))
-    
-   # gameover_image = pygame.image.load(os.path.join(os.path.dirname('Game_classes/images/gameover.png')))
-   # gameover_rect = gameover_image.get_rect(center=(WIN_WIDTH // 2, WIN_HEIGHT // 2))
+        game_over_text = font.render("Game Over!", True, (255, 255, 255))
+        score_text = font.render(f"Score: {score}", True, (255, 255, 255))
 
-    quit_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2, 150, 50)
-    reset_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2 + 60, 150, 50)
-    menu_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2 + 120, 150, 50)
-    
-    pygame.draw.rect(display_surface, (255, 0, 0), quit_button)
-    pygame.draw.rect(display_surface, (255, 0, 0), reset_button)
-    pygame.draw.rect(display_surface, (255, 0, 0), menu_button)
-    
-    display_surface.blit(game_over_text, (WIN_WIDTH // 2 - game_over_text.get_width() // 2, WIN_HEIGHT // 4))
-    display_surface.blit(score_text, (WIN_WIDTH // 2 - score_text.get_width() // 2, WIN_HEIGHT // 4 + 60))
-    
-    quit_text = font.render("Quit", True, (255, 255, 255))
-    reset_text = font.render("Reset", True, (255, 255, 255))
-    menu_text = font.render("Menu", True, (255, 255, 255))
-    
-    display_surface.blit(quit_text, (quit_button.x + 25, quit_button.y + 15))
-    display_surface.blit(reset_text, (reset_button.x + 25, reset_button.y + 15))
-    display_surface.blit(menu_text, (menu_button.x + 25, menu_button.y + 15))
-    
-    pygame.display.flip()
-    
-    while True:
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
-            elif event.type == MOUSEBUTTONDOWN:
-                if quit_button.collidepoint(event.pos):
+        images = load_images()
+        display_surface.blit(images['background'], (WIN_WIDTH, WIN_HEIGHT // 2))
+
+        quit_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2, 150, 50)
+        reset_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2 + 60, 150, 50)
+        menu_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2 + 120, 150, 50)
+        
+        
+        
+        display_surface.blit(game_over_text, (WIN_WIDTH // 2 - game_over_text.get_width() // 2, WIN_HEIGHT // 4))
+        display_surface.blit(score_text, (WIN_WIDTH // 2 - score_text.get_width() // 2, WIN_HEIGHT // 4 + 60))
+
+        quit_text = button_font.render("Quit", True, (0, 0, 0))
+        reset_text = button_font.render("Reset", True, (0, 0, 0))
+        menu_text = button_font.render("Menu", True, (0, 0, 0))
+        
+        display_surface.blit(quit_text, (quit_button.x + 25, quit_button.y + 15))
+        display_surface.blit(reset_text, (reset_button.x + 25, reset_button.y + 15))
+        display_surface.blit(menu_text, (menu_button.x + 25, menu_button.y + 15))
+        
+        pygame.display.flip()
+        
+        while True:
+            for event in pygame.event.get():
+                if event.type == QUIT:
                     pygame.quit()
                     sys.exit()
-                elif reset_button.collidepoint(event.pos):
-                    return "reset"
-                elif menu_button.collidepoint(event.pos):
-                    return "menu"
+                elif event.type == MOUSEBUTTONDOWN:
+                    if quit_button.collidepoint(event.pos):
+                        pygame.quit()
+                        sys.exit()
+                    elif reset_button.collidepoint(event.pos):
+                        return "reset"
+                    elif menu_button.collidepoint(event.pos):
+                        return "menu"
 
 class Start:
     def __init__(self):
@@ -258,7 +255,7 @@ class Start:
             pipe_collision = any(p.collides_with(bird) for p in pipes)
 
             if pipe_collision or 0 >= bird.y or bird.y >= WIN_HEIGHT - Bird.HEIGHT:
-                result = game_over_screen(display_surface, score)
+                result = game_over_screen(display_surface, score,"Assets/your_font.ttf")
                 if result == "reset":
                     # Reset the game
                     bird = Bird(50, int(WIN_HEIGHT/2 - Bird.HEIGHT/2), 2, (images['bird-wingup'], images['bird-wingdown']))

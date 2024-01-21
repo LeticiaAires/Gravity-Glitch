@@ -8,7 +8,7 @@ from Settings import SettingMenu
 from MainMenu import MainMenu
 from MenuManager import MenuManager
 from PauseWindow import PauseWindow
-#from Custom import CustomMenu
+from Custom import CustomMenu
 
 # initializing pygame
 pygame.init()
@@ -28,7 +28,7 @@ credits_menu = CreditsMenu()
 name_menu = NameMenu()
 rules_menu = RulesMenu()
 pause_menu = PauseWindow()
-#custom_menu = CustomMenu()
+custom_menu = CustomMenu()
 
 running = True
 current_menu = "main"

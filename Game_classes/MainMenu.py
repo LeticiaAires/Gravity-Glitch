@@ -41,6 +41,7 @@ class MainMenu(MenuManager):
         from Rules import RulesMenu
         from Credits import CreditsMenu
         from Settings import SettingMenu
+        from Custom import CustomMenu
         from Game import Start
 
         while running:
@@ -63,8 +64,8 @@ class MainMenu(MenuManager):
                         credits_menu.run()
                     elif self.personalize_rect.collidepoint(mouse_pos):
                         print("The button 'Personalize' has been pressed")
-                        setting_menu = SettingMenu()
-                        setting_menu.run()
+                        personalize_menu = NameMenu()
+                        personalize_menu.run()
                     elif self.sound_rect.collidepoint(mouse_pos):
                         print("The button 'Sound' has been pressed")
                     elif self.music_icon_rect.collidepoint(mouse_pos):
