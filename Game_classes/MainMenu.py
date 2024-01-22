@@ -1,5 +1,4 @@
 import os
-import time
 import pygame
 import sys
 import random
@@ -7,6 +6,7 @@ rnd = random.Random()
 
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
+from Custom import CustomMenu
 
 
 # the class for the main menu
@@ -28,8 +28,6 @@ class MainMenu(MenuManager):
         self.personalize_button = self.button_font.render("Personalize", True, (0, 0, 0))
         self.personalize_rect = pygame.Rect((self.SCREEN_WIDTH - self.BUTTON_WIDTH) // 2, 400, self.BUTTON_WIDTH, self.BUTTON_HEIGHT)
         
-        self.sound_image = pygame.image.load('Assets/sound.png')
-        self.sound_rect = pygame.Rect((self.SCREEN_WIDTH - self.BUTTON_WIDTH) // 1, 100, self.BUTTON_WIDTH, self.BUTTON_HEIGHT)
 
         self.quit_button = self.button_font.render("Quit", True, (0,0,0))
         self.quit_rect = pygame.Rect((self.SCREEN_WIDTH - self.BUTTON_WIDTH) // 2, 500, self.BUTTON_WIDTH, self.BUTTON_HEIGHT)
@@ -42,10 +40,7 @@ class MainMenu(MenuManager):
         from Rules import RulesMenu
         from Credits import CreditsMenu
         from Settings import SettingMenu
-        from Custom import CustomMenu
         from Game import Start
-
-        
 
         while running:
             for event in pygame.event.get():
@@ -54,8 +49,9 @@ class MainMenu(MenuManager):
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
                     if self.play_rect.collidepoint(mouse_pos):
-                        game_start = Start()
-                        game_start.run()
+                        print("The button 'Play' has been pressed")
+                        
+                        game_start = Start(pygame.color.Color('white'),None,None,None)
                     elif self.rules_rect.collidepoint(mouse_pos):
                         print("The button 'Rules' has been pressed")
                         rules_menu=RulesMenu()
@@ -66,10 +62,8 @@ class MainMenu(MenuManager):
                         credits_menu.run()
                     elif self.personalize_rect.collidepoint(mouse_pos):
                         print("The button 'Personalize' has been pressed")
-                        personalize_menu = NameMenu()
-                        personalize_menu.run()
-                    elif self.sound_rect.collidepoint(mouse_pos):
-                        print("The button 'Sound' has been pressed")
+                        setting_menu = SettingMenu()
+                        setting_menu.run()
                     elif self.music_icon_rect.collidepoint(mouse_pos):
                         self.toggle_music()
                     #elif AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -88,7 +82,6 @@ class MainMenu(MenuManager):
                 self.update_button(self.play_rect, self.play_button, mouse_pos)
                 self.update_button(self.rules_rect, self.rules_button, mouse_pos)
                 self.update_button(self.credits_rect, self.credits_button, mouse_pos)
-                self.update_button(self.sound_rect, self.sound_image, mouse_pos)
                 self.update_button(self.personalize_rect, self.personalize_button, mouse_pos)
                 self.update_button(self.quit_rect, self.quit_button, mouse_pos)
 
@@ -97,7 +90,6 @@ class MainMenu(MenuManager):
             self.screen.blit(self.play_button, (self.play_rect.centerx - self.play_button.get_width() // 2, self.play_rect.centery - self.play_button.get_height() // 2))
             self.screen.blit(self.rules_button, (self.rules_rect.centerx - self.rules_button.get_width() // 2, self.rules_rect.centery - self.rules_button.get_height() // 2))
             self.screen.blit(self.credits_button, (self.credits_rect.centerx - self.credits_button.get_width() // 2, self.credits_rect.centery - self.credits_button.get_height() // 2))
-            #self.screen.blit(self.setting_button, (self.setting_rect.centerx - self.setting_button.get_width() // 2, self.setting_rect.centery - self.setting_button.get_height() // 2))
             self.screen.blit(self.personalize_button, (self.personalize_rect.centerx - self.personalize_button.get_width() // 2, self.personalize_rect.centery - self.personalize_button.get_height() // 2))
             self.screen.blit(self.quit_button, (self.quit_rect.centerx - self.quit_button.get_width() // 2, self.quit_rect.centery - self.quit_button.get_height() // 2))
 
