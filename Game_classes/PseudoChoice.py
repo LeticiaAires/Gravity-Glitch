@@ -6,7 +6,7 @@ rnd = random.Random()
 
 from MenuManager import MenuManager  # Importation de la classe parente MenuManager depuis le fichier MenuManager.py
 from ModeChoice import ModeMenu
-from Custom import CustomMenu
+#from Custom import CustomMenu
 
 
 # class for the first page of the play menu aka Name Menu
@@ -52,8 +52,8 @@ class NameMenu(MenuManager):
                         return "main"
                     elif self.continue_rect.collidepoint(mouse_pos):
                         print("The button 'Continue' has been pressed")
-                        custom= CustomMenu()
-                        custom.run()
+                        #custom =CustomMenu()
+                        #custom.run()
                     elif self.input_box.collidepoint(mouse_pos):
                         self.active = not self.active #toggles the active state of the input box
                 elif event.type == pygame.KEYDOWN:
