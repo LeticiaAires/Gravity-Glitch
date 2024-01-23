@@ -73,3 +73,4 @@ class ModeMenu(MenuManager):
         else:
             button_rect.w = MenuManager.BUTTON_WIDTH
             button_rect.h = MenuManager.BUTTON_HEIGHT
+
