@@ -1,6 +1,5 @@
 import pygame 
 import sys
-
 from PseudoChoice import NameMenu
 from Rules import RulesMenu
 from Credits import CreditsMenu
