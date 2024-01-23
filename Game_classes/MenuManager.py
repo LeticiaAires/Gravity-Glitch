@@ -58,3 +58,4 @@ class MenuManager:
 
     def quitting():
         return "quit"
+
