@@ -181,9 +181,9 @@ def game_over_screen(display_surface, score, font_path):
         images = load_images()
         display_surface.blit(images['background'], (WIN_WIDTH, WIN_HEIGHT // 2))
 
-        quit_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2, 150, 50)
+        quit_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2 + 120, 150, 50)
         reset_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2 + 60, 150, 50)
-        menu_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2 + 120, 150, 50)
+        menu_button = pygame.Rect(WIN_WIDTH // 2 - 75, WIN_HEIGHT // 2, 150, 50)
         
         
         

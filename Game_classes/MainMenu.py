@@ -67,6 +67,9 @@ class MainMenu(MenuManager):
 
     def draw_menu(self):
         self.screen.blit(self.background_image, (0, 0))
+
+        self.background_image = pygame.transform.scale(self.background_image, (800, MenuManager.SCREEN_HEIGHT))
+
         self.screen.blit(self.title_font.render("Welcome to Gravity Glitch", True, (255, 255, 255)), (self.SCREEN_WIDTH // 3 - 200, 30))
 
         for button_info in self.button_actions.values():

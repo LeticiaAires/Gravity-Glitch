@@ -9,8 +9,8 @@ from MenuManager import MenuManager
 #class for the pause window during the game 
 class PauseWindow(MenuManager):
     def __init__(self):
-        PLAY_SCREEN_HEIGHT = 600
-        PLAY_SCREEN_WIDTH= 800
+        PLAY_SCREEN_HEIGHT = 1000
+        PLAY_SCREEN_WIDTH= 1000
         self.screen = pygame.display.set_mode((PLAY_SCREEN_WIDTH,PLAY_SCREEN_HEIGHT))
         pygame.display.set_caption("Pause Window")
         self.background_image = pygame.image.load("Assets/pauseWindow_screen2.png").convert() #taille image : 700 et 394
@@ -40,8 +40,9 @@ class PauseWindow(MenuManager):
         from Settings import SettingMenu
         from Game import Game
         from Scores import Scores
-        PLAY_SCREEN_HEIGHT = 600
+        
         PLAY_SCREEN_WIDTH=800
+        PLAY_SCREEN_HEIGHT = 600
         resume_flag = True
         running1 = True
 

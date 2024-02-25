@@ -1,12 +1,12 @@
 
 import pygame
 from pygame.locals import *
-from PIL import Image
+#from PIL import Image
 import os
 
 from MenuManager import MenuManager
 from Game import Start
-from personnalizedBird import personnalisedBird
+from PersonnalizedBird import personnalisedBird
 
 class CustomMenu(MenuManager) :
     def __init__(self):
@@ -27,7 +27,7 @@ class CustomMenu(MenuManager) :
        
 
         # Chargement des personnages
-        image = pygame.image.load("Classes/images/bird_wing_down.png").convert_alpha()
+        image = pygame.image.load("Game_classes/images/bird_wing_down.png").convert_alpha()
         nouvelle_taille = (90,90)
         image = pygame.transform.scale(image, nouvelle_taille)
 
