@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Welcome to 2324_Projet2A_JeuVideo, an innovative project created by 7th-semester engineering students from École Nationale Supérieure de l'Électronique et de ses Applications (ENSEA). This project serves as a platform for hands-on learning in practical electronics, software development, project management, and teamwork.
+Welcome to Gravity Glitch, an innovative project created by 7th-semester engineering students from École Nationale Supérieure de l'Électronique et de ses Applications (ENSEA). This project serves as a platform for hands-on learning in practical electronics, software development, project management, and teamwork.
 
 ## Project Objective
 
@@ -17,7 +17,7 @@ To get started with the project, follow these steps:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/LeticiaAires/2324_Projet2A_JeuVideo.git
+   git clone https://github.com/LeticiaAires/Gravity-Glitch.git
    ```
 
 2. Ensure you have the required dependencies installed.
@@ -28,7 +28,39 @@ To get started with the project, follow these steps:
  
    [PIP](https://bootstrap.pypa.io/get-pip.py)
 
-4. Run the game and start playing!
+3. How to play ?
+   
+   - Run the "main.py" file 
+   
+   - Click on the "Play" button to choose your pseudo and choose your game mode !
+
+4. To launch the game without installing all modules and packages on your machine, create a virtual environment.
+
+   - Create the environment 'my_env' inside the project directory :
+     
+      ```bash
+      python -m venv my_environment
+      ```
+
+   - Activate the environment :
+     
+      ```bash
+      my_environment/bin/activate
+      ```
+
+   - Install the required dependencies :
+   
+      ```bash
+      pip install -r requirements.txt
+      ```
+
+   - Run the Game.py file and play !
+
+   - Deactivate the environment :
+     
+      ```bash
+      deactivate
+      ```
 
 ## Features
 
@@ -38,9 +70,20 @@ To get started with the project, follow these steps:
 - Project designed and implemented by talented engineering students.
 
 ## Documentation
+Here is an explanation of the game's structure : 
 
+The "main.py" file is the file to run to start the Game. Then, we come across a window called "MainMenu" displaying the menu of the game (with the settings, play, quit, credits and rules buttons). From there, we can : 
+- go to the settings/rules/credits windows who are self explanatory
+- quit the game
+- go to the play window
+  
+If you choose to do the later, then you will come across a first window asking for your name (to associate your score with your pseudo). From there you can either go back to the menu or continue and go choose your game mode (History mode or alternative = a more complex version of the flappy bird).
+After that, by clicking on continue and pressing the space bar, you can start playing !
+You have a "pause" button in the bottom left corner where you can go to the settings, see the best scores, restart, resume or quit the game. 
+  
 For more detailed information about the project, you can refer to the code itself. We have included comprehensive comments and documentation within the codebase to help you understand how everything works.
 
+![SCREENSHOT](Assets/DiagrammeClasse.PNG)
 ## License
 
 This project is licensed under the [MIT License](LICENSE.md).
@@ -49,7 +92,7 @@ This project is licensed under the [MIT License](LICENSE.md).
 
 We would like to express our gratitude to our instructors, mentors, and everyone who supported us throughout this project. Your guidance and encouragement were invaluable in making this project a reality.
 
-## Colaborators
+## Collaborators
 
 <table>
   <tr>
@@ -66,8 +109,8 @@ We would like to express our gratitude to our instructors, mentors, and everyone
       <a href="#">
         <img src="https://media-cdg4-1.cdn.whatsapp.net/v/t61.24694-24/319927329_5607935222638596_1485755097495570538_n.jpg?ccb=11-4&oh=01_AdRmTRulYoBm9-qDTd_RLVVB3TG0A8qT5PDsclY1tCgE4w&oe=6528CF33&_nc_sid=000000&_nc_cat=102" width="80px;" alt="Foto Cassandre"/><br>
         <sub>
-          <b>Canssandre   </b>
-          </p>CanssandreChandelier   
+          <b>Cassandre   </b>
+          </p>CassandreChandelier   
         </sub>
       </a>
       <td align="center">
