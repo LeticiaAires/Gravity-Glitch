@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP LTC4058EDD-4.2#PBF
-D IC CHARGER BATTERY LI-ION 8-DFN
-K
-F https://www.analog.com/media/en/technical-documentation/data-sheets/405842fs.pdf
-$ENDCMP
-#
-#End Doc Library

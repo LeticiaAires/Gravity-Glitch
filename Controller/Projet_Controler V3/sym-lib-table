@@ -1,5 +1,0 @@
-(sym_lib_table
-  (version 7)
-  (lib (name "450404015514")(type "KiCad")(uri "${KIPRJMOD}/lib/pcb/450404015514.kicad_sym")(options "")(descr ""))
-  (lib (name "WITNS_ROHM")(type "KiCad")(uri "${KIPRJMOD}/lib/sch/WITNS_ROHM.kicad_sym")(options "")(descr ""))
-)
