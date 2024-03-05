@@ -36,7 +36,9 @@ while running:
     # Check if the current menu is the game and run it
     if current_menu == "play":
         run_game()  # Call the main function of the Game class
+        print("entrou primeiro")
     else:
+        print("entrou segundo")
         active_menu.run()
 
 

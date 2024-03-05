@@ -142,7 +142,9 @@ class CustomMenu(MenuManager) :
                             print("The button 'Play' has been pressed")
                             self.perso.prop_image = pygame.transform.scale(self.perso.prop_image, (personnalisedBird.HEIGHT,personnalisedBird.HEIGHT))
                             self.perso.prop_image.set_colorkey(pygame.color.Color('white'))
-                            game_start = Start(self.perso.color,self.perso.prop_image,self.perso.x_prop,self.perso.y_prop)
+                            #game_start = Start(self.perso.color,self.perso.prop_image,self.perso.x_prop,self.perso.y_prop)
+                            game_start = Start
+                            game_start.run()
                         elif self.bouton_Bleu_Rect.collidepoint(event.pos):
                             self.perso.changecolor(pygame.color.Color('blue')) 
                         elif self.bouton_Jaune_Rect.collidepoint(event.pos):

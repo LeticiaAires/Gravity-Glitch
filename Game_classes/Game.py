@@ -15,6 +15,7 @@ rnd = random.Random()
 
 
 #class for the game : History Mode
+#Background
 FPS = 60
 ANIMATION_SPEED = 0.18
 WIN_WIDTH = 284 * 2
@@ -24,9 +25,9 @@ WIN_HEIGHT = 512
 class Bird(pygame.sprite.Sprite):
 
     WIDTH = HEIGHT = 32
-    SINK_SPEED = 0.18
-    CLIMB_SPEED = 0.3
-    CLIMB_DURATION = 333.3
+    SINK_SPEED = 0.15
+    CLIMB_SPEED = 0.22
+    CLIMB_DURATION = 250
 
     def __init__(self, x, y, msec_to_climb, images):
 
