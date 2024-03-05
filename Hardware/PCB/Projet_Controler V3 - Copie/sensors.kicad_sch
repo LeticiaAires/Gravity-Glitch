@@ -604,13 +604,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 168.91 107.95 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 17b812bf-c666-4996-8e43-a426a33f4f42)
-    (property "Reference" "R2" (at 171.45 107.315 0)
+    (property "Reference" "R409" (at 171.45 107.315 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "10k" (at 171.45 109.855 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 168.91 107.95 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 168.91 107.95 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 168.91 107.95 0)
@@ -620,11 +620,8 @@
     (pin "2" (uuid 91d494b0-60d5-4bb1-be70-0aed8db333ee))
     (instances
       (project "Projet_Controler"
-        (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7"
-          (reference "R2") (unit 1)
-        )
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "R10") (unit 1)
+          (reference "R409") (unit 1)
         )
       )
     )
@@ -633,7 +630,7 @@
   (symbol (lib_id "power:GND") (at 105.41 93.98 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2bd853e6-94be-43ac-8d03-504a2d1df4e3)
-    (property "Reference" "#PWR03" (at 105.41 100.33 0)
+    (property "Reference" "#PWR0403" (at 105.41 100.33 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 105.41 97.79 0)
@@ -649,7 +646,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "#PWR03") (unit 1)
+          (reference "#PWR0403") (unit 1)
         )
       )
     )
@@ -658,7 +655,7 @@
   (symbol (lib_id "power:GND") (at 147.32 100.33 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2eb86e66-8163-4f29-8265-2e73cc88e454)
-    (property "Reference" "#PWR016" (at 147.32 106.68 0)
+    (property "Reference" "#PWR0404" (at 147.32 106.68 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 147.32 104.14 0)
@@ -674,7 +671,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "#PWR016") (unit 1)
+          (reference "#PWR0404") (unit 1)
         )
       )
     )
@@ -683,13 +680,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 68.58 78.74 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 367eec40-3133-4a6e-9ce7-327e08b5e907)
-    (property "Reference" "R10" (at 68.58 73.66 90)
+    (property "Reference" "R402" (at 68.58 73.66 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1k" (at 68.58 76.2 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 68.58 78.74 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 68.58 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 68.58 78.74 0)
@@ -699,11 +696,8 @@
     (pin "2" (uuid 6a4e3d0a-c9ed-4a68-ad86-0fed9b3dc1c1))
     (instances
       (project "Projet_Controler"
-        (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7"
-          (reference "R10") (unit 1)
-        )
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "R2") (unit 1)
+          (reference "R402") (unit 1)
         )
       )
     )
@@ -712,13 +706,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 162.56 107.95 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 57177194-2deb-4c53-b25c-69d40911a8a9)
-    (property "Reference" "R3" (at 165.1 107.315 0)
+    (property "Reference" "R408" (at 165.1 107.315 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "10k" (at 165.1 109.855 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 162.56 107.95 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 162.56 107.95 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 162.56 107.95 0)
@@ -728,11 +722,8 @@
     (pin "2" (uuid ba203bec-0e7a-41aa-868d-b273a43d6959))
     (instances
       (project "Projet_Controler"
-        (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7"
-          (reference "R3") (unit 1)
-        )
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "R9") (unit 1)
+          (reference "R408") (unit 1)
         )
       )
     )
@@ -741,13 +732,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 152.4 86.36 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 588d0739-d206-4746-a9df-b50c42cb5bda)
-    (property "Reference" "R1" (at 152.4 81.28 90)
+    (property "Reference" "R407" (at 152.4 81.28 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "47k" (at 152.4 83.82 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 152.4 86.36 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 152.4 86.36 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 152.4 86.36 0)
@@ -757,11 +748,8 @@
     (pin "2" (uuid 35efddc5-dfc8-48fa-8a4d-518fc1204248))
     (instances
       (project "Projet_Controler"
-        (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7"
-          (reference "R1") (unit 1)
-        )
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "R8") (unit 1)
+          (reference "R407") (unit 1)
         )
       )
     )
@@ -770,13 +758,13 @@
   (symbol (lib_id "VL53L5CX:VL53L5CX") (at 107.95 78.74 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5d80ca33-a2e1-473b-8dc7-a58b314523a7)
-    (property "Reference" "IC1" (at 127 72.39 0)
+    (property "Reference" "IC401" (at 127 72.39 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "VL53L5CX" (at 127 74.93 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "VL53L5CX" (at 142.24 76.2 0)
+    (property "Footprint" "mod:VL53L5CX" (at 142.24 76.2 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Datasheet" "https://www.st.com/en/imaging-and-photonics-solutions/vl53l5cx.html#documentation" (at 142.24 78.74 0)
@@ -826,11 +814,8 @@
     (pin "C7" (uuid 2257b887-f20a-4c04-80e2-ec21de154b4b))
     (instances
       (project "Projet_Controler"
-        (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7"
-          (reference "IC1") (unit 1)
-        )
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "IC1") (unit 1)
+          (reference "IC401") (unit 1)
         )
       )
     )
@@ -839,13 +824,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 83.82 63.5 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6a7ffdd9-37a9-41d5-8cf6-0a4baa7419e2)
-    (property "Reference" "R8" (at 83.82 58.42 90)
+    (property "Reference" "R405" (at 83.82 58.42 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1k" (at 83.82 60.96 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 83.82 63.5 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 83.82 63.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 83.82 63.5 0)
@@ -855,11 +840,8 @@
     (pin "2" (uuid 469c2eae-1152-4d9d-bd9e-aff5eb85e673))
     (instances
       (project "Projet_Controler"
-        (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7"
-          (reference "R8") (unit 1)
-        )
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "R5") (unit 1)
+          (reference "R405") (unit 1)
         )
       )
     )
@@ -868,13 +850,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 99.06 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7a5fda72-8d87-4f31-b1a3-5ceb64f84772)
-    (property "Reference" "R11" (at 96.52 67.945 0)
+    (property "Reference" "R406" (at 96.52 67.945 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "47k" (at 96.52 65.405 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 99.06 67.31 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 99.06 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 99.06 67.31 0)
@@ -884,11 +866,8 @@
     (pin "2" (uuid 60f38b4f-ae47-4961-a7b5-dae1885c9005))
     (instances
       (project "Projet_Controler"
-        (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7"
-          (reference "R11") (unit 1)
-        )
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "R7") (unit 1)
+          (reference "R406") (unit 1)
         )
       )
     )
@@ -897,7 +876,7 @@
   (symbol (lib_id "power:+3.3V") (at 193.04 81.28 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9ab55cdc-802b-4a0c-b462-713e028d2a94)
-    (property "Reference" "#PWR017" (at 193.04 85.09 0)
+    (property "Reference" "#PWR0405" (at 193.04 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 193.04 77.47 0)
@@ -913,7 +892,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "#PWR017") (unit 1)
+          (reference "#PWR0405") (unit 1)
         )
       )
     )
@@ -922,13 +901,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 76.2 107.95 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a32449d1-0fa7-4f49-867c-a97dcf393f95)
-    (property "Reference" "R5" (at 78.74 107.315 0)
+    (property "Reference" "R403" (at 78.74 107.315 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "47k" (at 78.74 109.855 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 76.2 107.95 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 76.2 107.95 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 76.2 107.95 0)
@@ -938,11 +917,8 @@
     (pin "2" (uuid 21430599-ecca-4ba3-884b-95f44ec1a3ab))
     (instances
       (project "Projet_Controler"
-        (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7"
-          (reference "R5") (unit 1)
-        )
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "R3") (unit 1)
+          (reference "R403") (unit 1)
         )
       )
     )
@@ -951,13 +927,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 82.55 107.95 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b3a935ed-c4d3-4a61-a6cb-0b030e41aa4a)
-    (property "Reference" "R4" (at 85.09 107.315 0)
+    (property "Reference" "R404" (at 85.09 107.315 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "47k" (at 85.09 109.855 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 82.55 107.95 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 82.55 107.95 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 82.55 107.95 0)
@@ -967,11 +943,8 @@
     (pin "2" (uuid 4c116c2f-7d96-453e-827a-2fed10406b69))
     (instances
       (project "Projet_Controler"
-        (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7"
-          (reference "R4") (unit 1)
-        )
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "R4") (unit 1)
+          (reference "R404") (unit 1)
         )
       )
     )
@@ -980,13 +953,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 68.58 72.39 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d623e4e1-2c14-4eab-824b-4410d245c4d2)
-    (property "Reference" "R9" (at 68.58 67.31 90)
+    (property "Reference" "R401" (at 68.58 67.31 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1k" (at 68.58 69.85 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 68.58 72.39 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 68.58 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 68.58 72.39 0)
@@ -996,11 +969,8 @@
     (pin "2" (uuid 338f0fec-b0a3-46e3-bb79-40297a953b7e))
     (instances
       (project "Projet_Controler"
-        (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7"
-          (reference "R9") (unit 1)
-        )
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "R1") (unit 1)
+          (reference "R401") (unit 1)
         )
       )
     )
@@ -1009,7 +979,7 @@
   (symbol (lib_id "power:GND") (at 99.06 73.66 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d65938ee-abf1-4090-8a64-592850eef3f7)
-    (property "Reference" "#PWR01" (at 99.06 80.01 0)
+    (property "Reference" "#PWR0402" (at 99.06 80.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 99.06 77.47 0)
@@ -1025,7 +995,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "#PWR01") (unit 1)
+          (reference "#PWR0402") (unit 1)
         )
       )
     )
@@ -1034,7 +1004,7 @@
   (symbol (lib_id "power:+3.3V") (at 95.25 86.36 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fec639b6-cb94-4868-8135-3f9b18e5ff21)
-    (property "Reference" "#PWR018" (at 95.25 90.17 0)
+    (property "Reference" "#PWR0401" (at 95.25 90.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 91.44 86.36 0)
@@ -1050,7 +1020,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/0f624c92-20ea-439f-a734-54b68592e3d6"
-          (reference "#PWR018") (unit 1)
+          (reference "#PWR0401") (unit 1)
         )
       )
     )

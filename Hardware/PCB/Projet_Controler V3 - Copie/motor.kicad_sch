@@ -557,14 +557,6 @@
     (uuid 825cb2e9-841c-4bc7-a3a3-86024fcf6e33)
   )
 
-  (global_label "drain ?" (shape input) (at 154.94 86.36 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid bf0ee3e5-80c2-4d22-8306-638b73940347)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 145.3456 86.36 0)
-      (effects (font (size 1.27 1.27)) (justify right) hide)
-    )
-  )
-
   (hierarchical_label "PWM" (shape input) (at 142.24 99.06 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 46306c7b-89aa-47eb-bb33-8e8471669ca2)
@@ -573,7 +565,7 @@
   (symbol (lib_id "power:+3.3V") (at 162.56 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2b3bcf65-ee2d-444e-b15c-dc824b5f4823)
-    (property "Reference" "#PWR019" (at 162.56 71.12 0)
+    (property "Reference" "#PWR0601" (at 162.56 71.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 162.56 63.5 0)
@@ -589,7 +581,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/d5df5f48-8d85-45ba-9c59-31e00cd39d16"
-          (reference "#PWR019") (unit 1)
+          (reference "#PWR0601") (unit 1)
         )
       )
     )
@@ -598,13 +590,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 144.78 99.06 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3a763d70-3c0b-4619-a317-d7b36c573dfb)
-    (property "Reference" "R11" (at 144.78 93.98 90)
+    (property "Reference" "R601" (at 144.78 93.98 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "22" (at 144.78 96.52 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 144.78 99.06 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 144.78 99.06 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 144.78 99.06 0)
@@ -615,7 +607,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/d5df5f48-8d85-45ba-9c59-31e00cd39d16"
-          (reference "R11") (unit 1)
+          (reference "R601") (unit 1)
         )
       )
     )
@@ -624,13 +616,13 @@
   (symbol (lib_id "Device:R_Small_US") (at 149.86 104.14 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 42399420-82cc-4900-be3a-8a69ca5a4549)
-    (property "Reference" "R12" (at 152.4 103.505 0)
+    (property "Reference" "R602" (at 152.4 103.505 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 152.4 106.045 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 149.86 104.14 0)
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 149.86 104.14 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 149.86 104.14 0)
@@ -641,7 +633,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/d5df5f48-8d85-45ba-9c59-31e00cd39d16"
-          (reference "R12") (unit 1)
+          (reference "R602") (unit 1)
         )
       )
     )
@@ -650,13 +642,13 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 172.72 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 49c6ac3e-feff-4296-82b9-55cd5b567e80)
-    (property "Reference" "J3" (at 175.26 84.455 0)
+    (property "Reference" "J601" (at 175.26 84.455 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 175.26 86.995 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 172.72 83.82 0)
+    (property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" (at 172.72 83.82 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 172.72 83.82 0)
@@ -667,7 +659,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/d5df5f48-8d85-45ba-9c59-31e00cd39d16"
-          (reference "J3") (unit 1)
+          (reference "J601") (unit 1)
         )
       )
     )
@@ -676,7 +668,7 @@
   (symbol (lib_id "power:GND") (at 162.56 114.3 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 777ad23c-2744-49f0-9b92-0830375b4f59)
-    (property "Reference" "#PWR020" (at 162.56 120.65 0)
+    (property "Reference" "#PWR0602" (at 162.56 120.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 162.56 119.38 0)
@@ -692,7 +684,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/d5df5f48-8d85-45ba-9c59-31e00cd39d16"
-          (reference "#PWR020") (unit 1)
+          (reference "#PWR0602") (unit 1)
         )
       )
     )
@@ -701,13 +693,13 @@
   (symbol (lib_id "SQ2310ES-T1:SQ2310ES-T1") (at 154.94 99.06 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ce8f02e8-0fa2-42ef-ac53-1d3bb9c4f040)
-    (property "Reference" "Q1" (at 166.37 95.885 0)
+    (property "Reference" "Q601" (at 166.37 95.885 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SQ2310ES-T1" (at 166.37 98.425 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "SOT95P237X112-3N" (at 166.37 197.79 0)
+    (property "Footprint" "mod:SOT95P237X112-3N" (at 166.37 197.79 0)
       (effects (font (size 1.27 1.27)) (justify left top) hide)
     )
     (property "Datasheet" "https://www.vishay.com/doc?67036" (at 166.37 297.79 0)
@@ -740,7 +732,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/d5df5f48-8d85-45ba-9c59-31e00cd39d16"
-          (reference "Q1") (unit 1)
+          (reference "Q601") (unit 1)
         )
       )
     )
@@ -749,13 +741,13 @@
   (symbol (lib_id "VS-30BQ015HM3_9AT:VS-30BQ015HM3_9AT") (at 154.94 66.04 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e5d70728-cab3-45f1-861d-656c572110cd)
-    (property "Reference" "D1" (at 148.59 73.66 90)
+    (property "Reference" "D601" (at 148.59 73.66 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "VS-30BQ015HM3_9AT" (at 130.81 71.12 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "DIOM7959X262N" (at 61.29 78.74 0)
+    (property "Footprint" "mod:DIOM7959X262N" (at 61.29 78.74 0)
       (effects (font (size 1.27 1.27)) (justify left top) hide)
     )
     (property "Datasheet" "https://www.vishay.com/docs/94842/vs-30bq015hm3.pdf" (at -38.71 78.74 0)
@@ -787,7 +779,7 @@
     (instances
       (project "Projet_Controler"
         (path "/3b08c5cd-ddb4-4590-8a64-446919e151a7/d5df5f48-8d85-45ba-9c59-31e00cd39d16"
-          (reference "D1") (unit 1)
+          (reference "D601") (unit 1)
         )
       )
     )
