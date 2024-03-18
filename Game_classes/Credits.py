@@ -21,7 +21,7 @@ class CreditsMenu(MenuManager):
         self.fond = pygame.image.load('Assets/background2.jpg')
         # Liste de crédits
         self.credits = [
-            "Développeuses : Mantoulaye MBENGUE, Solène CERPAC, Letícia AIRES, ​",
+            "Developers : Mantoulaye MBENGUE, Solene CERPAC, Leticia AIRES, ​",
             "                       Cassandre CHANDELIER, Zineb LAHMOUDI",
             "",
             "",
@@ -29,23 +29,23 @@ class CreditsMenu(MenuManager):
             "",
             "Coordination transverse : Mantoulaye MBENGUE",
             "",
-            "History Mode : Letícia AIRES and Cassandre CHANDELIER",
+            "History Mode : Leticia AIRES and Cassandre CHANDELIER",
             "",
-            "Design background : Letícia AIRES",
+            "Design background : Leticia AIRES",
             "",
-            "Runner : Letícia AIRES",
+            "Runner : Leticia AIRES",
             "",
-            "Obstacles aléatoires quantiques : Solène CERPAC et Zineb LAHMOUDI",
+            "Random Obstacles : Solene CERPAC et Zineb LAHMOUDI",
             "",
-            "Crédits : Solène CERPAC",
+            "Credits : Solene CERPAC",
             "",
             "Rules : Zineb LAHMOUDI",
             "",
-            "Testeur de jeu : Nicolas Papazoglou",
+            "Game Tester : Nicolas Papazoglou",
             "",
-            "Testeur de jeu : Laurent Fiack",
+            "Game Tester : Laurent Fiack",
             "",
-            "Musique : Clement Panchout 'Life is full of Joy'"
+            "Song : Clement Panchout 'Life is full of Joy'"
         ]
 
         self.bouton_retour = pygame.Rect(600, 300, 200, 50)
