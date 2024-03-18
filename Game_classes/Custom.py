@@ -12,7 +12,7 @@ class CustomMenu(MenuManager) :
     def __init__(self):
         pygame.init()
 
-        SCREEN_WIDTH_CUSTOM = 600
+        SCREEN_WIDTH_CUSTOM = 800
         SCREEN_HEIGHT_CUSTOM = 600
         self.fenetre = pygame.display.set_mode((SCREEN_WIDTH_CUSTOM, SCREEN_HEIGHT_CUSTOM))
 

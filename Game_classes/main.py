@@ -6,7 +6,7 @@ from Credits import CreditsMenu
 from Settings import SettingMenu
 from MainMenu import MainMenu
 from MenuManager import MenuManager
-from PauseWindow import PauseWindow
+#from PauseWindow import PauseWindow
 from Custom import CustomMenu
 
 # initializing pygame
@@ -26,7 +26,6 @@ settings_menu = SettingMenu()
 credits_menu = CreditsMenu()
 name_menu = NameMenu()
 rules_menu = RulesMenu()
-pause_menu = PauseWindow()
 custom_menu = CustomMenu()
 
 running = True
@@ -34,12 +33,12 @@ current_menu = "main"
 active_menu = main_menu
 while running:
     # Check if the current menu is the game and run it
-    if current_menu == "play":
-        run_game()  # Call the main function of the Game class
-        print("entrou primeiro")
-    else:
-        print("entrou segundo")
-        active_menu.run()
+    #if current_menu == "play":
+     #   run_game()  # Call the main function of the Game class
+      #  print("entrou primeiro")
+    #else:
+    #    print("entrou segundo")
+    active_menu.run()
 
 
 

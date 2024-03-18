@@ -9,7 +9,7 @@ from pygame.locals import *
 import sys
 
 from MenuManager import MenuManager
-from PauseWindow import PauseWindow
+#from PauseWindow import PauseWindow
 
 rnd = random.Random()
 

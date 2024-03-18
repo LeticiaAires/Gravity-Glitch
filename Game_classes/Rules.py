@@ -5,6 +5,8 @@ from MenuManager import MenuManager
 class RulesMenu(MenuManager):
     def __init__(self):
         super().__init__()
+        self.screen = pygame.display.set_mode((800, 600))
+        pygame.display.set_caption("rules")
         self.title_rules_font = pygame.font.Font(self.font_path, 50)
         self.return_font = pygame.font.Font(MenuManager.font_path, 30)
         self.rules_font = pygame.font.Font(MenuManager.font_path, 20)

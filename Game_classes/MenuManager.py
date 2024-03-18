@@ -19,8 +19,9 @@ class MenuManager:
     font_path = os.path.join("Assets", font_filename)
 
     def __init__(self):
-        self.screen = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
-        pygame.display.set_caption("Menu Gravity Glitch")
+        
+        self.screen = pygame.display.set_mode((800, 600))
+        pygame.display.set_caption("teste Gravity Glitch")
         self.background_image = pygame.image.load("Assets/background2.jpg").convert()
         self.background_rect = self.background_image.get_rect()
 

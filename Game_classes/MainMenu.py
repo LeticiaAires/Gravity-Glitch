@@ -12,6 +12,8 @@ from Game import Start
 class MainMenu(MenuManager):
     def __init__(self):
         super().__init__()
+        self.fenetre = pygame.display.set_mode((800, 600))
+        pygame.display.set_caption("Main Menu")
         self.title_font = pygame.font.Font(self.font_path, 50)
         self.button_font = pygame.font.Font(self.font_path, 36)
 
