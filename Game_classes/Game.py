@@ -24,10 +24,10 @@ WIN_HEIGHT = 512
 
 class Bird(pygame.sprite.Sprite):
 
-    WIDTH = HEIGHT = 32
+    WIDTH = HEIGHT = 20
     SINK_SPEED = 0.15
-    CLIMB_SPEED = 0.22
-    CLIMB_DURATION = 250
+    CLIMB_SPEED = 0.25
+    CLIMB_DURATION = 200
 
     def __init__(self, x, y, msec_to_climb, images):
 
