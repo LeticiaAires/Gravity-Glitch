@@ -16,18 +16,14 @@ class RulesMenu(MenuManager):
         self.return_rect = pygame.Rect((MenuManager.SCREEN_WIDTH - MenuManager.BUTTON_WIDTH) // 1, 500, MenuManager.BUTTON_WIDTH, MenuManager.BUTTON_HEIGHT)
 
         self.rules_data = [
-            ("For the history mode:", 200, [
+            ("", 200, [
                 "Try to get the bird through as many holes as possible",
                 "If you hit the pipes the game is over!",
                 "To play, push the space bar or use the console"
             ]),
-            ("For the reverse mode:", 380, [
-                "Get through as many pipes as possible",
-                "If you go through a blank space the game is over!"
-            ]),
-            ("Choose name and character:", 100, [
-                "First choose your name and character",
-                "Then pick your game mode!"
+       
+            ("First choose your name and character", 100, [
+                
             ])
         ]
 
