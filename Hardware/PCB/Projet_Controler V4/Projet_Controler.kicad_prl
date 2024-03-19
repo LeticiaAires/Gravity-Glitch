@@ -64,8 +64,14 @@
       39,
       40
     ],
-    "visible_layers": "80010cc_80000007",
-    "zone_display_mode": 1
+    "visible_layers": "80010fc_80000001",
+    "zone_display_mode": 0
+  },
+  "git": {
+    "repo_password": "",
+    "repo_type": "",
+    "repo_username": "",
+    "ssh_key": ""
   },
   "meta": {
     "filename": "Projet_Controler.kicad_prl",
