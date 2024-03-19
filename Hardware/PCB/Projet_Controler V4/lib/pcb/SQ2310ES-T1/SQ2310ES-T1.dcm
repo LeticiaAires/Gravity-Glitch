@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SQ2310ES-T1
+D Automotive N-Channel 20 V (D-S) 175 C MOSFET
+K
+F https://www.vishay.com/doc?67036
+$ENDCMP
+#
+#End Doc Library

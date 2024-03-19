@@ -1,0 +1,11 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "450404015514")(type "KiCad")(uri "${KIPRJMOD}/lib/pcb/450404015514.kicad_sym")(options "")(descr ""))
+  (lib (name "WITNS_ROHM")(type "KiCad")(uri "${KIPRJMOD}/lib/sch/WITNS_ROHM.kicad_sym")(options "")(descr ""))
+  (lib (name "HC-05")(type "KiCad")(uri "${KIPRJMOD}/lib/sch/HC-05.kicad_sym")(options "")(descr ""))
+  (lib (name "LP3990MF-2_8_NOPB")(type "KiCad")(uri "${KIPRJMOD}/lib/sch/LP3990MF-2_8_NOPB.kicad_sym")(options "")(descr ""))
+  (lib (name "LTC4058EDD-4_2#PBF")(type "KiCad")(uri "${KIPRJMOD}/lib/sch/LTC4058EDD-4_2#PBF.kicad_sym")(options "")(descr ""))
+  (lib (name "VL53L5CX")(type "KiCad")(uri "${KIPRJMOD}/lib/sch/VL53L5CX.kicad_sym")(options "")(descr ""))
+  (lib (name "SQ2310ES-T1")(type "KiCad")(uri "${KIPRJMOD}/lib/sch/SQ2310ES-T1.kicad_sym")(options "")(descr ""))
+  (lib (name "VS-30BQ015HM3_9AT")(type "KiCad")(uri "${KIPRJMOD}/lib/sch/VS-30BQ015HM3_9AT.kicad_sym")(options "")(descr ""))
+)
