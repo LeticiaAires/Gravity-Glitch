@@ -1,4 +1,3 @@
-
 import pygame
 from pygame.locals import *
 #from PIL import Image
@@ -7,6 +6,8 @@ import os
 from MenuManager import MenuManager
 from Game import Start
 from PersonnalizedBird import personnalisedBird
+
+COLOR = 1
 
 class CustomMenu(MenuManager) :
     def __init__(self):
@@ -27,43 +28,23 @@ class CustomMenu(MenuManager) :
        
 
         # Chargement des personnages
-        image = pygame.image.load("Game_classes/images/bird_wing_down.png").convert_alpha()
+        image = pygame.image.load("Game_classes/images/bird3.png").convert_alpha()
         nouvelle_taille = (90,90)
         image = pygame.transform.scale(image, nouvelle_taille)
 
-        self.perso = personnalisedBird(100, 300, 0, (image,image),pygame.color.Color('white'),None,None,None)
-        #self.persoJaune = personnalisedBird(1000, 1000, 0, (image,image),pygame.color.Color('white'),None,None,None)
-        #self.persoBleu = personnalisedBird(1000, 1000, 0, (image,image),pygame.color.Color('blue'),None,None,None)
-
-        #persoRouge = pygame.image.load("images/bird_wing_down.png").convert_alpha()
-        #nouvelle_taille = (90, 90)
-        #persoRouge = pygame.transform.scale(persoRouge, nouvelle_taille)
-        #position_persoRouge = persoRouge.get_rect()
-        #position_persoRouge.topleft = (100, 300)
-    
-        #persoJaune = pygame.image.load("Assets/bird1.png").convert_alpha()
-        #persoJaune = pygame.transform.scale(persoJaune, nouvelle_taille)
-        #persoJaune.set_colorkey((255, 255, 255))
-
-
-
-        #persoBleu = pygame.image.load("Assets/OiseauBleu.xcf").convert_alpha()
-        #persoBleu = pygame.transform.scale(persoBleu, nouvelle_taille)
-        # Définir les couleurs à rendre transparentes
-        #persoBleu.set_colorkey((255, 255, 255))
-        
+        self.perso = personnalisedBird(350, 300, 0, (image,image),pygame.color.Color('white'),None,None,None)
 
         # Chargement des accessoires
-        self.chapeauCowboy = pygame.image.load("Assets/chapeau_cowboy.png").convert_alpha()
-        self.chapeauCowboy = pygame.transform.scale(self.chapeauCowboy, nouvelle_taille)
+        #self.chapeauCowboy = pygame.image.load("Assets/chapeau_cowboy.png").convert_alpha()
+        #self.chapeauCowboy = pygame.transform.scale(self.chapeauCowboy, nouvelle_taille)
     
-        self.LunettesDeSoleil = pygame.image.load("Assets/lunettes-de-soleil.jpg").convert_alpha()
-        self.LunettesDeSoleil = pygame.transform.scale(self.LunettesDeSoleil, nouvelle_taille)
-        self.LunettesDeSoleil.set_colorkey((253, 253, 253))
+        #self.LunettesDeSoleil = pygame.image.load("Assets/lunettes-de-soleil.jpg").convert_alpha()
+        #self.LunettesDeSoleil = pygame.transform.scale(self.LunettesDeSoleil, nouvelle_taille)
+        #self.LunettesDeSoleil.set_colorkey((253, 253, 253))
     
-        self.tuba = pygame.image.load("Assets/tuba.jpg").convert_alpha()
-        self.tuba = pygame.transform.scale(self.tuba, nouvelle_taille)
-        self.tuba.set_colorkey((255, 255, 255))
+        #self.tuba = pygame.image.load("Assets/tuba.jpg").convert_alpha()
+        #self.tuba = pygame.transform.scale(self.tuba, nouvelle_taille)
+        #self.tuba.set_colorkey((255, 255, 255))
 
         
         # Définition du bouton bleu
@@ -106,21 +87,18 @@ class CustomMenu(MenuManager) :
         self.bouton_Jaune_Text = self.bouton_Jaune_Fond.copy()
         self.bouton_Jaune_Text.blit(self.bouton_Jaune_Bordures, (0, 0))
     
-
-
-
         # Position initiale du chapeauCowboy
-        self.position_chapeauCowboy = self.chapeauCowboy.get_rect()
-        self.position_chapeauCowboy.topleft = (400, 200)
+        #self.position_chapeauCowboy = self.chapeauCowboy.get_rect()
+        #self.position_chapeauCowboy.topleft = (400, 200)
         
     
         # Position initiale des lunettes de soleil
-        self.position_LunettesDeSoleil = self.LunettesDeSoleil.get_rect()
-        self.position_LunettesDeSoleil.topleft = (400, 100)
+        #self.position_LunettesDeSoleil = self.LunettesDeSoleil.get_rect()
+        #self.position_LunettesDeSoleil.topleft = (400, 100)
     
         # Position initiale du tuba
-        self.position_tuba = self.tuba.get_rect()
-        self.position_tuba.topleft = (400, 300)
+        #self.position_tuba = self.tuba.get_rect()
+        #self.position_tuba.topleft = (400, 300)
     
         # Variables pour le suivi de l'état de déplacement de chaque accessoire
         self.en_deplacement_perso = False  
@@ -128,7 +106,6 @@ class CustomMenu(MenuManager) :
         #self.position_perso=(self.perso.x,self.persoRouge.y)
 
           
-
     # Boucle principale
     def run(self):
         running = True
@@ -145,22 +122,37 @@ class CustomMenu(MenuManager) :
                             self.start_game()
                             
                         elif self.bouton_Bleu_Rect.collidepoint(event.pos):
-                            self.perso.changecolor(pygame.color.Color('blue')) 
+                            #self.perso.changecolor(pygame.color.Color('blue')) 
+                            image = pygame.image.load("Game_classes/images/bird1.png").convert_alpha()
+                            nouvelle_taille = (90,90)
+                            image = pygame.transform.scale(image, nouvelle_taille)
+                            self.perso = personnalisedBird(100, 300, 0, (image,image),pygame.color.Color('white'),None,None,None)
+                            COLOR = 3
                         elif self.bouton_Jaune_Rect.collidepoint(event.pos):
-                            self.perso.changecolor(pygame.color.Color('white'))
+                            #self.perso.changecolor(pygame.color.Color('white'))
+                            image = pygame.image.load("Game_classes/images/bird3.png").convert_alpha()
+                            nouvelle_taille = (90,90)
+                            image = pygame.transform.scale(image, nouvelle_taille)
+                            self.perso = personnalisedBird(100, 300, 0, (image,image),pygame.color.Color('white'),None,None,None)
+                            COLOR = 1
                         elif self.bouton_Rouge_Rect.collidepoint(event.pos):
-                            self.perso.changecolor(pygame.color.Color('brown'))
+                            #self.perso.changecolor(pygame.color.Color('brown'))
+                            image = pygame.image.load("Game_classes/images/bird2.png").convert_alpha()
+                            nouvelle_taille = (90,90)
+                            image = pygame.transform.scale(image, nouvelle_taille)
+                            self.perso = personnalisedBird(100, 300, 0, (image,image),pygame.color.Color('white'),None,None,None)
+                            COLOR = 2
                         else :
-                            pass
+                            COLOR = 1
 
-                        if self.position_chapeauCowboy.collidepoint(event.pos):
-                            self.perso.changeprop(self.chapeauCowboy,0,-10)
-                        elif self.position_LunettesDeSoleil.collidepoint(event.pos):
-                            self.perso.changeprop(self.LunettesDeSoleil,0,0)
-                        elif self.position_tuba.collidepoint(event.pos):
-                            self.perso.changeprop(self.tuba,0,0)
-                        else:
-                            pass
+                        #if self.position_chapeauCowboy.collidepoint(event.pos):
+                        #    self.perso.changeprop(self.chapeauCowboy,0,-10)
+                        #elif self.position_LunettesDeSoleil.collidepoint(event.pos):
+                         #   self.perso.changeprop(self.LunettesDeSoleil,0,0)
+                        #elif self.position_tuba.collidepoint(event.pos):
+                        #    self.perso.changeprop(self.tuba,0,0)
+                        #else:
+                        #    pass
 
                     
         
@@ -201,9 +193,9 @@ class CustomMenu(MenuManager) :
         
             
             # Redessiner les accessoires
-            self.fenetre.blit(self.chapeauCowboy, self.position_chapeauCowboy)
-            self.fenetre.blit(self.LunettesDeSoleil, self.position_LunettesDeSoleil)
-            self.fenetre.blit(self.tuba, self.position_tuba)
+            #self.fenetre.blit(self.chapeauCowboy, self.position_chapeauCowboy)
+            #self.fenetre.blit(self.LunettesDeSoleil, self.position_LunettesDeSoleil)
+            #self.fenetre.blit(self.tuba, self.position_tuba)
 
             pygame.display.flip()
         
@@ -214,5 +206,6 @@ class CustomMenu(MenuManager) :
         #display_custom()
 
     def start_game(self):
+        global COLOR
         game_instance = Start()  # Create an instance of the Game class
         game_instance.run()  # Call the Start method from the Game class
