@@ -8,6 +8,7 @@ from collections import deque
 from pygame.locals import *
 import sys
 
+from CommHC05 import MyCommHC05
 from MenuManager import MenuManager
 #from PauseWindow import PauseWindow
 
@@ -49,8 +50,8 @@ class Bird(pygame.sprite.Sprite):
             self.msec_to_climb -= frames_to_msec(delta_frames)
 
         else:
-
-            self.y += Bird.SINK_SPEED * frames_to_msec(delta_frames)
+            pass
+            #self.y += Bird.SINK_SPEED * frames_to_msec(delta_frames)
 
     @property
 
@@ -218,6 +219,7 @@ def game_over_screen(display_surface, score, font_path):
 class Start:
     from MenuManager import MenuManager
     def __init__(self):
+        self.comm = MyCommHC05()
         self.run_game()
 
     def show_intro_screen(self):
@@ -269,6 +271,16 @@ class Start:
         while not done:
             clock.tick(FPS)
 
+            # Obtenir l'altitude depuis CommHC05
+            altitude = self.comm.get_altitude()            
+
+            if altitude is not None:  # Vérifier si altitude est None
+                # Convertir l'altitude en une position verticale pour l'oiseau
+                bird_y =WIN_HEIGHT - int((altitude / 1000) * WIN_HEIGHT)
+                bird_y = max(0, min(WIN_HEIGHT - Bird.HEIGHT, bird_y))
+                bird.y = bird_y
+
+            
             if not (paused or frame_clock % msec_to_frames(PipePair.ADD_INTERVAL)):
                 pp = PipePair(images['pipe-end'], images['pipe-body'])
                 pipes.append(pp)
